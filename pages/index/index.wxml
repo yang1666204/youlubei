@@ -1,0 +1,7 @@
+
+
+<navigator open-type="navigate" url="pages/showQuestions/index">
+<!-- <van-button type="primary"  >按钮</van-button> -->
+跳转提问页面
+</navigator>
+<van-button type="primary" bind:click="handleClick" >我要提问</van-button>
