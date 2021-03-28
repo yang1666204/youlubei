@@ -1,7 +1,34 @@
+<view class="Container">
+    <view class="topContainer">
+        <view class="flageone"><text class="font">问答</text></view>
+        <view >
+           <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
+        </view>
+        <view class="flagetwo"><text class="font">笔记</text></view>
+    </view>
 
-
-<navigator open-type="navigate" url="pages/showQuestions/index">
-<!-- <van-button type="primary"  >按钮</van-button> -->
-跳转提问页面
-</navigator>
-<van-button type="primary" bind:click="handleClick" >我要提问</van-button>
+    <swiper previous-margin="70rpx" circular="true" next-margin="70rpx" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+        <block wx:for="{{imgUrls}}">
+            <swiper-item>
+                <image class="swiper-image" src="{{item}}" />
+            </swiper-item>
+        </block>
+    </swiper>
+    <van-button type="primary" bind:click="handleClick">我要提问</van-button>
+    
+    
+    <!-- <view class="userContainer">
+        <view class="userinfo">
+            <block wx:if="{{!hasUserInfo}}">
+                <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">获取头像昵称</button>
+                <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+                    获取头像昵称
+                </button>
+            </block>
+            <block wx:else>
+                <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+                <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+            </block>
+        </view>
+    </view> -->
+</view>
