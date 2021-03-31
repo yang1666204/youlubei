@@ -1,22 +1,72 @@
 <view class="Container">
+    <!-- 顶部头像 -->
     <view class="topContainer">
-        <view class="flageone"><text class="font">问答</text></view>
-        <view >
-           <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
+        <view class="flageone">
+            <text class="font">问答</text>
         </view>
-        <view class="flagetwo"><text class="font">笔记</text></view>
+        <view>
+            <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
+        </view>
+        <view class="flagetwo">
+            <text class="font">笔记</text>
+        </view>
     </view>
-
-    <swiper previous-margin="70rpx" circular="true" next-margin="70rpx" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+    <!-- 轮播图 -->
+    <swiper next-margin="20px" previous-margin="150rpx" circular="true"  indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
         <block wx:for="{{imgUrls}}">
-            <swiper-item>
+            <swiper-item class="lbt">
                 <image class="swiper-image" src="{{item}}" />
             </swiper-item>
         </block>
     </swiper>
-    <van-button type="primary" bind:click="handleClick">我要提问</van-button>
-    
-    
+    <!-- 学科 -->
+    <view class="xuekeContainer">
+        <view wx:for="{{xuekeList}}">
+            <view class="xueketext">
+                <text class="">{{item}}</text>
+            </view>
+ 
+        </view>
+    </view>
+    <button class="floatBtn">我　要　提　问</button>
+    <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
+    <!-- 提问内容 -->
+    <scroll-view scroll-y="true" style="height: 700rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
+        <view wx:for="{{contentList}}">
+            <view class="mainContent">
+                <!-- 头像、积分、日期、名字 -->
+                <view class="topContent">
+                    <view class="leftContent">
+                        <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" />
+                        <view class="infoContent">
+                            <text class="name">李融</text>
+                            <text class="date">2021年3月31日</text>
+                        </view>
+                    </view>
+                    <view class="rightContent">
+                        <text class="jfFont">10积分</text>
+                        <text class="jdFont">待解答</text>
+                    </view>
+                </view>
+                <view class="centerContent">
+                    <text class="" selectable="false" space="false" decode="false">
+                        {{item.title}}
+                    </text>
+                    <textarea class="queContent" value="" placeholder="" placeholder-style="" placeholder-class="textarea-placeholder" disabled="false" maxlength="140" auto-focus="false" focus="false" auto-height="" bindinput="" bindfocus="" bindblur="" bindconfirm="" bindlinechange="%{15}">
+                        {{item.content}}
+                    </textarea>
+                </view>
+                   <view>
+                <!-- 分割线 -->
+                <view class="driver"></view>
+            </view>
+                <view class="footContent">
+                    <a class="b" href="#">关注</a>
+                    <a class="b" href="#">回答</a>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
     <!-- <view class="userContainer">
         <view class="userinfo">
             <block wx:if="{{!hasUserInfo}}">

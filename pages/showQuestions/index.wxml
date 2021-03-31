@@ -1,3 +1,46 @@
-<!--pages/showQuestions/index.wxml-->
-<text>pages/showQuestions/index.wxml</text>
-<Tabbar></Tabbar>
+<view class="Container">
+    <view class="topContainer">
+        <view class="flageone">
+            <text class="font">问答</text>
+        </view>
+        <view>
+            <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
+        </view>
+        <view class="flagetwo">
+            <text class="font">笔记</text>
+        </view>
+    </view>
+    <view class="formContainer">
+        <form action="">
+            <input class="inputContent" placeholder="请在此输入标题" />
+            <view>
+                <!-- 分割线 -->
+                <view class="driver"></view>
+            </view>
+            <input class="inputContent" type="text" placeholder="学科" />
+            <view>
+                <view class="driver"></view>
+            </view>
+            <textarea placeholder="想问点什么" class="textareaContent"></textarea>
+            <van-button color="#CADAFC" size="small" round class="addbq">+点击添加标签</van-button>
+            <view>
+                <view class="adriver"></view>
+            </view>
+            <view class="footer">
+                <view class="footerContent">
+                    <view>
+                        <text class="xsContent">积分悬赏</text>
+                    </view>
+                    <view>
+                        <van-stepper value="{{ 10 }}" bind:change="onChange" />
+                    </view>
+                </view>
+                <text class="yqContent">邀请回答</text>
+            </view>
+            <van-button class="aabtn" size="normal" round color="#65E3CD">
+                <text class="submitFont">提交</text>
+            </van-button>
+            <!-- <button style="margin: 30rpx 0" type="primary" formType="submit">提交</button> -->
+        </form>
+    </view>
+</view>

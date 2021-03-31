@@ -1,1 +1,64 @@
-/* pages/showQuestions/index.wxss */
+.topContainer {
+  width: 1200rpx;
+  height: 387rpx;
+  border-radius: 50%;
+  margin: -200rpx 0rpx 60rpx -230rpx;
+  /* margin-top: -250rpx;
+    margin-left: -230rpx; */
+  display: block;
+  background-color: #cadafc;
+  /* z-index: 1; */
+
+  position: relative;
+}
+.Container{
+  background-color: #FFFFFF;
+}
+.driver,.adriver{
+  background: #CADAFC;
+  width: 70%;
+  height: 5rpx;
+  margin: 0 auto 0 auto;
+ }
+ .inputContent,.inputContenta{
+   width: 70%;
+   margin: 30rpx auto 0 auto;
+ }
+ .footerContent{
+   margin-top: 50rpx;
+   display: flex;
+   justify-content: space-around;
+ }
+ .inputContenta{
+   height: 400rpx;
+ }
+.textareaContent{
+  width: 70%;
+  /* color: rgb(148, 147, 147); */
+  margin: 30rpx auto 30rpx auto;
+}
+.xsContent,.yqContent{
+  color: #97A5B6;
+}
+.yqContent{
+  margin-left: 107rpx;
+  margin-top: 50rpx;
+}
+.addbq{
+  margin-bottom: 20rpx;
+  margin-left: 107rpx;
+}
+.adriver{
+  margin-top: 20rpx;
+}
+.footer{
+  margin-bottom: 70rpx;
+}
+.submitFont{
+  margin-left: 80rpx;
+  margin-right: 80rpx;
+}
+.aabtn{
+  margin-left: 200rpx;
+ 
+}

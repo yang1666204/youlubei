@@ -23,6 +23,12 @@ App({
           success: (result) => {
             //获取openId,存缓存中   
             console.log(result);
+            console.log(result.data.data.openid);
+            let {openid}=result.data.data
+            wx.setStorageSync({
+              key:"openid",
+              data:openid
+            })
           },
           fail: (err) => {
             console.log(err);
