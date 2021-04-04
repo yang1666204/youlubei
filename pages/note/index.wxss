@@ -1,1 +1,133 @@
-/* pages/note/index.wxss */
+/* pages/questions/index.wxss */
+.Notecontainer{
+    background-color: #F6F6F6;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .topContainer{
+    width: 1200rpx;
+    height: 387rpx;
+    border-radius: 50%;
+    margin: -250rpx 0rpx 60rpx -230rpx;
+    /* margin-top: -250rpx;
+    margin-left: -230rpx; */
+    display: block;
+    background-color: #CADAFC;
+    /* z-index: 1; */
+    position: absolute;
+  }
+  .head{
+    position: relative;
+    height: 15vh;
+  }
+  .flageone,.flagetwo{
+    width: 66rpx;
+    height: 66rpx;
+    position: absolute;
+    border-radius: 50%;
+    /* margin-left: -230rpx; */
+    bottom: 45rpx;
+    background-color: #fff;
+    font-size: small;
+    z-index: 2;
+  }
+  .flageone{
+    left: 100rpx;
+  }
+  .flagetwo{
+    left: 570rpx;
+  }
+  .font{
+    display: flex;
+    justify-content: center;
+    line-height: 66rpx;
+  }
+  .fontleft{
+    display: flex;
+    justify-content: center;
+    line-height: 66rpx;
+    color:  #408aeb;
+  }
+  .imgpic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100rpx;
+    height: 100rpx;
+    position:absolute;
+    bottom:0rpx;
+    left:calc(50% - 50rpx)
+  }
+  .mid{
+    height: 15vh;
+  }
+  .maincontainer{  
+    margin: 3vh 90rpx 0rpx 90rpx;
+  }
+  
+  .tab{
+    background-color: #f6f6f6;
+  }
+  .listitem{
+    background-color: #fff;
+    margin-bottom: 30rpx;
+    border-radius: 15rpx;
+    height: 220rpx;
+    padding: 10rpx 30rpx 10rpx 30rpx ;
+
+  }
+  .listitem3{
+   color:#a6b2c1;
+   display: -webkit-box;
+   word-break:break-all;
+   text-overflow:ellipsis;
+   font-size:28rpx;
+   overflow:hidden;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp:2;
+   margin-top: 14rpx;
+  }
+  .listitem2{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    margin-top: 14rpx;
+   }
+  .custom{
+    height: 30rpx;
+  }
+  .search{
+    height: 40rpx;
+    margin-top: 1vh;
+    margin-top: 1vh;
+  }
+  
+.goTop{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 300rpx;
+  right: 30rpx;
+  border-radius: 50%;
+  background-color: #6ee3cf;
+  
+}
+.gotop{
+   margin-top: 20rpx;
+   margin-left: 20rpx;
+ 
+}
+.add{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 200rpx;
+  right: 30rpx;
+  border-radius: 50%;
+  background-color: #6ee3cf;
+}
+.plus{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+}

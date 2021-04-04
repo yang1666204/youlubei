@@ -1,0 +1,42 @@
+<view class="topContainer"></view>
+ <view class="head">
+        <!-- <view class="flageone"><text class="font">问答</text></view> -->
+             <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+             </view>
+        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
+ </view>
+ <view class="mid">
+
+ </view>
+ <view  class="form">
+      <form bindsubmit="submit">
+         <van-cell-group>
+            <view  style="border: 1 solid black">
+              <van-field
+                name="title"
+                model:value="{{ title }}"
+                placeholder="请再次输入题目"
+                border="{{ true }}"
+                input-class="input"
+              />
+            </view>
+            <view>
+               <van-field
+                name="tag"
+                model:value="{{ tag }}"
+                placeholder="科目"
+                border="{{ false }}"
+              />
+            </view>            
+         </van-cell-group>
+         <textarea name="content" value="{{content}}"
+          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw" 
+          placeholder-style="font-size:20rpx" 
+          maxlength="200">           
+         </textarea>
+         <button form-type="submit" class="button">保存</button>
+
+      </form>
+ </view>
+  <Tabbar></Tabbar>

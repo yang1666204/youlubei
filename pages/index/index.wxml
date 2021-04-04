@@ -18,7 +18,7 @@
     <van-button type="primary" bind:click="handleClick">我要提问</van-button>
     
     
-    <!-- <view class="userContainer">
+    <view class="userContainer">
         <view class="userinfo">
             <block wx:if="{{!hasUserInfo}}">
                 <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">获取头像昵称</button>
@@ -31,5 +31,5 @@
                 <text class="userinfo-nickname">{{userInfo.nickName}}</text>
             </block>
         </view>
-    </view> -->
+    </view>
 </view>

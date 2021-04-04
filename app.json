@@ -2,11 +2,11 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/questions/index",
+    "pages/question/index",
     "pages/showQuestions/index",
-    "pages/showNote/index",
+    "pages/addNote/index",
     "pages/person/index",
-    "pages/submitNote/index",
+    "pages/showNote/index",
     "pages/showPerson/index",
     "pages/note/index"
   ],
@@ -31,8 +31,8 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/questions/index",
-        "text": "提问"
+        "pagePath": "pages/note/index",
+        "text": "笔记"
       },
       {
         "pagePath": "pages/person/index",

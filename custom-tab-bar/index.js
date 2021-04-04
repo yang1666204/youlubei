@@ -10,10 +10,10 @@ Component({
         "text": "首页"
       },
       {
-        "url": "/pages/questions/index",
+        "url": "/pages/note/index",
         "icon": "chat-o",
         "info": '',
-        "text": "提问"
+        "text": "笔记"
       },
       {
         "url": "/pages/person/index",
@@ -24,8 +24,14 @@ Component({
     ]
   },
   methods: {
+    // jump(){
+    //   console.log('haha')
+    //   this.setData({
+    //     active: 1
+    //   });
+    // },
     onChange(e) {
-      console.log(e, 'e')
+      // console.log(e, 'e')
       this.setData({
         active: e.detail
       });
@@ -35,6 +41,7 @@ Component({
     },
     init() {
       const page = getCurrentPages().pop();
+      console.log(page.route)
       this.setData({
         active: this.data.list.findIndex(item => item.url === `/${page.route}`)
       });
