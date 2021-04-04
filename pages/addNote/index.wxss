@@ -1,0 +1,44 @@
+/* pages/showNote/index.wxss */
+.topContainer{
+    width: 1200rpx;
+    height: 387rpx;
+    border-radius: 50%;
+    margin: -250rpx 0rpx 60rpx -230rpx;
+    /* margin-top: -250rpx;
+    margin-left: -230rpx; */
+    display: block;
+    background-color: #CADAFC;
+    /* z-index: 1; */
+    position: absolute;
+  }
+  .head{
+    position: relative;
+    height: 15vh;
+  }
+  
+  .imgpic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100rpx;
+    height: 100rpx;
+    position:absolute;
+    bottom:0rpx;
+    left:calc(50% - 50rpx)
+  }
+  .mid{
+    height: 15vh;
+  }
+  .form{
+    margin: 0 15vw;
+    height: 50vh;
+  }
+  .input{
+    border-bottom: 1 solid black !important;
+    
+  }
+  .button{
+    background-color: #6ee3cf;
+    border-radius: 50rpx;
+    color: #fff;
+    margin: 0 10vw;
+  }

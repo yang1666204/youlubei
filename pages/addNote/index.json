@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Tabbar":"../../custom-tab-bar/index",
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index"
+  }
+}

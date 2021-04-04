@@ -1,4 +1,69 @@
-<!--pages/note/index.wxml-->
 
-<van-button type="primary" bind:click="handleToNote" >我要提问</van-button>
-<Tabbar></Tabbar>
+<view class="Notecontainer">
+    <view class="topContainer"></view>
+        
+      <view class="head">
+        <view class="flageone"><text class="font">问答</text></view>
+             <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+                <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
+             </view>
+        <view class="flagetwo"><text class="fontleft">笔记</text></view>
+     </view>
+
+<view class="maincontainer">
+    <view class="mid">          
+        <view >
+             <van-search
+               shape="round"
+               background="#f6f6f6"
+               value="{{ value }}"
+               placeholder="请输入搜索关键词"
+               use-action-slot
+               bind:change="onChange"
+               bind:search="onSearch"
+               custom-class="search"
+              >
+                      <view slot="action" bind:tap="onClick">搜索</view>
+             </van-search>
+        </view>  
+        <view >
+             <van-tabs active="{{ active }}"  bind:change="onTabchange" 
+               sticky  
+               tab-class="tab"
+               custom-class="custom"
+                 >
+             <van-tab title="哲学"></van-tab>
+             <van-tab title="经济学"></van-tab>
+             <van-tab title="法学"></van-tab>
+             <van-tab title="文学"></van-tab>
+             <van-tab title="历史学"></van-tab>
+             <van-tab title="理学"></van-tab>
+             <van-tab title="艺术学"></van-tab>
+             </van-tabs>
+        </view>  
+        
+    </view>
+ <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}">
+        <view class="list">
+              <view wx:for="{{list}}"  wx:key="note_id"  class="listitem"  bind:tap="toshownote" >
+                  
+                     <view class="listitem1">{{item.user_name}}</view>    
+                     <view class="listitem2">{{item.title}}</view> 
+                     <view class="listitem3">{{item.content}}</view> 
+                  
+             </view>
+        </view> 
+ </scroll-view>
+
+
+      <view class='goTop'  bindtap="goTop" hidden='{{!floorstatus}}'>
+           <van-icon name="arrow-up"  color="#fff" size="40rpx" custom-class="gotop" />
+      </view>
+
+      <view class='add'>
+           <van-icon name="plus"  color="#fff" size="40rpx" custom-class="plus" bind:tap="toaddnote" />
+      </view>
+</view>
+
+</view>

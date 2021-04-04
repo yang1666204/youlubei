@@ -1,4 +1,4 @@
-// pages/questions/index.js
+// pages/note/index.js
 Page({
 
   /**
@@ -15,6 +15,19 @@ Page({
 
   },
 
+  handleToNote:function(){
+    console.log("a");
+    wx.navigateTo({
+      url: '../showNote/index',
+      success: (result) => {
+        
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -25,10 +38,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-   onShow: function () { 
-    console.log('提问页');
-    this.getTabBar().init();
-},
+  onShow: function () {
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

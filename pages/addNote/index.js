@@ -1,11 +1,13 @@
-// pages/submitNote/index.js
+// pages/showNote/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    title:'',
+    tag:'',
+    content:'',
   },
 
   /**
@@ -26,7 +28,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getTabBar().init();
+  
   },
 
   /**
@@ -62,5 +64,30 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  submit(e){
+    console.log(e.detail.value);
+    const data = e.detail.value
+    const app =  getApp();
+    
+    wx.getStorage({
+      key: 'openId',
+      success (res) {
+      console.log(res.data.openid);
+    const data2= {
+        ...data,
+        userId:6
+      }
+      console.log(data2);
+      app.post('http://zzc0309.top:8000/api/v1/notes?openid=ohOHM5aPVxd_JgFS2t9xzlHUeatQ',
+       data2       
+      )
+    },
+    fail(){
+      console.log("失败")
+    }
+  })
+     
   }
+  
 })

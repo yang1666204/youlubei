@@ -22,6 +22,10 @@ App({
           responseType: 'text',
           success: (result) => {
             //获取openId,存缓存中   
+            wx.setStorage({
+              key:"openId",
+              data:result.data.data
+            })
             console.log(result);
             console.log(result.data.data.openid);
             let {openid}=result.data.data
@@ -42,5 +46,50 @@ App({
   },
   globalData: {
     userInfo: null
+  },
+  get(url,data){
+   return new Promise((resolve, reject) => {
+    wx.request({
+      // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
+      url:url,
+      data: data,
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        console.log(result,result.data.data.lists);
+        resolve(result.data.data.lists)
+      },
+      fail: (err) => {
+        console.log(err);
+        reject(err);
+      },
+      complete: () => {}
+    });   
+
+  })
+},
+   
+
+  
+
+  post(url,data){
+    wx.request({
+      // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
+      url:url,
+      data: data,
+      header: {'content-type':'application/json'},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        console.log(result);
+      },
+      fail: (err) => {
+        console.log(err);
+      },
+      complete: () => {}
+    });   
   }
 })
