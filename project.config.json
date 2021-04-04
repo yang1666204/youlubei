@@ -79,6 +79,18 @@
         {
           "name": "pages/index/index",
           "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/person/index",
+          "pathName": "pages/person/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/toOthers/index",
+          "pathName": "pages/toOthers/index",
           "scene": null
         }
       ]

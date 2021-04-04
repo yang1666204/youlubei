@@ -28,7 +28,7 @@
  
         </view>
     </view>
-    <button class="floatBtn">我　要　提　问</button>
+    <button bind:tap="handleClick" class="floatBtn">我　要　提　问</button>
     <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
     <!-- 提问内容 -->
     <scroll-view scroll-y="true" style="height: 700rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">

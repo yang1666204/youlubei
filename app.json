@@ -8,7 +8,8 @@
     "pages/person/index",
     "pages/submitNote/index",
     "pages/showPerson/index",
-    "pages/note/index"
+    "pages/note/index",
+    "pages/toOthers/index"
   ],
   "window": {
     "navigationStyle": "custom"
