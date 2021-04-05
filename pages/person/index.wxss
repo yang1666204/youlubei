@@ -1,1 +1,110 @@
 /* pages/person/index.wxss */
+.body{
+    background-color: #f6f6f6;
+    height: 100vh;
+}
+.head{
+    position: relative;
+    height: 18vh;
+}
+.imgpic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100rpx;
+    height: 100rpx;
+    position:absolute;
+    bottom:0rpx;
+    left:calc(50% - 50rpx)
+  }
+.info{
+      background-color: #fff;
+      margin: 0 10vw;
+      height: 20vh;
+      border-radius: 20rpx;
+  }
+  .userinfo{
+      display: flex;
+      flex-direction: column;
+      height: 10vh;
+      
+  }
+  .userinfoitem1{
+      line-height: 30rpx;
+      height: 40rpx;
+      text-align: center;
+      font-size: 36rpx;
+      font-weight: 600;
+  }
+  .userinfoitem2{
+    line-height: 30rpx;
+    height: 40rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+.attention{
+    display: flex;
+
+}
+.attitem{
+    height: 10vh;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    font-size: 30rpx;
+}
+.attitem1{
+    text-align: center;
+    height: 40rpx;
+    width: 40vw;
+    
+}
+.attitem2{
+    text-align: center;
+    height:  40rpx;
+    width: 40vw;
+    color: #6ee3cf;
+}
+.attitem3{
+    text-align: center;
+    height:  40rpx;
+    width: 40vw;
+}
+.attitem4{
+    text-align: center;
+    height:  40rpx;
+    width: 40vw;
+    color: #6ee3cf;
+}
+.note{
+    height: 5vh;
+    background-color: #fff;
+    border-radius:20rpx ;
+    margin: 1vh 10vw;
+    display: flex;
+}
+.function{
+    height: 30vh;
+    background-color: #fff;
+    border-radius:20rpx ;
+    margin: 3vh 10vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+.funitem{
+    text-align: center;
+    height:  80rpx;
+    width: 40vw;
+    font-size: 30rpx;
+    line-height: 25rpx;
+}
+.button{
+    background-color: #cadafc;
+    border-radius: 50rpx;
+    color: #fff;
+    width: 50vw;
+    height: 8vh;
+    margin: 0 25vw;
+    
+  }

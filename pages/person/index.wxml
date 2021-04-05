@@ -1,2 +1,60 @@
 <!--pages/person/index.wxml-->
-<text>pages/person/index.wxml</text>
+<view  class="body" >
+    <view class="head">
+         <image class="" style="height:15vh" src="http://zzc0309.top:8000/upload/images/aa65e0738b0bab1ae79081644346eeaf.png" mode="aspectFit|aspectFill|widthFix" lazy-load="false" binderror="" bindload="" />
+          <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+                <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
+          </view>
+    </view>
+      <view class="info" >
+          <view class="userinfo">
+              <text class="userinfoitem1">
+                  {{list.user_name}}
+              </text>
+              <text class="userinfoitem2">
+                  好好学习,天天向上~
+              </text>
+          </view>
+          <view class="attention">
+              <view class="attitem">
+                  <text class="attitem1" selectable="false" space="false" decode="false">
+                      关注
+                  </text>
+                  <text class="attitem2" selectable="false" space="false" decode="false">
+                      10
+                  </text>
+                  
+              </view>
+              <view class="attitem">
+                  <text class="attitem3" selectable="false" space="false" decode="false">
+                      读者
+                  </text>
+                  <text class="attitem4" selectable="false" space="false" decode="false">
+                      100
+                  </text>
+              </view>
+          </view>
+      </view>
+      <view class="note" hover-class="none" hover-stop-propagation="false">
+          <text style="color:#6ee3cf; text-align:center;width:80vw" >学霸笔记</text>
+      </view>
+
+      <view class="function" >
+          <text class="funitem" selectable="false" space="false" decode="false">
+              我的提问
+          </text>
+          <text class="funitem" selectable="false" space="false" decode="false">
+              我的积分
+          </text>
+          <text class="funitem" selectable="false" space="false" decode="false">
+              我的问答
+          </text>
+          <text class="funitem" selectable="false" space="false" decode="false">
+              回复我的
+          </text>
+            
+      </view>
+      <button form-type="submit" class="button">编辑信息</button>
+</view>
+

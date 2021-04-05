@@ -73,8 +73,11 @@
     background-color: #fff;
     margin-bottom: 30rpx;
     border-radius: 15rpx;
-    height: 220rpx;
+    height: 280rpx;
     padding: 10rpx 30rpx 10rpx 30rpx ;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around
 
   }
   .listitem3{
@@ -86,21 +89,24 @@
    overflow:hidden;
    -webkit-box-orient: vertical;
    -webkit-line-clamp:2;
-   margin-top: 14rpx;
+   /* margin-top: 14rpx; */
   }
   .listitem2{
     overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
-    margin-top: 14rpx;
+    /* margin-top: 14rpx; */
    }
-  .custom{
-    height: 30rpx;
-  }
+   .listitem1{
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 14rpx; */
+   }
   .search{
     height: 40rpx;
     margin-top: 1vh;
-    margin-top: 1vh;
+    margin-bottom: 1vh;
+    
   }
   
 .goTop{

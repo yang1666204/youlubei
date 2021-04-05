@@ -1,4 +1,5 @@
 Component({
+
   data: {
      // 选中的 tab 
     active: 0,

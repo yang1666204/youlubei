@@ -1,3 +1,50 @@
-<!--pages/submitNote/index.wxml-->
-<text>pages/showNote/index.wxml</text>
-<Tabbar></Tabbar>
+
+<view class="topContainer"></view>
+ <view class="head">
+             <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>          
+        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
+        <view style="margin:0 5vw"   >
+            <text style="font-size:36rpx;font-weight:600;line-height:36rpx;height:40rpx;">   
+               {{detail.title}}
+            </text>
+        </view>
+          
+        
+ </view>
+ <view class="mid">
+     <view class="personinfo">
+          <view class="listitem1"> 
+                     <view class="infoleft">
+                         <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
+                           <view style="width:180rpx;display:flex;flex-direction:column;justify-content: center;" >
+                                 <text  style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx">{{detail.user_name}}</text>
+                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">2021年3月31日</text>
+                           </view>
+                           
+                          <view style="width:100rpx">
+                               <van-tag round type="primary" >{{detail.tag}}</van-tag>
+                          </view> 
+                     </view>
+                     <view>
+                         <text style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx;color:#65E3CD;float:left">
+                             10积分
+                         </text>
+                     </view>
+                          
+          </view>    
+     </view>
+     <view class="content" >
+      <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}">
+        <text class="" selectable="false" space="false" decode="false">
+            {{detail.content}}
+        </text> 
+       </scroll-view>   
+     </view>      
+ </view>
+   <view class="bottom">  
+          <text class="bottomtext">
+               关注
+          </text>           
+   </view>
+          
+

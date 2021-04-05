@@ -26,13 +26,7 @@ App({
               key:"openId",
               data:result.data.data
             })
-            console.log(result);
-            console.log(result.data.data.openid);
-            let {openid}=result.data.data
-            wx.setStorageSync({
-              key:"openid",
-              data:openid
-            })
+            
           },
           fail: (err) => {
             console.log(err);
@@ -59,7 +53,11 @@ App({
       responseType: 'text',
       success: (result) => {
         console.log(result,result.data.data.lists);
-        resolve(result.data.data.lists)
+        if(result.data.data.lists){
+          resolve(result.data.data.lists)
+        }
+       else
+          resolve(result.data.data);
       },
       fail: (err) => {
         console.log(err);
