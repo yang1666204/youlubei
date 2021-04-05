@@ -1,6 +1,6 @@
 <view class="topContainer"></view>
  <view class="head">
-        <!-- <view class="flageone"><text class="font">问答</text></view> -->
+             <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
              <view class="imgpic">
                 <open-data type="userAvatarUrl" ></open-data> 
              </view>
@@ -39,4 +39,4 @@
 
       </form>
  </view>
-  <Tabbar></Tabbar>
+  

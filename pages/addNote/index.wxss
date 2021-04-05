@@ -42,3 +42,11 @@
     color: #fff;
     margin: 0 10vw;
   }
+  .flageone{
+    height: 160rpx;
+    width: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }

@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    openid:'',
+    list:{}
   },
 
   /**
@@ -26,8 +27,36 @@ Page({
    * 生命周期函数--监听页面显示
    */
    onShow: function () { 
+     const that = this;
+     const app = getApp();
     console.log('个人中心');
     this.getTabBar().init();
+    wx.getStorage({
+      key: 'openId',
+      success (res) {
+      console.log(res.data.openid);
+      that.setData({
+        openid:res.data.openid
+      })
+        app.get('http://zzc0309.top:8000/api/v1/user',{
+        openid:res.data.openid,
+    }).then(res=>{
+                      console.log('111',res);   
+                              that.setData({
+                         list:res.list
+                       })      
+                  }).catch(err=>{
+                      console.log('222',err)
+                  }
+                  )                   
+    },
+    fail(){
+      console.log("失败")
+    },
+    complete(){
+      // console.log(a)
+    }
+  })
 },
   /**
    * 生命周期函数--监听页面隐藏

@@ -65,6 +65,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  goback(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
   submit(e){
     console.log(e.detail.value);
     const data = e.detail.value
