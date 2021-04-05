@@ -98,6 +98,12 @@
         {
           "name": "pages/askDetail/index",
           "pathName": "pages/askDetail/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/loadImg/index",
+          "pathName": "pages/loadImg/index",
           "scene": null
         }
       ]

@@ -1,9 +1,10 @@
 <view class="Container">
     <!-- 背景图 -->
-    <image src="../../utils/backImg.jpg" mode="scaleToFill" style=" position: absolute;width:100vw;height:100vh;z-index:-1" />
+    <image src="http://qq41fqbou.hn-bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720210401220739.jpg" mode="heightFix" style=" position: absolute;height:100vh;z-index:-1;right:-40vw" />
     <!-- 个人信息 -->
     <view class="infoContent">
-        <!-- <view>
+       <!-- <view class="Content"> -->
+        <view>
             <image style="width:130rpx;height:130rpx;border-radius:50%;position:absolute;top:-50rpx;left:22vw" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
         </view>
         <view class="topContent">
@@ -15,6 +16,8 @@
             <text class="info">2019级</text>
             <text class="info">传媒艺术学院</text>
         </view>
-        <button class="toMain">主页</button> -->
+        <button class="toMain" bind:tap="tomain">主页</button>
+        <!-- </view> -->
     </view>
+     
 </view>

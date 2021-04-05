@@ -1,4 +1,4 @@
-// pages/toOthers/index.js
+// pages/loadImg/index.js
 Page({
 
   /**
@@ -7,17 +7,7 @@ Page({
   data: {
 
   },
-  tomain:function(){
-    wx.navigateTo({
-      url: '',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -29,7 +19,12 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    setTimeout(()=>{
+      console.log("aa");
+      wx.switchTab({
+        url: '../index/index'
+      })
+    },2000)
   },
 
   /**

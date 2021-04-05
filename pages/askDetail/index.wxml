@@ -1,7 +1,9 @@
 <view class="Container">
     <view class="topContainer"></view>
+     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
     <view class="title">标题</view>
     <view class="infoContainer">
+        <navigator open-type="navigate" url="../toOthers/index" >
         <view class="leftContent">
             <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
             <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" />
@@ -14,6 +16,7 @@
             <text class="jfFont">{{item.score}}积分</text>
             <text class="jdFont">待解答</text>
         </view>
+        </navigator>
     </view>
     <view class="content">
         <scroll-view scroll-y="{{true}}" style="height:65vh">

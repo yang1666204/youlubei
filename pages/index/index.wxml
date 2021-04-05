@@ -13,7 +13,7 @@
         </view>
     </view>
     <!-- 轮播图 -->
-    <swiper next-margin="20px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
+    <swiper next-margin="60px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
         <block wx:for="{{imgUrls}}">
             <swiper-item class="lbt">
                 <image class="swiper-image" src="{{item}}" />
@@ -21,6 +21,7 @@
         </block>
     </swiper>
     <!-- 学科 -->
+    
     <view>
         <van-tabs active="{{ active }}" bind:change="onTabchange" sticky tab-class="tab" custom-class="custom">
             <van-tab title="哲学"></van-tab>
@@ -38,10 +39,7 @@
     <scroll-view scroll-y="true" style="height: 700rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
         <view wx:for="{{list}}">
             <view class="mainContent">
-                <navigator class="" target="" url="../askDetail/index" hover-class="navigator-hover" open-type="navigate">
-                    
-               
-
+                <navigator class="" target="" url="../askDetail/index" hover-class="navigator-hover" open-type="navigate">          
                 <!-- 头像、积分、日期、名字 -->
                 <view class="topContent">
                     

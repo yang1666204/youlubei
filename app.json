@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/loadImg/index",
     "pages/index/index",
     "pages/logs/logs",
     "pages/question/index",

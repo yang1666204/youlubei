@@ -62,7 +62,7 @@
 /* 内容部分 */
 .content {
   margin-bottom: 100rpx;
-  border-bottom: 3rpx solid #CADAFC;
+  border-bottom: 3rpx solid #cadafc;
 }
 .fontContent {
   color: #000000;
@@ -74,7 +74,7 @@
   position: relative;
   display: flex;
   justify-content: space-around;
-  border-top: #CADAFC;
+  border-top: #cadafc;
 }
 .a {
   margin-top: -50rpx;
@@ -83,8 +83,21 @@
   font-weight: 600;
 }
 /* 分割线 */
-.divLine{
-    background: black;
-    height: 100%;
-    width: 5rpx;
-   }
+.divLine {
+  background: black;
+  height: 100%;
+  width: 5rpx;
+}
+/* 返回按钮 */
+.backbtn {
+  width: 100rpx;
+  height: 0rpx;
+  border-radius: 30rpx;
+  opacity: 0.5;
+  text-align: center;
+  top: 30rpx;
+  left: 20rpx;
+  position: absolute;
+  font-size: xx-small;
+  color: #ffffff;
+}

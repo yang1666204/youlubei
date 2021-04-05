@@ -46,7 +46,7 @@
 //     })
 //   }
 // })
-
+var util = require('../../utils/util.js')
 Page({
   // data: {
 
@@ -56,14 +56,15 @@ Page({
     motto: "youlubei",
     userInfo: {},
     imgUrls: [
-      "https://gtms01.alicdn.com/tps/i1/TB12EhzIXXXXXbMXpXXDgwcQVXX-375-130.jpg",
-      "https://gtms02.alicdn.com/tps/i2/TB1ZeJGIXXXXXcnXXXXDgwcQVXX-375-130.jpg",
-      "https://gtms03.alicdn.com/tps/i3/TB197VzIXXXXXbJXpXXDgwcQVXX-375-130.jpg",
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner.png",
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png",
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png",
     ],
     hasUserInfo: false,
     list: [],
     tag: "哲学",
     openid: "",
+    date:'',
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
@@ -75,6 +76,7 @@ Page({
     });
   },
   onLoad() {
+    console.log(formatTime(Date));
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true,
@@ -102,8 +104,12 @@ Page({
       hasUserInfo: true,
     });
   },
+  onUnload() {
+    clearInterval(this.timer)
+  },
   onShow: function () {
-    console.log("首页");
+    var Time = util.formatDate(new Date())
+    console.log(Time);
     this.getTabBar().init();
     const that = this;
     const app = getApp();

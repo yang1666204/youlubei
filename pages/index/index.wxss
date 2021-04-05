@@ -1,20 +1,20 @@
-.Container{
-  background-color: #F6F6F6;
+.Container {
+  background-color: #f6f6f6;
   width: 100vw;
   display: flex;
   flex-direction: column;
   height: 100vh;
 }
-.imgpic{
+.imgpic {
   border-radius: 50%;
   overflow: hidden;
   width: 100rpx;
   height: 100rpx;
-  position:absolute;
-  bottom:0rpx;
-  left:calc(50% - 50rpx)
+  position: absolute;
+  bottom: -40rpx;
+  left: calc(50% - 50rpx);
 }
-.topContainer{
+.topContainer {
   width: 1200rpx;
   height: 387rpx;
   border-radius: 50%;
@@ -22,66 +22,72 @@
   /* margin-top: -250rpx;
   margin-left: -230rpx; */
   display: block;
-  background-color: #CADAFC;
+  background-color: #cadafc;
   /* z-index: 1; */
-  
+
   position: relative;
 }
-.userContainer{
+.userContainer {
   border: 1rpx solid black;
   margin-top: 200rpx;
 }
-.flageone,.flagetwo{
+.flageone,
+.flagetwo {
   width: 66rpx;
   height: 66rpx;
   position: absolute;
   border-radius: 50%;
   /* margin-left: -230rpx; */
-  bottom: 0rpx;
+  bottom: -20rpx;
   background-color: #fff;
   font-size: small;
 }
-.flageone{
+.flageone {
   left: 330rpx;
 }
-.font,.fontAsk{
+.font{
+  color: #B1C1CE;
+}
+.font,
+.fontAsk {
   display: flex;
   justify-content: center;
   line-height: 66rpx;
 }
-.fontAsk{
-  color:  #408aeb;
+.fontAsk {
+  color: #408aeb;
 }
-.flagetwo{
+.flagetwo {
   left: 800rpx;
 }
-.font{
+.font {
   display: flex;
   text-align: center;
 }
-.img{
-  
+.img {
   border-radius: 50%;
   width: 100rpx;
   height: 100rpx;
 }
-swiper{
+swiper {
   height: 200rpx;
   margin-bottom: 20rpx;
 }
-.swiper-image{
-  height: 100%;
-  width: 85%;
+.swiper-image {
+
+  height: 85%;
+  width: 100%;
   /* margin: 0rpx 40rpx 20rpx 40rpx; */
   border-radius: 40rpx;
 }
-.lbt{
+.lbt {
+
   /* margin-left: 30rpx;
   margin-right: 30rpx; */
   /* padding-left: 30rpx;
   padding-right: 30rpx; */
 }
-.mainContent{
+.mainContent {
   background-color: #fff;
   padding: 30rpx;
   margin-bottom: 20rpx;
@@ -90,117 +96,113 @@ swiper{
   /* height: 80%;
   border: 1rpx solid black; */
 }
-.mainContent,.centerContent{
+.mainContent,
+.centerContent {
   display: flex;
   flex-direction: column;
 }
 
-.xuekeContainer{
+.xuekeContainer {
   display: flex;
   background-color: #fff;
   margin-bottom: 20rpx;
   width: 100vw;
 }
-.xueketext{
+.xueketext {
   padding: 14rpx;
 }
 
-
 /* 头像、积分、日期、名字样式 */
-.topContent{
+.topContent {
   display: flex;
   justify-content: space-between;
 }
-.leftContent{
+.leftContent {
   display: flex;
 }
-.rightContent{
+.rightContent {
   display: flex;
 
   flex-direction: column;
 }
-.infoContent{
+.infoContent {
   display: flex;
   flex-direction: column;
 }
-.name{
+.name {
   font-size: large;
   font-weight: 600;
   color: #000000;
   margin: 5rpx;
 }
-.date{
+.date {
   font-size: x-small;
-  color: #A6B2C1;
+  color: #a6b2c1;
   margin: 5rpx;
 }
-.jdFont{
+.jdFont {
   font-size: x-small;
   margin: 5rpx;
-  color: #92B4F4;
+  color: #92b4f4;
 }
-.jfFont{
-  color: #65E3CD;
+.jfFont {
+  color: #65e3cd;
   margin: 5rpx;
 }
 /* 提问内容部分 */
 
-.centerContent{
-  /* display: -webkit-box;  
-    -webkit-box-orient: vertical;   
-    -webkit-line-clamp: 3;   */
-    /* display: -webkit-box; */
-  /* margin-top: -20rpx; */
-  height: 70%;
+.centerContent {
+  height: 50%;
   margin-left: 15rpx;
   text-overflow: ellipsis;
 }
-.driver{
-  background: #CADAFC;
+.driver {
+  background: #cadafc;
   width: 95%;
   height: 2rpx;
   margin: 0 auto 0 auto;
- }
-.queContent{
+}
+.queContent {
   font-size: x-small;
-  color: #97A5B6;
+  color: #97a5b6;
   margin-top: 20rpx;
   display: -webkit-box;
-  word-break:break-all;
-  text-overflow:ellipsis;
-  font-size:28rpx;
-  overflow:hidden;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:2;
+  -webkit-line-clamp: 2;
 }
 
-.footContent{
+.footContent {
   margin-top: 10rpx;
   display: flex;
   justify-content: space-around;
 }
-.b{
-  color: #6EA3E9;
+.b {
+  color: #6ea3e9;
 }
-.floatBtn{
+.floatBtn {
   position: absolute;
-  top: 1050rpx;
-  left: 200rpx;
+  bottom: 16vh;
+  left: 27.5vw;
+  justify-content: center;
   z-index: 2;
   width: 45vw;
   border-radius: 30rpx;
-  background-color:#65E3CD ;
-  color: #FFFFFF;
+  background-color: #65e3cd;
+  color: #ffffff;
 }
-.footFont{
+.footFont {
   display: flex;
   text-align: center;
   flex-direction: column;
 }
-.t{
+.t {
   font-size: small;
-  color: #6EA3E9;
+  color: #6ea3e9;
 }
-.title{
+.title {
   color: #535353;
 }
