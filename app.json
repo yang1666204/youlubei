@@ -10,7 +10,8 @@
     "pages/showPerson/index",
     "pages/note/index",
     "pages/toOthers/index",
-    "pages/askDetail/index"
+    "pages/askDetail/index",
+    "pages/edit/index"
   ],
   "window": {
     "navigationStyle": "custom"

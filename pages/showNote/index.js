@@ -34,7 +34,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    const that = this    
+    const app = getApp();
+    wx.getStorage({
+        key: 'openId',
+        success (res) {
+        console.log(res.data);
+          app.get('http://zzc0309.top:8000/api/v1/note',{
+          openid:res.data,
+          noteld:15,
+      }).then(res=>{
+                        console.log('111', res );
+                         that.setData({
+                          detail: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                        console.log('222',err )
+                    }
+                    )                   
+      },
+      fail(){
+        console.log("失败")
+      },
+      complete(){
+        // console.log(a)
+      }
+    })
+    // console(a)
   },
 
   /**

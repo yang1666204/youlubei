@@ -1,0 +1,99 @@
+<!--pages/edit/index.wxml-->
+<view class="head">
+         <image class="" style="height:22vh;width:100vw" src="http://zzc0309.top:8000/upload/images/d76690423ff82db0b60f678dd7e54fc3.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
+         <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
+          <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+                <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
+          </view>
+</view>
+<view class="" hover-class="none" hover-stop-propagation="false">
+    <view class="userinfo">
+              <text class="userinfoitem1">
+                  同学
+              </text>
+              <text class="userinfoitem2">
+                  好好学习,天天向上~
+              </text>
+   </view>
+   <view  class="form">
+      <form bindsubmit="submit">
+         <van-cell-group>
+            
+              <van-field
+                name="role"
+                model:value="{{ id }}"
+                placeholder="请再输入身份"
+                border="{{ true }}"
+                input-class="input"
+                input-align="center"
+                input-class="input"
+              >
+                <view slot="label" class="label">身份</view>
+              </van-field>
+   
+               <van-field
+                name="username"
+                model:value="{{ name }}"
+                placeholder="请输入姓名"
+                border="{{ false }}"
+                input-align="center"
+                input-class="input"
+              >
+                 <view slot="label" class="label">姓名</view>
+              </van-field>
+   
+             <van-field
+                name="school"
+                model:value="{{school }}"
+                placeholder="请输入学校"
+                border="{{ false }}"
+                input-align="center"
+                input-class="input"
+              >
+                 <view slot="label" class="label">学校</view>
+              </van-field>
+
+
+              <van-field
+                name="grade"
+                model:value="{{ grade }}"
+                placeholder="请输入年级"
+                border="{{ false }}"
+                input-align="center"
+                input-class="input"
+              >              
+                <view slot="label" class="label">年级</view>
+            </van-field>
+
+
+              <van-field
+                name="college"
+                model:value="{{ xueyuan }}"
+                placeholder="请输入学院"
+                border="{{ false }}"
+                input-align="center"
+                input-class="input"
+              >
+              <view slot="label" class="label">学院</view>
+            </van-field>
+
+
+
+              <van-field
+                name="stuid"
+                model:value="{{studentid}}"
+                placeholder="请输入学号"
+                border="{{ false }}"
+                input-align="center"
+                input-class="input"
+              >
+              <view slot="label" class="label">学号</view>
+            </van-field> 
+                        
+         </van-cell-group>
+         <button form-type="submit" class="button">保存编辑</button>
+
+      </form>
+ </view>
+</view>

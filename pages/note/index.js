@@ -35,22 +35,24 @@ Page({
     console.log('笔记页');
     this.getTabBar().init();
     const app = getApp();
-   
+    this.setData({
+      active: 0,
+    });
     wx.getStorage({
         key: 'openId',
         success (res) {
-        console.log(res.data.openid);
+        console.log(res.data);
         that.setData({
-          openid:res.data.openid
+          openid:res.data
         })
           app.get('http://zzc0309.top:8000/api/v1/notes',{
-          openid:res.data.openid,
+          openid:res.data,
           tag:"哲学",
           page:"1"
       }).then(res=>{
                         console.log('111', res );
                          that.setData({
-                          list: res 
+                          list: res.lists 
                         })
                      
                     }).catch(err=>{
@@ -139,7 +141,7 @@ Page({
       }).then(res=>{
                         console.log('111',res);
                          this.setData({
-                          list: res 
+                          list: res.lists 
                         })                     
                     }).catch(err=>{
                         console.log('222',err )
