@@ -22,16 +22,14 @@ App({
           responseType: 'text',
           success: (result) => {
             //获取openId,存缓存中   
+            console.log(result);
             wx.setStorage({
               key:"openId",
-              data:result.data.data
+              data:result.data.data.openid
             })
-            console.log(result);
-            console.log(result.data.data.openid);
-            let {openid}=result.data.data
-            wx.setStorageSync({
-              key:"openid",
-              data:openid
+            wx.setStorage({
+              key:"userId",
+              data:result.data.data.userId
             })
           },
           fail: (err) => {

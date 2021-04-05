@@ -9,7 +9,8 @@
     "pages/showNote/index",
     "pages/showPerson/index",
     "pages/note/index",
-    "pages/toOthers/index"
+    "pages/toOthers/index",
+    "pages/askDetail/index"
   ],
   "window": {
     "navigationStyle": "custom"

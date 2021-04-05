@@ -10,7 +10,7 @@
     z-index: 1;
     background: linear-gradient(360deg, #FFFFFF 100%, #D7D7D7 100%, #808080 51%);
     filter: blur(5rpx);
-    opacity: 80%;
+    opacity: 1;
     position: absolute;
     top: 150rpx;
     display: flex;

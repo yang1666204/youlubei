@@ -1,0 +1,90 @@
+.topContainer {
+  width: 1200rpx;
+  height: 387rpx;
+  border-radius: 50%;
+  margin: -250rpx 0rpx 60rpx -230rpx;
+  /* margin-top: -250rpx;
+      margin-left: -230rpx; */
+  display: block;
+  background-color: #cadafc;
+  /* z-index: 1; */
+
+  position: relative;
+}
+.Container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+.title {
+  text-align: center;
+  font-weight: 600;
+}
+/* 个人信息部分 */
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+.leftContent {
+  display: flex;
+}
+.rightContent {
+  display: flex;
+
+  flex-direction: column;
+}
+.infoContent {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  font-size: large;
+  font-weight: 600;
+  color: #000000;
+  margin: 5rpx;
+}
+.date {
+  font-size: x-small;
+  color: #a6b2c1;
+  margin: 5rpx;
+}
+.jdFont {
+  font-size: x-small;
+  margin: 5rpx;
+  color: #92b4f4;
+}
+.jfFont {
+  color: #65e3cd;
+  margin: 5rpx;
+}
+
+/* 内容部分 */
+.content {
+  margin-bottom: 100rpx;
+  border-bottom: 3rpx solid #CADAFC;
+}
+.fontContent {
+  color: #000000;
+  padding: 20rpx;
+}
+
+/* footer部分 */
+.footContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  border-top: #CADAFC;
+}
+.a {
+  margin-top: -50rpx;
+  color: #6ea3e9;
+  font-size: 17px;
+  font-weight: 600;
+}
+/* 分割线 */
+.divLine{
+    background: black;
+    height: 100%;
+    width: 5rpx;
+   }

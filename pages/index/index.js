@@ -49,42 +49,21 @@
 
 Page({
   // data: {
-    
+
   // },
-    data: {
+  data: {
     active: 0,
-    motto: 'youlubei',
-    userInfo: {}, 
-    imgUrls:["https://gtms01.alicdn.com/tps/i1/TB12EhzIXXXXXbMXpXXDgwcQVXX-375-130.jpg",
-    "https://gtms02.alicdn.com/tps/i2/TB1ZeJGIXXXXXcnXXXXDgwcQVXX-375-130.jpg",
-    "https://gtms03.alicdn.com/tps/i3/TB197VzIXXXXXbJXpXXDgwcQVXX-375-130.jpg"],
+    motto: "youlubei",
+    userInfo: {},
+    imgUrls: [
+      "https://gtms01.alicdn.com/tps/i1/TB12EhzIXXXXXbMXpXXDgwcQVXX-375-130.jpg",
+      "https://gtms02.alicdn.com/tps/i2/TB1ZeJGIXXXXXcnXXXXDgwcQVXX-375-130.jpg",
+      "https://gtms03.alicdn.com/tps/i3/TB197VzIXXXXXbJXpXXDgwcQVXX-375-130.jpg",
+    ],
     hasUserInfo: false,
-    contentList:[{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    },{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    },{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    },{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    },{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    },{
-      name:"哈哈啊",
-      title:"既然所有生命都要死亡，那么生命的意义是什么",
-      content:"既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么既然所有生命都要死亡，那么生命的意义是什么"
-    }],
-    xuekeList:["哲学","哲学","哲学","哲学","哲学","哲学","哲学","哲学"],
+    list: [],
+    tag: "哲学",
+    openid: "",
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
@@ -92,44 +71,77 @@ Page({
   // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
-      url: '../logs/logs'
-    })
+      url: "../logs/logs",
+    });
   },
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({
-        canIUseGetUserProfile: true
-      })
+        canIUseGetUserProfile: true,
+      });
     }
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: "展示用户信息", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log(res)
+        console.log(res);
         this.setData({
           userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
+          hasUserInfo: true,
+        });
+      },
+    });
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e)
+    console.log(e);
     this.setData({
       userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+      hasUserInfo: true,
+    });
   },
-  onShow: function () { 
-    console.log('首页');
+  onShow: function () {
+    console.log("首页");
     this.getTabBar().init();
-},
-  handleClick(){
+    const that = this;
+    const app = getApp();
+
+    wx.getStorage({
+      key: "openId",
+      success(res) {
+        console.log(res.data);
+        that.setData({
+          openid: res.data,
+        });
+        app
+          .get("http://zzc0309.top:8000/api/v1/posts", {
+            openid: res.data,
+            tag: "哲学",
+            page: "1",
+          })
+          .then((res) => {
+            console.log("111", res);
+            that.setData({
+              list: res,
+            });
+          })
+          .catch((err) => {
+            console.log("222", err);
+          });
+      },
+      fail() {
+        console.log("失败");
+      },
+      complete() {
+        // console.log(a)
+      },
+    });
+  },
+  handleClick() {
     wx.navigateTo({
-      url: '../showQuestions/index',
+      url: "../showQuestions/index",
       events: {
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         // acceptDataFromOpenedPage: function(data) {
@@ -139,14 +151,33 @@ Page({
         //   console.log(data)
         // }
       },
-      success: function(res) {
+      success: function (res) {
         // 通过eventChannel向被打开页面传送数据
         // res.eventChannel.emit('acceptDataFromOpenerPage', { data: 'test' })
-      }
-    })
+      },
+    });
   },
   onChange(event) {
     // event.detail 的值为当前选中项的索引
     this.setData({ active: event.detail });
+  },
+  onTabchange(event) {
+    const app = getApp();
+    console.log(event.detail.title, this.data.openid);
+    app
+      .get("http://zzc0309.top:8000/api/v1/posts", {
+        openid: this.data.openid,
+        tag: event.detail.title,
+        page: "1",
+      })
+      .then((res) => {
+        console.log("111", res);
+        this.setData({
+          list: res,
+        });
+      })
+      .catch((err) => {
+        console.log("222", err);
+      });
   },
 });

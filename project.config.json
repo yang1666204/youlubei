@@ -21,19 +21,18 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": true,
+    "useMultiFrameRuntime": false,
     "useApiHook": true,
-    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": true,
     "packNpmRelationList": [
       {
@@ -93,6 +92,12 @@
         {
           "name": "pages/toOthers/index",
           "pathName": "pages/toOthers/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/askDetail/index",
+          "pathName": "pages/askDetail/index",
           "scene": null
         }
       ]

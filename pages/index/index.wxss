@@ -5,11 +5,20 @@
   flex-direction: column;
   height: 100vh;
 }
+.imgpic{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  position:absolute;
+  bottom:0rpx;
+  left:calc(50% - 50rpx)
+}
 .topContainer{
   width: 1200rpx;
   height: 387rpx;
   border-radius: 50%;
-  margin: -200rpx 0rpx 60rpx -230rpx;
+  margin: -250rpx 0rpx 60rpx -230rpx;
   /* margin-top: -250rpx;
   margin-left: -230rpx; */
   display: block;
@@ -34,6 +43,14 @@
 }
 .flageone{
   left: 330rpx;
+}
+.font,.fontAsk{
+  display: flex;
+  justify-content: center;
+  line-height: 66rpx;
+}
+.fontAsk{
+  color:  #408aeb;
 }
 .flagetwo{
   left: 800rpx;
@@ -68,6 +85,10 @@ swiper{
   background-color: #fff;
   padding: 30rpx;
   margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  height: 300rpx;
+  /* height: 80%;
+  border: 1rpx solid black; */
 }
 .mainContent,.centerContent{
   display: flex;
@@ -95,6 +116,7 @@ swiper{
 }
 .rightContent{
   display: flex;
+
   flex-direction: column;
 }
 .infoContent{
@@ -122,38 +144,38 @@ swiper{
   margin: 5rpx;
 }
 /* 提问内容部分 */
+
 .centerContent{
   /* display: -webkit-box;  
     -webkit-box-orient: vertical;   
     -webkit-line-clamp: 3;   */
     /* display: -webkit-box; */
-  height: 150rpx;
+  /* margin-top: -20rpx; */
+  height: 70%;
+  margin-left: 15rpx;
   text-overflow: ellipsis;
 }
 .driver{
   background: #CADAFC;
   width: 95%;
-  height: 5rpx;
-  margin: 30rpx auto 0 auto;
+  height: 2rpx;
+  margin: 0 auto 0 auto;
  }
 .queContent{
   font-size: x-small;
   color: #97A5B6;
-  /* overflow: hidden;
-
- 
-  
-  word-wrap: break-word;
-  
-  white-space: normal !important;
-  
-  -webkit-line-clamp: 3;
-  
-  -webkit-box-orient: vertical; */
+  margin-top: 20rpx;
+  display: -webkit-box;
+  word-break:break-all;
+  text-overflow:ellipsis;
+  font-size:28rpx;
+  overflow:hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:2;
 }
 
 .footContent{
-  margin-top: 20rpx;
+  margin-top: 10rpx;
   display: flex;
   justify-content: space-around;
 }
@@ -165,8 +187,20 @@ swiper{
   top: 1050rpx;
   left: 200rpx;
   z-index: 2;
-  width: 350rpx;
+  width: 45vw;
   border-radius: 30rpx;
   background-color:#65E3CD ;
   color: #FFFFFF;
+}
+.footFont{
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+}
+.t{
+  font-size: small;
+  color: #6EA3E9;
+}
+.title{
+  color: #535353;
 }
