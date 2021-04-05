@@ -1,14 +1,17 @@
-// pages/showNote/index.js
+// pages/edit/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    title:'',
-    tag:'',
-    content:'',
-    userId:'1',
+    id:'',
+    name:'',
+    school:'',
+    grade:'',
+    xueyuan:'',
+    studentid:'',
+
   },
 
   /**
@@ -29,19 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const that = this;
-    wx.getStorage({
-      key: 'userId',
-      success (res) {
-      console.log(res.data);
-      that.setData({
-        userId: res.data 
-      })
-    },
-    fail(){
-      console.log("失败")
-    }
-  })
+
   },
 
   /**
@@ -78,27 +69,17 @@ Page({
   onShareAppMessage: function () {
 
   },
-  goback(){
-    wx.navigateBack({
-      delta: 1
-    })
-  },
   submit(e){
-    console.log(e.detail.value,this.data.userId);
+    console.log(e.detail.value);
     const data = e.detail.value
     const app =  getApp();
     const that = this;
     wx.getStorage({
       key: 'openId',
       success (res) {
-      console.log(res.data);
-    const data2= {
-        ...data,
-        userId:that.data.userId
-      }
-      console.log(data2);
-      app.post('http://zzc0309.top:8000/api/v1/notes?openid='+res.data,
-       data2       
+      console.log(res.data);   
+      app.put('http://zzc0309.top:8000/api/v1/user?openid='+res.data,
+       data       
       )
     },
     fail(){
@@ -106,6 +87,10 @@ Page({
     }
   })
      
-  }
-  
+  },
+  goback(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
 })

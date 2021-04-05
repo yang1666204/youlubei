@@ -104,7 +104,10 @@
     border-radius: 50rpx;
     color: #fff;
     width: 50vw;
-    height: 8vh;
+    height: 7vh;
     margin: 0 25vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
   }

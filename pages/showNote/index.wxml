@@ -34,7 +34,7 @@
           </view>    
      </view>
      <view class="content" >
-      <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}">
+      <scroll-view scroll-y="true" style="height:57vh;" >
         <text class="" selectable="false" space="false" decode="false">
             {{detail.content}}
         </text> 

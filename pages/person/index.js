@@ -34,12 +34,12 @@ Page({
     wx.getStorage({
       key: 'openId',
       success (res) {
-      console.log(res.data.openid);
+      console.log(res.data);
       that.setData({
-        openid:res.data.openid
+        openid:res.data
       })
         app.get('http://zzc0309.top:8000/api/v1/user',{
-        openid:res.data.openid,
+        openid:res.data,
     }).then(res=>{
                       console.log('111',res);   
                               that.setData({
@@ -91,5 +91,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toedit(){
+    wx.navigateTo({
+      url: '../edit/index',
+      events: {  
+      },
+      success: function(res) {       
+      }
+    })
   }
 })
