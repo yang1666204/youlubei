@@ -1,3 +1,10 @@
+<view class="shade" bind:tap="handleClose" wx:if="{{isShow===true}}"></view>
+    <!-- 弹出面板 -->
+    <view class="cont" wx:if="{{isShow===true}}">
+        <text class="contContent" decode="{{true}}" >提&nbsp;&nbsp;交&nbsp;&nbsp;完&nbsp;&nbsp;毕</text>
+    </view>
+
+
 <view class="topContainer"></view>
  <view class="head">
              <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>

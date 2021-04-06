@@ -158,13 +158,18 @@ Page({
       }
     })
   },
-  toshownote(){
-    console.log('11');
+  toshownote(e){
+    console.log(e.currentTarget.dataset.noteid);
     wx.navigateTo({
       url: '../showNote/index',
-      events: {  
+      events: { 
+        acceptDataFromOpenedPage: function(data) {
+          console.log(data)
+        },
+        
       },
       success: function(res) {       
+        res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
       }
     })
   },

@@ -46,7 +46,8 @@
     </view>
  <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}">
         <view class="list" style="height:57vh;">
-              <view wx:for="{{list}}"  wx:key="note_id"  class="listitem"  bind:tap="toshownote" >
+              <view wx:for="{{list}}" 
+               wx:key="note_id"  class="listitem"  catch:tap="toshownote" data-noteid="{{item.note_id}}" >
                   
                      <view class="listitem1"> 
                           <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
