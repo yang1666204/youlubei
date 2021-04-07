@@ -1,0 +1,43 @@
+<!--component/hisquestion/index.wxml-->
+<scroll-view scroll-y="true" style="height: 45vh;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
+        <view wx:for="{{list}}">
+            <view class="mainContent">
+                <navigator class="" target="" url="../askDetail/index" hover-class="navigator-hover" open-type="navigate">          
+                <!-- 头像、积分、日期、名字 -->
+                <view class="topContent">
+                    
+                    <view class="leftContent">
+                        <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
+                        <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{item.avatar}}" />
+                        <view class="infoContent">
+                            <text class="name">{{item.user_name}}</text>
+                            <text class="date">2021年3月31日</text>
+                        </view>
+                    </view>
+                    <view class="rightContent">
+                        <text class="jfFont">{{item.score}}积分</text>
+                        <text class="jdFont">待解答</text>
+                    </view>
+                </view>
+                <view class="centerContent">
+                    <text class="title" >{{item.title}}</text>
+                    <view class="queContent" bindlinechange="%{15}">{{item.content}}</view>
+                </view>
+                <view>
+                    <!-- 分割线 -->
+                    <view class="driver"></view>
+                </view>
+                <view class="footContent">
+                    <view class="footFont">
+                        <a class="b" href="#">关注</a>
+                        <text class="t">20</text>
+                    </view>
+                    <view class="footFont">
+                        <a class="b" href="#">回答</a>
+                        <text class="t">40</text>
+                    </view>
+                </view>
+                 </navigator>
+            </view>
+        </view>
+    </scroll-view>

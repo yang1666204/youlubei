@@ -45,7 +45,7 @@ Page({
         that.setData({
           openid:res.data
         })
-          app.get('http://zzc0309.top:8000/api/v1/notes',{
+          app.get('http://47.113.98.212:8000/api/v1/notes',{
           openid:res.data,
           tag:"哲学",
           page:"1"
@@ -134,7 +134,7 @@ Page({
   onTabchange(event) {
     const app = getApp();
     console.log(event.detail.title,this.data.openid)
-    app.get('http://zzc0309.top:8000/api/v1/notes',{
+    app.get('http://47.113.98.212:8000/api/v1/notes',{
           openid:this.data.openid,
           tag:event.detail.title,
           page:"1"
@@ -158,13 +158,18 @@ Page({
       }
     })
   },
-  toshownote(){
-    console.log('11');
+  toshownote(e){
+    console.log(e.currentTarget.dataset.noteid);
     wx.navigateTo({
       url: '../showNote/index',
-      events: {  
+      events: { 
+        acceptDataFromOpenedPage: function(data) {
+          console.log(data)
+        },
+        
       },
       success: function(res) {       
+        res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
       }
     })
   },

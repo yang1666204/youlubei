@@ -1,48 +1,20 @@
-// pages/toOthers/index.js
+// pages/otherspage/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatar:'',
-    college:'',
-    grade:'',
-    role:'',
-    school:'',
-    signature:'',
-    user_id:'',
-    user_name:''
+    active:0,
   },
-  tomain:function(){
-    wx.navigateTo({
-      url: '../otherspage/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var appInst =  getApp();
-    appInst.get('http://zzc0309.top:8000/api/v1/user',{
-      openid:options.openid
-    }).then((res)=>{
-      this.setData({
-        ...res.list
-      })
-    })
+
   },
-  handleBack:function(){
-    wx.navigateBack({
-      delta: 1
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -91,9 +63,26 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onTabchange(event) {
+    const app = getApp();
+    console.log(event.detail.title)
+  //   app.get('http://zzc0309.top:8000/api/v1/notes',{
+  //         openid:this.data.openid,
+  //         tag:event.detail.title,
+  //         page:"1"
+  //     }).then(res=>{
+  //                       console.log('111',res);
+  //                        this.setData({
+  //                         list: res.lists 
+  //                       })                     
+  //                   }).catch(err=>{
+  //                       console.log('222',err )
+  //                   })           
+    
+  },
   goback(){
     wx.navigateBack({
       delta: 1
     })
-  },
+  }
 })

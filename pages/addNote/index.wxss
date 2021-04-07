@@ -49,3 +49,35 @@
     justify-content: center;
     align-items: center;
   }
+  .shade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 0.2;
+    overflow: hidden;
+    /* box-shadow: 10px 10px 5px #A7BBB7; */
+  }  
+  .contContent{
+    color: #65E3CD;
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    margin-top: 50rpx;
+  }
+  .cont{
+    position: fixed;
+    z-index: 10;
+    overflow: hidden;
+    background-color: #FFFFFF;
+    width: 50vw;
+    height: 150rpx;
+    top: 40vh;
+    border-radius: 40rpx;
+    left: 25vw;
+    font-weight: 500;
+    font-size: large;
+  }

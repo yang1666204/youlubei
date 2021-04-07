@@ -38,7 +38,7 @@ Page({
       that.setData({
         openid:res.data
       })
-        app.get('http://zzc0309.top:8000/api/v1/user',{
+        app.get('http://47.113.98.212:8000/api/v1/user',{
         openid:res.data,
     }).then(res=>{
                       console.log('111',res);   

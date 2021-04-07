@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "van-tab": "../../miniprogram_npm/vant-weapp/tab/index",
+    "van-tabs": "../../miniprogram_npm/vant-weapp/tabs/index",
+    "his-question":"../../component/hisquestion/index",
+    "his-note":"../../component/hisnote/index",
+    "his-answer":"../../component/hisanswer/index",
+    "van-icon": "../../miniprogram_npm/vant-weapp/icon/index"
+
+  }
+}

@@ -1,7 +1,7 @@
 <!--pages/person/index.wxml-->
 <view  class="body" >
     <view class="head">
-         <image class="" style="height:15vh;width:100vw" src="http://zzc0309.top:8000/upload/images/aa65e0738b0bab1ae79081644346eeaf.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
+         <image class="" style="height:15vh;width:100vw" src="http://qq41fqbou.hn-bkt.clouddn.com/smallCat.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
           <view class="imgpic">
                 <open-data type="userAvatarUrl" ></open-data> 
                 <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->

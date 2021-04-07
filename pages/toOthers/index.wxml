@@ -1,4 +1,5 @@
 <view class="Container">
+    <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
     <!-- 背景图 -->
     <image src="http://qq41fqbou.hn-bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720210401220739.jpg" mode="heightFix" style=" position: absolute;height:100vh;z-index:-1;right:-40vw" />
      <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/loadImg/index",
     "pages/index/index",
     "pages/logs/logs",
@@ -12,7 +13,10 @@
     "pages/note/index",
     "pages/toOthers/index",
     "pages/askDetail/index",
-    "pages/edit/index"
+    "pages/edit/index",
+    "pages/otherspage/index"
+    
+    
   ],
   "window": {
     "navigationStyle": "custom"

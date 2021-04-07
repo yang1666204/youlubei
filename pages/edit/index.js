@@ -1,4 +1,5 @@
 // pages/edit/index.js
+import WxValidate from '../../utils/WxValidate'
 Page({
 
   /**
@@ -11,6 +12,7 @@ Page({
     grade:'',
     xueyuan:'',
     studentid:'',
+    isShow:false
 
   },
 
@@ -18,9 +20,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.initValidate();
   },
-
+ 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -38,55 +40,106 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-
+  showModal(error) {
+    console.log(error)
+    wx.showModal({
+      content: error.msg,
+      showCancel: false
+    })
   },
+  
+  initValidate() {
+    let rules = {
+      role: {
+        required: true,
+      },
+      username: {
+        required: true,
+      },
+      school: {
+        required: true,
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  submit(e){
-    console.log(e.detail.value);
-    const data = e.detail.value
-    const app =  getApp();
-    const that = this;
-    wx.getStorage({
-      key: 'openId',
-      success (res) {
-      console.log(res.data);   
-      app.put('http://zzc0309.top:8000/api/v1/user?openid='+res.data,
-       data       
-      )
-    },
-    fail(){
-      console.log("失败")
+      }, 
+      grade: {
+        required: true,
+        rangelength: [4, 4]
+      },
+      college: {
+        required: true,
+      },
+      stuid: {
+        required: true,
+        rangelength: [10, 10]
+      }
     }
-  })
-     
+
+    let message = {
+      role: {
+        required: '请输入身份',
+        // maxlength: '名字不能超过10个字'
+      },
+      username: {
+        required: "请输入姓名"
+      },
+      school: {
+        required: "请输入学校",
+      }
+      ,
+      grade: {
+        required: "请输入年级",
+        rangelength: "年级为4位数"
+      },
+      college: {
+        required: "请输入大学",        
+      },
+      stuid: {
+        required: "请输入学号",
+        rangelength: "学号为10位数"
+      },
+    }
+    //实例化当前的验证规则和提示消息
+    this.WxValidate = new WxValidate(rules, message);
+  },
+  formSubmit(e) {
+    const params =  e.detail.value
+    console.log(this.WxValidate, 'params')
+    //校验表单
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0]
+      this.showModal(error)
+      return false
+    }
+    return true
+  },
+  handleClose(){
+    this.setData({
+      isShow:false
+    })
+  },
+ 
+  submit(e){
+    console.log(this.formSubmit(e))
+    if(this.formSubmit(e)){
+      console.log(e.detail.value);
+      const data = e.detail.value
+      const app =  getApp();
+      const that = this;
+      wx.getStorage({
+        key: 'openId',
+        success (res) {
+        console.log(res.data);   
+        app.put('http://47.113.98.212:8000/api/v1/user?openid='+res.data,
+         data       
+        )
+        that.setData({
+          isShow:true
+        })
+      },
+      fail(){
+        console.log("失败")
+      }
+    })
+    }      
   },
   goback(){
     wx.navigateBack({

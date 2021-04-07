@@ -1,0 +1,52 @@
+<!--pages/otherspage/index.wxml-->
+<view class="head">
+         <image class="" style="height:22vh;width:100vw" src="http://qq41fqbou.hn-bkt.clouddn.com/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
+         <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
+          <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+                <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
+          </view>
+</view>
+<view class="userinfo">
+              <text class="userinfoitem1" >
+                  同学
+              </text>
+              <text class="userinfoitem2">
+                  好好学习,天天向上~
+              </text>
+</view>
+<view class="butcontain" >
+     <view class="" style=" border-radius: 3vh;border: 2rpx solid #dadada;display: flex;">
+         <button  class="button1">私信</button>
+         <view class="" style="border: 2rpx solid #dadada;height: 4vh; margin:1vh 0 1vh 0" >  
+         </view>
+         <button  class="button2">关注</button>
+     </view>                  
+</view>
+<view class="font" >
+    <text class="" >
+        关注 10
+    </text>
+    <text class="" >
+        读者 100
+    </text>
+    <text class="" >
+        笔记 5
+    </text>     
+</view>
+<view class="tab">
+             <van-tabs active="{{ active }}"  bind:change="onTabchange" 
+               sticky  
+               tab-class="tab"
+               nav-class="custom"
+               border="false"
+               line-height="0px"
+               tab-class="tab-class"
+               tab-active-class="tab-active-class"
+
+            >
+             <van-tab title="他的提问"><his-question/></van-tab>
+             <van-tab title="他的回答"><his-answer/></van-tab>
+             <van-tab title="他的笔记"><his-note/></van-tab>
+             </van-tabs>
+ </view>

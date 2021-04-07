@@ -1,0 +1,120 @@
+/* component/hisquestion/index.wxss */
+.mainContent {
+    background-color: #fff;
+    padding: 30rpx;
+    margin-bottom: 20rpx;
+    margin-top: 20rpx;
+    height: 300rpx;
+    /* height: 80%;
+    border: 1rpx solid black; */
+  }
+  .mainContent,
+  .centerContent {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .xuekeContainer {
+    display: flex;
+    background-color: #fff;
+    margin-bottom: 20rpx;
+    width: 100vw;
+  }
+  .xueketext {
+    padding: 14rpx;
+  }
+  
+  /* 头像、积分、日期、名字样式 */
+  .topContent {
+    display: flex;
+    justify-content: space-between;
+  }
+  .leftContent {
+    display: flex;
+  }
+  .rightContent {
+    display: flex;
+  
+    flex-direction: column;
+  }
+  .infoContent {
+    display: flex;
+    flex-direction: column;
+  }
+  .name {
+    font-size: large;
+    font-weight: 600;
+    color: #000000;
+    margin: 5rpx;
+  }
+  .date {
+    font-size: x-small;
+    color: #a6b2c1;
+    margin: 5rpx;
+  }
+  .jdFont {
+    font-size: x-small;
+    margin: 5rpx;
+    color: #92b4f4;
+  }
+  .jfFont {
+    color: #65e3cd;
+    margin: 5rpx;
+  }
+  /* 提问内容部分 */
+  
+  .centerContent {
+    height: 50%;
+    margin-left: 15rpx;
+    text-overflow: ellipsis;
+  }
+  .driver {
+    background: #cadafc;
+    width: 95%;
+    height: 2rpx;
+    margin: 0 auto 0 auto;
+  }
+  .queContent {
+    font-size: x-small;
+    color: #97a5b6;
+    margin-top: 20rpx;
+    display: -webkit-box;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    font-size: 28rpx;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .footContent {
+    margin-top: 10rpx;
+    display: flex;
+    justify-content: space-around;
+  }
+  .b {
+    color: #6ea3e9;
+  }
+  .floatBtn {
+    position: absolute;
+    bottom: 16vh;
+    left: 27.5vw;
+    justify-content: center;
+    z-index: 2;
+    width: 45vw;
+    border-radius: 30rpx;
+    background-color: #65e3cd;
+    color: #ffffff;
+  }
+  .footFont {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+  .t {
+    font-size: small;
+    color: #6ea3e9;
+  }
+  .title {
+    color: #535353;
+  }

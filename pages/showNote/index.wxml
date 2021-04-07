@@ -14,7 +14,7 @@
  <view class="mid">
      <view class="personinfo">
           <view class="listitem1"> 
-                     <view class="infoleft">
+                     <view class="infoleft" catch:tap="toothers"  data-userid="{{6}}">
                          <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
                            <view style="width:180rpx;display:flex;flex-direction:column;justify-content: center;" >
                                  <text  style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx">{{detail.user_name}}</text>
@@ -35,7 +35,7 @@
      </view>
      <view class="content" >
       <scroll-view scroll-y="true" style="height:57vh;" >
-        <text class="" selectable="false" space="false" decode="false">
+        <text class="" selectable="false" space="false" decode="false" style="font-family:SimSun">
             {{detail.content}}
         </text> 
        </scroll-view>   

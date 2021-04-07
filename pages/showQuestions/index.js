@@ -73,7 +73,7 @@ Page({
     const app = getApp();
     let { value } = e.detail;
     wx.request({
-      url: "http://zzc0309.top:8000/api/v1/posts?openid=" + this.data.openid,
+      url: 'http://47.113.98.212:8000/api/v1/posts',
       data: {
         ...value,
         tag: this.data.radio,
