@@ -28,6 +28,7 @@
   .topContent {
     display: flex;
     justify-content: space-between;
+    margin: 0 8vw;
   }
   .leftContent {
     display: flex;
@@ -65,14 +66,14 @@
   
   .centerContent {
     height: 50%;
-    margin-left: 15rpx;
     text-overflow: ellipsis;
+    margin: 0 8vw;
   }
   .driver {
     background: #cadafc;
     width: 95%;
     height: 2rpx;
-    margin: 0 auto 0 auto;
+    margin: 10rpx auto 0 auto;
   }
   .queContent {
     font-size: x-small;
@@ -91,9 +92,12 @@
     margin-top: 10rpx;
     display: flex;
     justify-content: space-around;
+    margin-left: 8vw;
+    margin-right: 8vw;
   }
   .b {
     color: #6ea3e9;
+    font-size: 30rpx;
   }
   .floatBtn {
     position: absolute;
@@ -112,7 +116,7 @@
     flex-direction: column;
   }
   .t {
-    font-size: small;
+    font-size: 20rpx;
     color: #6ea3e9;
   }
   .title {

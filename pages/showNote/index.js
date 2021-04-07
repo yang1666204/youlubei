@@ -115,19 +115,19 @@ Page({
       delta: 1
     })
   },
-  toothers(e){
-    console.log(e.currentTarget.dataset.userid);
-    wx.navigateTo({
-      url: '../toOthers/index',
-      events: { 
-        // acceptDataFromOpenedPage: function(data) {
-        //   console.log(data)
-        // },
+  // toothers(e){
+  //   console.log(e.currentTarget.dataset.userid);
+  //   wx.navigateTo({
+  //     url: '../toOthers/index',
+  //     events: { 
+  //       // acceptDataFromOpenedPage: function(data) {
+  //       //   console.log(data)
+  //       // },
         
-      },
-      success: function(res) {       
-        // res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
-      }
-    })
-  }
+  //     },
+  //     success: function(res) {       
+  //       // res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
+  //     }
+  //   })
+  // }
 })

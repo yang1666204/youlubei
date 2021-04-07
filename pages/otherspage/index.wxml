@@ -45,8 +45,8 @@
                tab-active-class="tab-active-class"
 
             >
-             <van-tab title="他的提问"><his-question/></van-tab>
-             <van-tab title="他的回答"><his-answer/></van-tab>
-             <van-tab title="他的笔记"><his-note/></van-tab>
+             <van-tab title="他的提问"><his-question quslist="{{quslist}}" /></van-tab>
+             <van-tab title="他的回答"><his-answer  /></van-tab>
+             <van-tab title="他的笔记"><his-note   notelist="{{notelist}}" /></van-tab>
              </van-tabs>
  </view>

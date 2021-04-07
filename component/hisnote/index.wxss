@@ -1,1 +1,37 @@
 /* component/hisnote/index.wxss */
+.listitem{
+    background-color: #fff;
+    margin-bottom: 30rpx;
+    border-radius: 15rpx;
+    height: 280rpx;
+    padding: 10rpx 30rpx 10rpx 30rpx ;
+    display: flex;
+    flex-direction:column;
+    justify-content:space-around
+
+  }
+  .listitem3{
+   color:#a6b2c1;
+   display: -webkit-box;
+   word-break:break-all;
+   text-overflow:ellipsis;
+   font-size:28rpx;
+   overflow:hidden;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp:2;
+   /* margin-top: 14rpx; */
+  }
+  .listitem2{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    /* margin-top: 14rpx; */
+   }
+   .listitem1{
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 14rpx; */
+   }
+   .maincontainer{  
+    margin: 3vh 90rpx 0rpx 90rpx;
+  }

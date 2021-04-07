@@ -30,7 +30,7 @@ Page({
    */
   onLoad: function (options) {
     var appInst =  getApp();
-    appInst.get('http://zzc0309.top:8000/api/v1/user',{
+    appInst.get('http://47.113.98.212:8000/api/v1/user',{
       openid:options.openid
     }).then((res)=>{
       this.setData({
