@@ -5,7 +5,16 @@ App({
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    // wx.loadFontFace ({
 
+    //   family: 'PingFangSC-Medium',
+    
+    //   source: 'url("https://www.your-server.com/PingFangSC-Medium.ttf")',
+    
+    //   success: function(){console.log('load font success')}
+    
+    // })
+      
     // 登录
     wx.login({
       success: res => {
@@ -68,7 +77,7 @@ App({
 
   })
 },
-   
+  
 
   
 

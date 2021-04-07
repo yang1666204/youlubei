@@ -23,7 +23,7 @@
     <!-- 学科 -->
     
     <view>
-        <van-tabs active="{{ active }}" bind:change="onTabchange" sticky tab-class="tab" custom-class="custom">
+        <van-tabs color="#5593E5" title-active-color="#5593E5" title-inactive-color="#B1C1CE" active="{{ active }}" bind:change="onTabchange" sticky tab-class="tab" custom-class="custom">
             <van-tab title="哲学"></van-tab>
             <van-tab title="经济学"></van-tab>
             <van-tab title="法学"></van-tab>
@@ -31,6 +31,7 @@
             <van-tab title="历史学"></van-tab>
             <van-tab title="理学"></van-tab>
             <van-tab title="艺术学"></van-tab>
+            <van-tab title="工学"></van-tab>
         </van-tabs>
     </view>
     <button bind:tap="handleClick" class="floatBtn">我　要　提　问</button>
@@ -39,7 +40,7 @@
     <scroll-view scroll-y="true" style="height: 700rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
         <view wx:for="{{list}}">
             <view class="mainContent">
-                <navigator class="" target="" url="../askDetail/index" hover-class="navigator-hover" open-type="navigate">          
+                <navigator class="" target="" url="../askDetail/index?openid={{openid}}" hover-class="navigator-hover" open-type="navigate">          
                 <!-- 头像、积分、日期、名字 -->
                 <view class="topContent">
                     

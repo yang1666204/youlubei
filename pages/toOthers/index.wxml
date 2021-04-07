@@ -1,20 +1,21 @@
 <view class="Container">
     <!-- 背景图 -->
     <image src="http://qq41fqbou.hn-bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720210401220739.jpg" mode="heightFix" style=" position: absolute;height:100vh;z-index:-1;right:-40vw" />
+     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
     <!-- 个人信息 -->
     <view class="infoContent">
        <!-- <view class="Content"> -->
         <view>
-            <image style="width:130rpx;height:130rpx;border-radius:50%;position:absolute;top:-50rpx;left:22vw" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
+            <image style="width:130rpx;height:130rpx;border-radius:50%;position:absolute;top:-50rpx;left:22vw" mode="aspectFill" src="{{avatar}}" />
         </view>
         <view class="topContent">
-            <text class="name">李融</text>
-            <text class="qianming">好好学习，天天向上</text>
+            <text class="name">{{user_name}}</text>
+            <text class="qianming">{{signature}}</text>
         </view>
         <view class="detailContent">
-            <text class="info">重庆邮电大学</text>
-            <text class="info">2019级</text>
-            <text class="info">传媒艺术学院</text>
+            <text class="info">{{school}}</text>
+            <text class="info">{{grade}}</text>
+            <text class="info">{{college}}</text>
         </view>
         <button class="toMain" bind:tap="tomain">主页</button>
         <!-- </view> -->

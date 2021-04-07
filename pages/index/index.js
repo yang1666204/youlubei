@@ -1,52 +1,3 @@
-// // index.js
-// // 获取应用实例
-// const app = getApp()
-
-// Page({
-//   data: {
-//     motto: 'youlubei',
-//     userInfo: {},
-//     hasUserInfo: false,
-//     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-//     canIUseGetUserProfile: false,
-//     canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
-//   },
-//   // 事件处理函数
-//   bindViewTap() {
-//     wx.navigateTo({
-//       url: '../logs/logs'
-//     })
-//   },
-//   onLoad() {
-//     if (wx.getUserProfile) {
-//       this.setData({
-//         canIUseGetUserProfile: true
-//       })
-//     }
-//   },
-//   getUserProfile(e) {
-//     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-//     wx.getUserProfile({
-//       desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-//       success: (res) => {
-//         console.log(res)
-//         this.setData({
-//           userInfo: res.userInfo,
-//           hasUserInfo: true
-//         })
-//       }
-//     })
-//   },
-//   getUserInfo(e) {
-//     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-//     console.log(e)
-//     this.setData({
-//       userInfo: e.detail.userInfo,
-//       hasUserInfo: true
-//     })
-//   }
-// })
-var util = require('../../utils/util.js')
 Page({
   // data: {
 
@@ -55,16 +6,12 @@ Page({
     active: 0,
     motto: "youlubei",
     userInfo: {},
-    imgUrls: [
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner.png",
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png",
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png",
-    ],
     hasUserInfo: false,
     list: [],
     tag: "哲学",
     openid: "",
     date:'',
+    imgUrls:["http://qq41fqbou.hn-bkt.clouddn.com/banner.png","http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png","http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png"],
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
@@ -76,7 +23,6 @@ Page({
     });
   },
   onLoad() {
-    console.log(formatTime(Date));
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true,
@@ -104,12 +50,7 @@ Page({
       hasUserInfo: true,
     });
   },
-  onUnload() {
-    clearInterval(this.timer)
-  },
   onShow: function () {
-    var Time = util.formatDate(new Date())
-    console.log(Time);
     this.getTabBar().init();
     const that = this;
     const app = getApp();
@@ -122,7 +63,7 @@ Page({
           openid: res.data,
         });
         app
-          .get("http://zzc0309.top:8000/api/v1/posts", {
+          .get("http://47.113.98.212/api/v1/posts", {
             openid: res.data,
             tag: "哲学",
             page: "1",
@@ -130,7 +71,7 @@ Page({
           .then((res) => {
             console.log("111", res);
             that.setData({
-              list: res,
+              list: res.lists,
             });
           })
           .catch((err) => {
@@ -171,19 +112,25 @@ Page({
     const app = getApp();
     console.log(event.detail.title, this.data.openid);
     app
-      .get("http://zzc0309.top:8000/api/v1/posts", {
+      .get("http://47.113.98.212/api/v1/posts", {
         openid: this.data.openid,
         tag: event.detail.title,
         page: "1",
       })
       .then((res) => {
-        console.log("111", res);
+        console.log("111", res.lists);
         this.setData({
-          list: res,
+          list: res.lists,
         });
       })
       .catch((err) => {
         console.log("222", err);
       });
   },
+  upper(e){
+    // console.log(e);
+  },
+  lower(e){
+    // console.log(e);
+  }
 });

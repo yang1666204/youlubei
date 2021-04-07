@@ -1,46 +1,81 @@
 <view class="Container">
     <view class="topContainer"></view>
-     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
-    <view class="title">标题</view>
-    <view class="infoContainer">
-        <navigator open-type="navigate" url="../toOthers/index" >
-        <view class="leftContent">
-            <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
-            <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" />
-            <view class="infoContent">
-                <text class="name">{{item.user_name}}</text>
-                <text class="date">2021年3月31日</text>
+    <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
+    <view class="title">{{title}}</view>
+    <navigator open-type="navigate" url="../toOthers/index?openid={{openid}}">
+        <view class="infoContainer">
+            <view class="leftContent">
+                <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
+                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}" alt="" />
+                <view class="infoContent">
+                    <view>
+                        <text class="name">{{user_name}}</text>
+                        <van-button color="#CADAFC" round size="mini" class="tagbtn">
+                            <text class="fontcolor">{{tag}}</text>
+                        </van-button>
+                    </view>
+                    <text class="date">{{create_on}}</text>
+                </view>
+            </view>
+            <view class="rightContent">
+                <text class="jfFont">{{score}}积分</text>
+                <text class="jdFont">待解答</text>
             </view>
         </view>
-        <view class="rightContent">
-            <text class="jfFont">{{item.score}}积分</text>
-            <text class="jdFont">待解答</text>
-        </view>
-        </navigator>
-    </view>
+    </navigator>
     <view class="content">
-        <scroll-view scroll-y="{{true}}" style="height:65vh">
-        <text class="fontContent">
-            老实说，在没看到这个问题之前，我之前从未仔细考虑过这个问题。就算有时一个人孤独地走在林荫小道，突然触动了那根感性的神经，像哲学家一样追寻生命的意义时。踏入喧嚣闹市的那一瞬间，突然的感性就像在心里泛起一丝涟漪，又很快抚平。
-      今天看到这个问题，或许是曾经浅薄的思考过，和曾经泛起的涟漪引起共鸣。又或许是如今阳光正好，微风不燥，让我能静下心来慢慢思考。我想趁这个清闲时光，写下我对生命意义的问题答卷。
-      婴儿“哇”的一声啼叫，在父母的期待中呱呱坠地。就连一向板着脸的的祖父，那张爬满皱纹的脸也像舒展开来似的，每一丝皱纹都蕴含着笑意。不早不好，他们的传承因为有你的降生有了生命的延续，他们的快乐因为你的降生注入了新的源泉。
-      生命的意义在于不问未来，只求当下。至少因为
-你的降生，你所在意的亲人也曾满怀期待，也曾欣喜
-若狂，也曾以你为傲，也就不枉你来世走一遭。
-      岁岁年年，花开花落，云卷云舒。人总会成长，
-总该踏上属于自己的人生旅途。成长的旅途中，每个
-人都拥有属于自己别样的风景。或许是按捺不住那颗
-小鹿乱撞的心;或许是书生意气，挥斥方遒;又或许是少年不知愁滋味，再遇已是同路人。
-        </text>
+        <scroll-view scroll-y="{{true}}" style="height:60">
+            <text class="fontContent">{{content}}</text>
         </scroll-view>
     </view>
-    <view class="footContainer">
-        <a class="a" href="#">关注</a>
-    
-        <a class="a" href="#">回答</a>
+    <!-- <view class="footContainer"> -->
+    <view>
+        <view class="Line"></view>
     </view>
+    <a class="a" href="#">关注</a>
+    <view>
+        <view class="divLine"></view>
+    </view>
+    <a class="b" bind:tap="handleres" href="#">回答</a>
+    <!-- </view> -->
+    <!-- 遮罩层 -->
+    <view class="mask" wx:if="{{isShow}}" bind:tap="handleClose"></view>
+    <!-- 弹窗 -->
 </view>
-    <!-- <view class="container">
-   
-  <view class="divLine"></view>
-</view> -->
+<view class="popContent" wx:if="{{isShow}}">
+    <textarea class="resContent" placeholder="想说点什么呢"></textarea>
+    
+     <van-popup custom-class="popup" closeable="{{true}}" round="{{true}}" overlay="{{true}}" wx:if="{{reShow}}" bind:close="onClose">
+            <view class="weui-cells weui-cells_after-title">
+                <radio-group bindchange="radioChange">
+                    <view class="redioContainer">
+                        <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+                            <view class="weui-cell__hd">
+                                <radio color="#CADAFC" value="{{item.value}}" checked="true" />
+                            </view>
+                            <view class="weui-cell__bd">{{item.name}}</view>
+                        </label>
+                    </view>
+                </radio-group>
+            </view>
+        </van-popup>
+       
+    <view class="footbtn">
+        <view class="tagContainer">
+            <van-button bind:tap="addTag" round color="#CADAFC" size="small">
+                <text style="color:#FFFFFF"></text>
+                +点击添加标签
+            </van-button>
+            <van-tag color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
+                {{radio}}
+            </van-tag>
+        </view>
+       
+    </view>
+    <view>
+        <view class="line"></view>
+    </view>
+    <button class="aabtn">
+        <text decode="true">提&nbsp;&nbsp;交</text>
+    </button>
+</view>

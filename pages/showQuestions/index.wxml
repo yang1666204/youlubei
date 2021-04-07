@@ -11,23 +11,29 @@
         </view>
     </view>
     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
+    <!-- 遮罩层 -->
+    <view class="shade" bind:tap="handleClose" wx:if="{{isShow===true}}"></view>
+    <!-- 弹出面板 -->
+    <view class="cont" wx:if="{{isShow===true}}">
+        <text class="contContent" decode="{{true}}" >提&nbsp;&nbsp;交&nbsp;&nbsp;完&nbsp;&nbsp;毕</text>
+    </view>
     <view class="formContainer">
         <form catchsubmit="formSubmit" action="">
-            <input name="title" class="inputContent" placeholder="请在此输入标题" />
+            <input name="title" class="inputContent" value="{{title}}" placeholder="请在此输入标题" />
             <view>
                 <!-- 分割线 -->
                 <view class="driver"></view>
             </view>
-            <input name="xueke" class="inputContent" type="text" placeholder="学科" />
+            <input name="xueke" class="inputContent" value="{{xueke}}" type="text" placeholder="学科" />
             <view>
                 <view class="driver"></view>
             </view>
-            <textarea name="content" placeholder="想问什么呢~" class="textareaContent"></textarea>
+            <textarea name="content" placeholder="想问什么呢~" value="{{content}}" class="textareaContent"></textarea>
             <view class="tagContainer">
-                <van-button bind:tap="addTag" name="tag" color="#CADAFC" size="small" round class="addbq">
+                <van-button bind:tap="addTag"color="#CADAFC" size="small" round class="addbq">
                     +点击添加标签
                 </van-button>
-                <van-tag class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
+                <van-tag  color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
                     {{radio}}
                 </van-tag>
             </view>
@@ -37,7 +43,7 @@
                         <view class="redioContainer">
                             <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
                                 <view class="weui-cell__hd">
-                                    <radio value="{{item.value}}" checked="true" />
+                                    <radio color="#CADAFC" value="{{item.value}}" checked="true" />
                                 </view>
                                 <view class="weui-cell__bd">{{item.name}}</view>
                             </label>
@@ -55,7 +61,7 @@
                         <text class="xsContent">积分悬赏</text>
                     </view>
                     <view>
-                        <van-stepper plus="color:white" custom-class="stepContent" plus-class="step"  minus-class="step" step="5" value="{{ 10 }}" bind:change="onChange" />
+                        <van-stepper plus="color:white" custom-class="stepContent" plus-class="step"  minus-class="step" step="5" value="{{ jifen }}" bind:change="onChange" />
                     </view>
                 </view>
                 <text class="yqContent">邀请回答</text>

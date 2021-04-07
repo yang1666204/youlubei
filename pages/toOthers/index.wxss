@@ -54,3 +54,16 @@
     text-align: center;
     border-radius: 45rpx;
 }
+.backbtn {
+    width: 100rpx;
+    height: 0rpx;
+    border-radius: 30rpx;
+    opacity: 0.5;
+    text-align: center;
+    top: 30rpx;
+    left: 20rpx;
+    position: absolute;
+    font-size: xx-small;
+    color: #ffffff;
+    margin: 5rpx;
+  }

@@ -20,6 +20,9 @@
 .title {
   text-align: center;
   font-weight: 600;
+  color: #535353;
+  margin-top: -30rpx;
+  margin-bottom: 40rpx;
 }
 /* 个人信息部分 */
 .infoContainer {
@@ -42,7 +45,8 @@
   font-size: large;
   font-weight: 600;
   color: #000000;
-  margin: 5rpx;
+  /* margin: 5rpx; */
+  margin: 5rpx 20rpx 5rpx 5rpx;
 }
 .date {
   font-size: x-small;
@@ -62,7 +66,9 @@
 /* 内容部分 */
 .content {
   margin-bottom: 100rpx;
-  border-bottom: 3rpx solid #cadafc;
+  /* font-family: PingFangSC-Regular, sans-serif; */
+  font-family: 'SimSun';
+  margin-top: 50rpx;
 }
 .fontContent {
   color: #000000;
@@ -70,23 +76,48 @@
 }
 
 /* footer部分 */
-.footContainer {
-  position: relative;
-  display: flex;
-  justify-content: space-around;
+/* .footContainer {
+  position: absolute;
   border-top: #cadafc;
-}
-.a {
-  margin-top: -50rpx;
+  bottom: 30rpx;
+  border: 1rpx solid black;
+} */
+.a,.b {
+  /* margin-top: -50rpx; */
   color: #6ea3e9;
   font-size: 17px;
-  font-weight: 600;
+  font-weight: 550;
+  position: absolute;
+  border-top: #cadafc;
+  bottom: 30rpx;
+}
+.a{
+  left: 22vw;
+}
+.b{
+  right: 22vw;
 }
 /* 分割线 */
-.divLine {
-  background: black;
+.Line {
+  position: absolute;
+
+  width: 100vw;
+  bottom: 120rpx;
+  height: 0;
+  border: 3rpx solid #CADAFC;
+  opacity: 1;
+  /* background: black;
   height: 100%;
-  width: 5rpx;
+  width: 5rpx; */
+}
+.divLine{
+  position: absolute;
+  left: 50vw;
+  width: 0rpx;
+  bottom: 12rpx;
+  height: 100rpx;
+  border: 3rpx solid #CADAFC;
+  opacity: 1;
 }
 /* 返回按钮 */
 .backbtn {
@@ -100,4 +131,83 @@
   position: absolute;
   font-size: xx-small;
   color: #ffffff;
+  margin: 5rpx;
+}
+.tagbtn{
+  width: 100rpx;
+  border-radius: 30rpx;
+  text-align: center;
+  font-size: xx-small;
+}
+.fontcolor{
+  color:#5593E5 ;
+}
+/* 遮罩层 */
+.mask{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  filter: 5rpx;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.8);
+  opacity: 0.1;
+  overflow: hidden;
+}
+.popContent{
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  background-color: #ffffff;
+  height: 75vh;
+  bottom: 0rpx;
+  border-top-left-radius: 80rpx;
+  border-top-right-radius: 80rpx;
+}
+.line{
+  width: 80%;
+  height: 0;
+  border: 3rpx solid #CADAFC;
+  margin: 20rpx auto 20rpx auto;
+}
+.aabtn{
+  position: absolute;
+  bottom: 40rpx;
+  left: 25vw;
+  background-color:#65E3CD;
+  width: 50vw;
+  border-radius: 20rpx;
+  color: #FFFFFF;
+}
+.resContent{
+  margin: 50rpx auto 20rpx auto;
+  height: 60%;
+  color: #97A5B6;
+  font-family: 'SimSun';
+}
+.footbtn{
+  margin-left: 10%;
+}
+/* 添加标签弹出层 */
+.tagContainer{
+  display: flex;
+  justify-content: left;
+}
+
+.redioContainer{
+  padding: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50vw;
+  z-index: 3;
+  position: absolute;
+  bottom: 30vh;
+  left: 30vw;
+}
+.taghidden{
+  display: none;
+}
+.weui-cell__hd{
+  margin: 20rpx;
 }

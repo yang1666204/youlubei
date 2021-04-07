@@ -5,7 +5,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    avatar:'',
+    college:'',
+    grade:'',
+    role:'',
+    school:'',
+    signature:'',
+    user_id:'',
+    user_name:''
   },
   tomain:function(){
     wx.navigateTo({
@@ -22,9 +29,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var appInst =  getApp();
+    appInst.get('http://zzc0309.top:8000/api/v1/user',{
+      openid:options.openid
+    }).then((res)=>{
+      this.setData({
+        ...res.list
+      })
+    })
   },
-
+  handleBack:function(){
+    wx.navigateBack({
+      delta: 1
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
