@@ -122,7 +122,7 @@ Page({
           openid: res.data,
         });
         app
-          .get("http://zzc0309.top:8000/api/v1/posts", {
+          .get("http://47.113.98.212:8000/api/v1/posts", {
             openid: res.data,
             tag: "哲学",
             page: "1",
@@ -171,7 +171,7 @@ Page({
     const app = getApp();
     console.log(event.detail.title, this.data.openid);
     app
-      .get("http://zzc0309.top:8000/api/v1/posts", {
+      .get("http://47.113.98.212:8000/api/v1/posts", {
         openid: this.data.openid,
         tag: event.detail.title,
         page: "1",

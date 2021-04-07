@@ -129,14 +129,15 @@ Page({
     }
     return true
   },
-  goback(){
-    wx.navigateBack({
-      delta: 1
-    })
-  },
+ 
   handleClose(){
     this.setData({
       isShow:false
+    })
+  },
+  goback(){
+    wx.navigateBack({
+      delta: 1
     })
   },
   submit(e){
@@ -154,7 +155,7 @@ Page({
         userId:that.data.userId
       }
       console.log(data2);
-      app.post('http://zzc0309.top:8000/api/v1/notes?openid='+res.data,
+      app.post('http://47.113.98.212:8000/api/v1/notes?openid='+res.data,
        data2       
       )
       that.setData({

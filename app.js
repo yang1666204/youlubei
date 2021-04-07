@@ -12,7 +12,7 @@ App({
         var code = res.code// 登录凭证
         console.log(code);
         wx.request({
-          url: 'http://8.129.112.196:8000/wxAuth',
+          url: 'http://47.113.98.212:8000/wxAuth',
           data: {
             code:code
           },

@@ -1,0 +1,106 @@
+/* pages/otherspage/index.wxss */
+.head{
+    position: relative;
+    height: 25vh;
+}
+.imgpic{
+    border-radius: 50%;
+    overflow: hidden;
+    width: 100rpx;
+    height: 100rpx;
+    position:absolute;
+    bottom:5vh;
+    left:calc(50% - 50rpx)
+  }
+  .flageone{
+    position: absolute;
+    height: 160rpx;
+    width: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+  }
+  .userinfo{
+    display: flex;
+    flex-direction: column;
+    height: 8vh;
+    
+}
+.userinfoitem1{
+    line-height: 12rpx;
+    height: 60rpx;
+    text-align: center;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+.userinfoitem2{
+  line-height: 10rpx;
+  height: 50rpx;
+  text-align: center;
+  font-size: 30rpx;
+}
+.butcontain{
+    
+    margin: 0 20vw;
+    width: 60vw;
+}
+.button1{   
+    width: 30vw;
+    height: 6vh;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #6ee3cf;
+   border-top-left-radius: 3vh;
+   border-bottom-left-radius: 3vh;
+   background-color: #fff;
+   /* border: 1 solid #f6f6f6; */
+}
+.button1::after{   
+   border: none;
+}
+.button2::after{   
+    border: none;
+ }
+
+
+.button2{
+    width: 30vw;
+    height: 6vh;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   color: #6ee3cf;
+   border-top-right-radius:3vh ;
+   border-bottom-right-radius:3vh;
+   background-color: #fff;
+   /* border: 1 solid #f6f6f6; */
+}
+.font{
+    display: flex;
+    margin:  10rpx 25vw;
+    justify-content: space-between;
+}
+.font text{
+    font-size: 30rpx;
+    color: #dadada;
+    line-height: 10rpx;
+    height: 50rpx;
+}
+.tab-class{
+    color: #dadada !important; 
+    font-size: 30rpx !important;
+}
+ 
+.tab-active-class{
+    color: #2d4f8f !important; 
+    font-size: 30rpx !important;
+}
+.custom{
+    border-top: 15rpx solid #f6f6f6  !important ;
+}
+.tab{
+    height: 50vh;
+}

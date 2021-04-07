@@ -128,7 +128,7 @@ Page({
         key: 'openId',
         success (res) {
         console.log(res.data);   
-        app.put('http://zzc0309.top:8000/api/v1/user?openid='+res.data,
+        app.put('http://47.113.98.212:8000/api/v1/user?openid='+res.data,
          data       
         )
         that.setData({

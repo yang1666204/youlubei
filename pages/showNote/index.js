@@ -47,7 +47,7 @@ Page({
         key: 'openId',
         success (res) {
         console.log(res.data);
-          app.get('http://zzc0309.top:8000/api/v1/note',{
+          app.get('http://47.113.98.212:8000/api/v1/note',{
           openid:res.data,
           noteId:data.noteId ,
       }).then(res=>{

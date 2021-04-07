@@ -67,7 +67,7 @@ Page({
     const app = getApp();
     console.log(this.data.userId);
     wx.request({
-      url: 'http://zzc0309.top:8000/api/v1/posts',
+      url: 'http://47.113.98.212:8000/api/v1/posts',
       data: {
         title:"提问",
         userId:this.data.userId,
