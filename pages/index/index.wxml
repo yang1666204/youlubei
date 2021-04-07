@@ -40,7 +40,7 @@
     <scroll-view scroll-y="true" style="height: 700rpx;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
         <view wx:for="{{list}}">
             <view class="mainContent">
-                <navigator class="" target="" url="../askDetail/index?openid={{openid}}" hover-class="navigator-hover" open-type="navigate">          
+                <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">          
                 <!-- 头像、积分、日期、名字 -->
                 <view class="topContent">
                     

@@ -1,4 +1,5 @@
 // pages/askDetail/index.js
+import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
 Page({
 
   /**
@@ -14,6 +15,7 @@ Page({
       { value: "理学", name: "理学" },
       { value: "艺术学", name: "艺术学" },
       { value: "工学", name: "工学" },
+      {value:"化学",name:'化学'}
     ],
     avatar:'',
     content:'',
@@ -23,29 +25,37 @@ Page({
     tag:'',
     title:'',
     user_name:'',
-    openid:'',
     isShow:false,
     reShow:false,
-    radio:''
+    radio:'',
+    user_id:'',
+    inputValue:'',
+    openid:'',
+    userId:'',
+    post_id:'',
+    parentId:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.openid);
-    this.setData({
-      openid:options.openid
-    })
+    console.log(options.post_id);
+    // this.setData({
+    //   parentId:options.post_id
+    // })
     var appInst =  getApp();
     
     wx.getStorage({
-      key: 'userId',
+      key: 'openId',
       success: (result)=>{
-        var userId = result.data
-        appInst.get('http://zzc0309.top:8000/api/v1/post',{
-          openid:options.openid,
-          postId:userId
+        this.setData({
+          openid:result.data
+        })
+        console.log(result.data);
+        appInst.get('http://47.113.98.212:8000/api/v1/post',{
+          openid:result.data,
+          postId:options.post_id
         }).then((res)=>{
           console.log(res);
           this.setData({
@@ -57,11 +67,56 @@ Page({
       fail: ()=>{},
       complete: ()=>{}
     });
+    wx.getStorage({
+      key: 'userId',
+      success: (result)=>{
+        this.setData({
+          userId:result.data
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+  // 提交回复
+  handleSubmit:function(){
+    let {openid,userId,post_id,inputValue} = this.data
+    wx.request({
+      url: 'http://47.113.98.212:8000/api/v1/comment?openid='+openid,
+      data: {
+        userId:userId,
+        parentId:post_id,
+        content:inputValue
+      },
+      header: {'content-type':'application/json'},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result) => {
+        Toast('提交成功');
+        console.log(result);
+        this.setData({
+          isShow:false,
+          radio:'',
+          inputValue:''
+        })
+      },
+      fail: () => {
+      },
+      complete: () => {
+      }
+    });
+      
   },
   handleres:function(){
     console.log("点击答复");
     this.setData({
       isShow:true
+    })
+  },
+  getValue:function(e){
+    this.setData({
+      inputValue:e.detail.value
     })
   },
   handleClose:function(){

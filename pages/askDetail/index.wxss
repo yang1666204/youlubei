@@ -200,10 +200,11 @@
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
-  z-index: 3;
-  position: absolute;
-  bottom: 30vh;
-  left: 30vw;
+  justify-content: center;
+  /* z-index: 3; */
+  /* position: absolute; */
+  /* bottom: 30vh; */
+  /* left: 30vw; */
 }
 .taghidden{
   display: none;

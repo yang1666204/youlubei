@@ -30,13 +30,22 @@ Page({
    */
   onLoad: function (options) {
     var appInst =  getApp();
-    appInst.get('http://zzc0309.top:8000/api/v1/user',{
-      openid:options.openid
-    }).then((res)=>{
-      this.setData({
-        ...res.list
-      })
-    })
+    wx.getStorage({
+      key: 'openId',
+      success: (result)=>{
+        appInst.get('http://47.113.98.212:8000/api/v1/user',{
+          openid:result.data,
+          userId:options.user_id
+        }).then((res)=>{
+          this.setData({
+            ...res.list
+          })
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+   
   },
   handleBack:function(){
     wx.navigateBack({
