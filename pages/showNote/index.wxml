@@ -14,7 +14,8 @@
  <view class="mid">
      <view class="personinfo">
           <view class="listitem1"> 
-                     <view class="infoleft" catch:tap="toothers"  data-userid="{{6}}">
+              <navigator open-type="navigate" url="../toOthers/index?openid={{detail.user_id}}">
+                     <view class="infoleft">
                          <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
                            <view style="width:180rpx;display:flex;flex-direction:column;justify-content: center;" >
                                  <text  style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx">{{detail.user_name}}</text>
@@ -25,6 +26,7 @@
                                <van-tag round type="primary" >{{detail.tag}}</van-tag>
                           </view> 
                      </view>
+               </navigator>     
                      <view>
                          <text style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx;color:#65E3CD;float:left">
                              10积分

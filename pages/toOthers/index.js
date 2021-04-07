@@ -30,6 +30,7 @@ Page({
    */
   onLoad: function (options) {
     var appInst =  getApp();
+<<<<<<< HEAD
     wx.getStorage({
       key: 'openId',
       success: (result)=>{
@@ -46,6 +47,15 @@ Page({
       complete: ()=>{}
     });
    
+=======
+    appInst.get('http://47.113.98.212:8000/api/v1/user',{
+      openid:options.openid
+    }).then((res)=>{
+      this.setData({
+        ...res.list
+      })
+    })
+>>>>>>> origin/new_hei
   },
   handleBack:function(){
     wx.navigateBack({

@@ -32,6 +32,7 @@
                sticky  
                tab-class="tab"
                custom-class="custom"
+               color="#5593E5"
                  >
              <van-tab title="哲学"></van-tab>
              <van-tab title="经济学"></van-tab>

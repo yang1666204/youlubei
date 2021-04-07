@@ -6,6 +6,9 @@ Page({
    */
   data: {
     active:0,
+    quslist:[],
+    notelist:[],
+  
   },
 
   /**
@@ -26,7 +29,49 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const that = this
+    const app = getApp();
+    wx.getStorage({
+        key: 'openId',
+        success (res) {
+        console.log(res.data);
+        that.setData({
+          openid:res.data
+        })
+          app.get('http://47.113.98.212:8000/api/v1/user_post',{
+          openid:res.data,
+          userId:1
+      }).then(res=>{
+                        console.log('111', res );
+                         that.setData({
+                          quslist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                        console.log('222',err )
+                    }
+                    )     
+        app.get('http://47.113.98.212:8000/api/v1/user_note',{
+          openid:res.data,
+          userId:1
+      }).then(res=>{
+                        console.log('111', res );
+                         that.setData({
+                          notelist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                        console.log('222',err )
+                    }
+                    )                            
+      },
+      fail(){
+        console.log("失败")
+      },
+      complete(){
+        // console.log(a)
+      }
+    })
   },
 
   /**
