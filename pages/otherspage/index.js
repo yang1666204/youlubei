@@ -6,8 +6,10 @@ Page({
    */
   data: {
     active:0,
+    avatar:'',
     quslist:[],
     notelist:[],
+    user_name:'',
   
   },
 
@@ -15,20 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
+    console.log(options.avatar,"这是这里")
     const that = this
     const app = getApp();
     wx.getStorage({
@@ -36,13 +25,16 @@ Page({
         success (res) {
         console.log(res.data);
         that.setData({
-          openid:res.data
+          openid:res.data,
+          avatar:options.avatar,
+          user_name:options.user_name
         })
           app.get('http://47.113.98.212:8000/api/v1/user_post',{
           openid:res.data,
-          userId:1
+          userId:options.user_id
       }).then(res=>{
-                        console.log('111', res );
+                        
+                        console.log('post', res );
                          that.setData({
                           quslist: res.lists 
                         })
@@ -53,7 +45,7 @@ Page({
                     )     
         app.get('http://47.113.98.212:8000/api/v1/user_note',{
           openid:res.data,
-          userId:1
+          userId:options.user_id
       }).then(res=>{
                         console.log('111', res );
                          that.setData({
@@ -72,6 +64,20 @@ Page({
         // console.log(a)
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function (options) {
+   
   },
 
   /**

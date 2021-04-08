@@ -102,7 +102,7 @@ Page({
   },
   formSubmit(e) {
     const params =  e.detail.value
-    console.log(this.WxValidate, 'params')
+    console.log( 'params')
     //校验表单
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
@@ -118,7 +118,7 @@ Page({
   },
  
   submit(e){
-    console.log(this.formSubmit(e))
+    console.log(1)
     if(this.formSubmit(e)){
       console.log(e.detail.value);
       const data = e.detail.value

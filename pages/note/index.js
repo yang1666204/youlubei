@@ -4,8 +4,15 @@ Page({
     value:'',
     active:0,
     scrollTop:0,
+    page:[1,0,0,0,0,0,0], 
     floorstatus: false,
-    list:[],
+    list0:[],
+    list1:[],
+    list2:[],
+    list3:[],
+    list4:[],
+    list5:[],
+    list6:[],
     tag:'哲学',
     openid:''
   },
@@ -17,27 +24,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-     
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-   onShow: function () { 
     const that = this
     console.log('笔记页');
     this.getTabBar().init();
     const app = getApp();
-    this.setData({
-      active: 0,
-    });
     wx.getStorage({
         key: 'openId',
         success (res) {
@@ -47,12 +37,12 @@ Page({
         })
           app.get('http://47.113.98.212:8000/api/v1/notes',{
           openid:res.data,
-          tag:"哲学",
-          page:"1"
+          tag:'哲学',
+          page:1
       }).then(res=>{
                         console.log('111', res );
                          that.setData({
-                          list: res.lists 
+                          list0: res.lists 
                         })
                      
                     }).catch(err=>{
@@ -67,6 +57,20 @@ Page({
         // console.log(a)
       }
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+     
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+   onShow: function () { 
+    
     // console(a)
     
 },
@@ -132,20 +136,63 @@ Page({
 
   },
   onTabchange(event) {
+    this.setData({
+      tag:event.detail.title,
+      active:event.detail.index
+    })    
     const app = getApp();
-    console.log(event.detail.title,this.data.openid)
-    app.get('http://47.113.98.212:8000/api/v1/notes',{
-          openid:this.data.openid,
-          tag:event.detail.title,
-          page:"1"
-      }).then(res=>{
-                        console.log('111',res);
-                         this.setData({
-                          list: res.lists 
-                        })                     
-                    }).catch(err=>{
-                        console.log('222',err )
-                    })           
+    console.log(event.detail.index,this.data.page[event.detail.index])
+    if(this.data.page[event.detail.index]==0){
+      app.get('http://47.113.98.212:8000/api/v1/notes',{
+        openid:this.data.openid,
+        tag:event.detail.title,
+        page:this.data.page[event.detail.index]
+    }).then(res=>{
+                        var pages = "page[" + event.detail.index + "]";
+                      console.log('111',res);
+                              if(event.detail.title == "哲学"){
+                                this.setData({
+                                  list0: this.data.list0.concat(res.lists),
+                                  [pages]:this.data.page[event.detail.index]+1
+                                })    
+                           }else if(event.detail.title == "经济学"){
+                            this.setData({
+                              list1: this.data.list1.concat(res.lists),
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }
+                           else if(event.detail.title == "法学"){
+                            this.setData({
+                              list2: this.data.list2.concat(res.lists),
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }else if(event.detail.title == "文学"){
+                            this.setData({
+                              list3: this.data.list3.concat(res.lists), 
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }else if(event.detail.title == "历史学"){
+                            this.setData({
+                              list4: this.data.list4.concat(res.lists),
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }else if(event.detail.title == "理学"){
+                            this.setData({
+                              list5: this.data.list5.concat(res.lists), 
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }else{
+                            this.setData({
+                              list6: this.data.list6.concat(res.lists),
+                              [pages]:this.data.page[event.detail.index]+1
+                            })    
+                           }
+                                        
+                  }).catch(err=>{
+                      console.log('222',err )
+                  })           
+  
+    }
     
   },
   toaddnote(){
@@ -172,6 +219,66 @@ Page({
         res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
       }
     })
+  },
+  pushlist(){
+    console.log('到达底部')
+    const app = getApp();
+    console.log(this.data.active)
+    app.get('http://47.113.98.212:8000/api/v1/notes',{
+          openid:this.data.openid,
+          tag:this.data.tag,
+          page:this.data.page[this.data.active]+1
+      }).then(res=>{
+                        console.log('111',);
+                          if(this.data.page[this.data.active]>res.total/10){
+                             console.log("无需加页")
+                          }
+                           else{
+                            var pages = "page[" + this.data.active + "]";
+                            if(this.data.tag == "哲学"){                                                                   
+                              this.setData({
+                                list0: this.data.list0.concat(res.lists),
+                                [pages]:this.data.page[this.data.active]+1
+                              })    
+                         }else if(this.data.tag == "经济学"){
+                          var pages = "page[" + this.data.active + "]";
+                          this.setData({
+                            list1: this.data.list1.concat(res.lists),
+                            [pages]:this.data.page[this.data.active]+1 
+                          })    
+                         }
+                         else if(this.data.tag == "法学"){
+                          this.setData({
+                            list2: this.data.list2.concat(res.lists),
+                            [pages]:this.data.page[this.data.active]+1
+                          })    
+                         }else if(this.data.tag == "文学"){
+                          this.setData({
+                            list3: this.data.list3.concat(res.lists) ,
+                            [pages]:this.data.page[this.data.active]+1
+                          })    
+                         }else if(this.data.tag == "历史学"){
+                          this.setData({
+                            list4: this.data.list4.concat(res.lists),
+                            [pages]:this.data.page[this.data.active]+1 
+                          })    
+                         }else if(this.data.tag == "理学"){
+                          this.setData({
+                            list5:this.data.list5.concat(res.lists) ,
+                            [pages]:this.data.page[this.data.active]+1
+                          })    
+                         }else{
+                          this.setData({
+                            list6: this.data.list6.concat(res.lists),
+                            [pages]:this.data.page[this.data.active]+1 
+                          })    
+                         }
+                           }   
+                                          
+                    }).catch(err=>{
+                        console.log('222',err )
+                    })           
+    
   },
   onSearch() {
     // Toast('搜索' + this.data.value);

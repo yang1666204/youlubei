@@ -11,15 +11,16 @@
         </view>
         <view class="topContent">
             <text class="name">{{user_name}}</text>
-            <text class="qianming">{{signature}}</text>
+            <text class="qianming">好好学习，天天向上~</text>
         </view>
         <view class="detailContent">
             <text class="info">{{school}}</text>
             <text class="info">{{grade}}</text>
             <text class="info">{{college}}</text>
         </view>
-        <button class="toMain" bind:tap="tomain">主页</button>
-        <!-- </view> -->
+       <navigator open-type="navigate" url="../otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}"> 
+         <button class="toMain" >主页</button>
+       </navigator>
     </view>
      
 </view>

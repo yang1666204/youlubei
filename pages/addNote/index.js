@@ -141,7 +141,6 @@ Page({
     })
   },
   submit(e){
-    console.log(this.formSubmit(e));
     if(this.formSubmit(e)){
     const data = e.detail.value
     const app =  getApp();

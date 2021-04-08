@@ -27,6 +27,8 @@
                       <view slot="action" bind:tap="onClick">搜索</view>
              </van-search>
         </view>  
+ 
+
         <view >
              <van-tabs active="{{ active }}"  bind:change="onTabchange" 
                sticky  
@@ -34,27 +36,61 @@
                custom-class="custom"
                color="#5593E5"
                  >
-             <van-tab title="哲学"></van-tab>
-             <van-tab title="经济学"></van-tab>
-             <van-tab title="法学"></van-tab>
-             <van-tab title="文学"></van-tab>
-             <van-tab title="历史学"></van-tab>
-             <van-tab title="理学"></van-tab>
-             <van-tab title="艺术学"></van-tab>
+             <van-tab title="哲学" name="0"></van-tab>
+             <van-tab title="经济学" name="1"></van-tab>
+             <van-tab title="法学" name="2"></van-tab>
+             <van-tab title="文学" name="3"></van-tab>
+             <van-tab title="历史学" name="4"></van-tab>
+             <van-tab title="理学" name="5"></van-tab>
+             <van-tab title="艺术学" name="6"></van-tab>
              </van-tabs>
-        </view>  
-        
+        </view>      
     </view>
- <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}">
+ <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}" bindscrolltolower="pushlist" >
         <view class="list" style="height:57vh;">
-              <view wx:for="{{list}}" 
+             <wxs module="m1">
+              var choselist = function(tag,list0,list1,list2,list3,list4,list5,list6) {
+              var list = {};
+                    if(tag == "哲学"){
+                         list=list0
+                    }else if(tag == "经济学"){
+                         list=list1
+                    }
+                    else if(tag == "法学"){
+                         list=list2
+                    }else if(tag == "文学"){
+                         list=list3
+                    }else if(tag == "历史学"){
+                         list=list4
+                    }else if(tag =="理学"){
+                         list=list5
+                    }else{
+                         list=list6
+                    }
+               
+                    return list;
+                   }
+
+                module.exports.choselist = choselist;
+            </wxs>
+              <view wx:for="{{m1.choselist(tag,list0,list1,list2,list3,list4,list5,list6)}}" 
                wx:key="note_id"  class="listitem"  catch:tap="toshownote" data-noteid="{{item.note_id}}" >
-                  
+                      <wxs module="note">
+                                  var change = function(created_on) {
+                                   var date=getDate(created_on*1000);
+                                   var year =date.getFullYear();
+                                   var month =date.getMonth()+1;
+                                   var day =date.getDate();
+                                        return  year+"年"+month+"月"+day+"日"
+                                       }
+                
+                                module.exports.change = change;
+                        </wxs>      
                      <view class="listitem1"> 
                           <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
                             <view style="width:180rpx;display:flex;flex-direction:column;justify-content: space-between;" >
                                  <text  style="font-size:45rpx;font-weight: 600;height:45rpx;line-height:45rpx">{{item.user_name}}</text>
-                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">2021年3月31日</text>
+                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{note.change(item.created_on)}}</text>
                             </view>
                            
                           <view style="width:250rpx; padding-top:2%">
