@@ -5,12 +5,23 @@
         <view class="list" style="height:57vh;">
               <view wx:for="{{notelist}}" 
                wx:key="note_id"  class="listitem"  catch:tap="toshownote" data-noteid="{{item.note_id}}" >
+               <wxs module="component1">
+                  var change = function(created_on) {
+                   var date=getDate(created_on*1000);
+                   var year =date.getFullYear();
+                   var month =date.getMonth()+1;
+                   var day =date.getDate();
+                        return  year+"年"+month+"月"+day+"日"
+                       }
+
+                module.exports.change = change;
+            </wxs>
                   
                      <view class="listitem1"> 
                           <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
                             <view style="width:180rpx;display:flex;flex-direction:column;justify-content: space-between;" >
                                  <text  style="font-size:45rpx;font-weight: 600;height:45rpx;line-height:45rpx">{{item.user_name}}</text>
-                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">2021年3月31日</text>
+                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{component1.change(item.created_on)}}</text>
                             </view>
                            
                           <view style="width:250rpx; padding-top:2%">

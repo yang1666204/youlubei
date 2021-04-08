@@ -1,7 +1,18 @@
 <!--component/hisquestion/index.wxml-->
 <scroll-view scroll-y="true" style="height: 45vh;" bindscrolltoupper="upper" bindscrolltolower="lower" class="scrollContent">
         <view wx:for="{{quslist}}">
-            <view class="mainContent">          
+            <view class="mainContent">    
+            <wxs module="component2">
+                  var change = function(created_on) {
+                   var date=getDate(created_on*1000);
+                   var year =date.getFullYear();
+                   var month =date.getMonth()+1;
+                   var day =date.getDate();
+                        return  year+"年"+month+"月"+day+"日"
+                       }
+
+                module.exports.change = change;
+            </wxs>      
                 <!-- 头像、积分、日期、名字 -->
                 <view class="topContent">   
                     <view class="leftContent">
@@ -9,7 +20,7 @@
                         <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{item.avatar}}" />
                         <view class="infoContent">
                             <text class="name">{{item.user_name}}</text>
-                            <text class="date">2021年3月31日</text>
+                            <text class="date">{{component2.change(item.created_on)}}</text>
                         </view>
                     </view>
                     <view class="rightContent">

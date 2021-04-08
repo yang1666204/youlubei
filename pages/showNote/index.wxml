@@ -14,12 +14,23 @@
  <view class="mid">
      <view class="personinfo">
           <view class="listitem1"> 
-              <navigator open-type="navigate" url="../toOthers/index?openid={{detail.user_id}}">
+              <navigator open-type="navigate" url="../toOthers/index?user_id={{detail.user_id}}">
                      <view class="infoleft">
+                     <wxs module="shownote">
+                                  var change = function(created_on) {
+                                   var date=getDate(created_on*1000);
+                                   var year =date.getFullYear();
+                                   var month =date.getMonth()+1;
+                                   var day =date.getDate();
+                                        return  year+"年"+month+"月"+day+"日"
+                                       }
+                
+                                module.exports.change = change;
+                        </wxs> 
                          <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
                            <view style="width:180rpx;display:flex;flex-direction:column;justify-content: center;" >
                                  <text  style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx">{{detail.user_name}}</text>
-                                 <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">2021年3月31日</text>
+                                 <text  style=" margin-top:10rpx;font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{shownote.change(detail.created_on)}}</text>
                            </view>
                            
                           <view style="width:100rpx">

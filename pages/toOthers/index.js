@@ -14,22 +14,15 @@ Page({
     user_id:'',
     user_name:''
   },
-  tomain:function(){
-    wx.navigateTo({
-      url: '../otherspage/index',
-      success: (result) => {
-        
-      },
-      fail: () => {},
-      complete: () => {}
-    });
-      
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var appInst =  getApp();
+    this.setData({
+      user_id:options.user_id
+    })
     wx.getStorage({
       key: 'openId',
       success: (result)=>{

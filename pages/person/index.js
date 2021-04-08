@@ -40,6 +40,7 @@ Page({
       })
         app.get('http://47.113.98.212:8000/api/v1/user',{
         openid:res.data,
+        userId:6
     }).then(res=>{
                       console.log('111',res);   
                               that.setData({
