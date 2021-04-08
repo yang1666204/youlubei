@@ -33,14 +33,18 @@ Page({
     this.getTabBar().init();
     wx.getStorage({
       key: 'openId',
-      success (res) {
-      console.log(res.data);
+      success (res1) {
+      console.log(res1);
       that.setData({
-        openid:res.data
+        openid:res1.data
       })
-        app.get('http://47.113.98.212:8000/api/v1/user',{
-        openid:res.data,
-        userId:6
+       wx.getStorage({
+        key: 'userId',
+        success (res) {
+        console.log(res);
+            app.get('http://47.113.98.212:8000/api/v1/user',{
+        openid:res1.data,
+        userId:res.data
     }).then(res=>{
                       console.log('111',res);   
                               that.setData({
@@ -49,7 +53,17 @@ Page({
                   }).catch(err=>{
                       console.log('222',err)
                   }
-                  )                   
+                  )   
+               
+      },
+      fail(){
+        console.log("失败")
+      },
+      complete(){
+      }
+    })
+      
+                    
     },
     fail(){
       console.log("失败")

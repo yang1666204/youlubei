@@ -9,6 +9,7 @@ Page({
     avatar:'',
     quslist:[],
     notelist:[],
+    commentList:[],
     user_name:'',
   
   },
@@ -34,7 +35,6 @@ Page({
           userId:options.user_id
       }).then(res=>{
                         
-                        console.log('post', res );
                          that.setData({
                           quslist: res.lists 
                         })
@@ -47,9 +47,21 @@ Page({
           openid:res.data,
           userId:options.user_id
       }).then(res=>{
-                        console.log('111', res );
                          that.setData({
                           notelist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                        console.log('222',err )
+                    }
+                    )  
+        app.get('http://47.113.98.212:8000/api/v1/user_comment',{
+          openid:res.data,
+          userId:options.user_id
+      }).then(res=>{
+                        console.log('com', res );
+                         that.setData({
+                          commentList: res.lists 
                         })
                      
                     }).catch(err=>{

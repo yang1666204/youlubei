@@ -1,1 +1,19 @@
 /* component/hisanswer/index.wxss */
+.commentContent{
+    display: flex;
+    padding: 30rpx;
+  }
+  .commentName,.comments,.commentDate{
+    padding-bottom: 15rpx;
+  }
+  .commentName{
+    font-weight: 800;
+    color: #000000;
+  }
+  .comments{
+    color: #535353;
+  }
+  .commentDate{
+    color: #97A5B6;
+  }
+  

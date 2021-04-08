@@ -1,2 +1,30 @@
 <!--component/hisanswer/index.wxml-->
-<text>回答组件</text>
+<scroll-view scroll-y="true" style="height:45vh;"   >
+    <wxs module="component3">
+                  var change = function(created_on) {
+                   var date=getDate(created_on*1000);
+                   var year =date.getFullYear();
+                   var month =date.getMonth()+1;
+                   var day =date.getDate();
+                        return  year+"年"+month+"月"+day+"日"
+                       }
+
+                module.exports.change = change;
+            </wxs>
+ <view wx:for="{{commentList}}">
+                    <view class="commentContent">
+                        <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}' />
+                        <view class="rightComment">
+                            <view class="commentName">
+                                {{item.user_name}}
+                            </view>
+                            <view class="comments">
+                                {{item.comment}}
+                            </view>
+                            <view class="commentDate">
+                                {{component3.change(item.created_on)}}
+                            </view>
+                        </view>
+                    </view>
+             </view>
+ </scroll-view>
