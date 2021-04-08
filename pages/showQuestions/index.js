@@ -1,4 +1,5 @@
 // pages/showQuestions/index.js
+import WxValidate from "../../utils/WxValidate";
 Page({
   /**
    * 页面的初始数据
@@ -15,8 +16,9 @@ Page({
       { value: "文学", name: "文学" },
       { value: "历史学", name: "历史学" },
       { value: "理学", name: "理学" },
-      { value: "艺术学", name: "艺术学" },
+     
       { value: "工学", name: "工学" },
+      { value: "艺术学", name: "艺术学" },
     ],
     isShow: false,
     title: "",
@@ -28,7 +30,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
+  onLoad: function (options) {
+    this.initValidate();
+  },
 
   onChange(event) {
     console.log(event.detail);
@@ -43,6 +47,7 @@ Page({
    */
   onShow: function () {
     console.log("增加提问");
+    console.log(this.data.radio);
     wx.getStorage({
       key: "openId",
       success: (result) => {
@@ -68,39 +73,52 @@ Page({
       isShow: false,
     });
   },
-  formSubmit: function (e) {
-    const that = this;
-    const app = getApp();
-    let { value } = e.detail;
-    wx.request({
-      url: 'http://47.113.98.212:8000/api/v1/posts',
-      data: {
-        ...value,
-        tag: this.data.radio,
-        userId: this.data.userId,
-      },
-      header: { "content-type": "application/json" },
-      method: "POST",
-      dataType: "json",
-      responseType: "text",
-      success: (result) => {
-        console.log(result);
-        this.setData({
-          isShow: true,
-          title: "",
-          xueke: "",
-          content: "",
-          jifen: 10,
-          radio:''
+  handleSubmit: function (e) {
+    if (this.formSubmit(e)) {
+      const that = this;
+      const app = getApp();
+      let { value } = e.detail;
+      console.log( value);
+      if(!value.tag){
+        wx.showModal({
+          content: '请选择标签',
+          showCancel: false,
         });
-      },
-      fail: () => {
-        console.log("a");
-      },
-      complete: () => {
-        console.log("b");
-      },
-    });
+        return
+      }
+      console.log(e);
+      //接口没用学科这个参数  把tag代替的学科
+      delete value.xueke
+      console.log(value);
+      wx.request({
+        url: "http://47.113.98.212:8000/api/v1/posts?openid="+this.data.openid,
+        data: {
+          ...value,
+          userId: this.data.userId,
+        },
+        header: { "content-type": "application/json" },
+        method: "POST",
+        dataType: "json",
+        responseType: "text",
+        success: (result) => {
+          console.log(result);
+          this.setData({
+            isShow: true,
+            title: "",
+            xueke: "",
+            content: "",
+            jifen: 10,
+            radio: "",
+          });
+        },
+        fail: () => {
+          console.log("a");
+        },
+        complete: () => {
+          console.log("b");
+        },
+      });
+    }
   },
   handleBack: function (e) {
     console.log("返回");
@@ -129,6 +147,7 @@ Page({
     for (let i = 0, len = items.length; i < len; ++i) {
       items[i].checked = items[i].value === e.detail.value;
     }
+    console.log(e.detail.value,);
     this.setData({
       radio: e.detail.value,
     });
@@ -136,5 +155,55 @@ Page({
     this.setData({
       items,
     });
+  },
+  // 表单验证
+  showModal(error) {
+    console.log(error);
+    wx.showModal({
+      content: error.msg,
+      showCancel: false,
+    });
+  },
+
+  initValidate() {
+    let rules = {
+      title: {
+        required: true,
+      },
+      content: {
+        required: true,
+        maxlength: 100,
+      },
+      xueke:{
+        required:true
+      },
+    };
+
+    let message = {
+      title: {
+        required: "请输入题目",
+        // maxlength: '名字不能超过10个字'
+      },
+      xueke:{
+        required:"请输入学科"
+      },
+      content: {
+        required: "请写下你的提问",
+        maxlength: "不可以超过100个字",
+      },
+    };
+    //实例化当前的验证规则和提示消息
+    this.WxValidate = new WxValidate(rules, message);
+  },
+  formSubmit(e) {
+    const params = e.detail.value;
+    console.log(this.WxValidate, "params");
+    //校验表单
+    if (!this.WxValidate.checkForm(params)) {
+      const error = this.WxValidate.errorList[0];
+      this.showModal(error);
+      return false;
+    }
+    return true;
   },
 });

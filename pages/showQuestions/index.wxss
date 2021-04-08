@@ -11,6 +11,15 @@
 
   position: relative;
 }
+.imgpic{
+  border-radius: 50%;
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  position:absolute;
+  bottom:-40rpx;
+  left:calc(50% - 50rpx)
+}
 .backbtn{
   width: 100rpx;
   height: 0rpx;

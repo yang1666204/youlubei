@@ -3,9 +3,12 @@
         <view class="flageone">
             <text class="font">问答</text>
         </view>
-        <view>
+         <view class="imgpic">
+                <open-data type="userAvatarUrl" ></open-data> 
+             </view>
+        <!-- <view>
             <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" />
-        </view>
+        </view> -->
         <view class="flagetwo">
             <text class="font">笔记</text>
         </view>
@@ -18,13 +21,19 @@
         <text class="contContent" decode="{{true}}" >提&nbsp;&nbsp;交&nbsp;&nbsp;完&nbsp;&nbsp;毕</text>
     </view>
     <view class="formContainer">
-        <form catchsubmit="formSubmit" action="">
-            <input name="title" class="inputContent" value="{{title}}" placeholder="请在此输入标题" />
+        <form catchsubmit="handleSubmit" action="">
+            <input 
+                name="title" 
+                model:value="{{ title }}" 
+                class="inputContent" 
+                value="{{title}}" 
+                placeholder="请在此输入标题"
+            />
             <view>
                 <!-- 分割线 -->
                 <view class="driver"></view>
             </view>
-            <input name="xueke" class="inputContent" value="{{xueke}}" type="text" placeholder="学科" />
+            <input name="xueke"model:value="{{ xueke }}" class="inputContent" value="{{xueke}}" type="text" placeholder="学科" />
             <view>
                 <view class="driver"></view>
             </view>
@@ -33,17 +42,17 @@
                 <van-button bind:tap="addTag"color="#CADAFC" size="small" round class="addbq">
                     +点击添加标签
                 </van-button>
-                <van-tag  color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
+                <van-tag    color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
                     {{radio}}
                 </van-tag>
             </view>
             <van-popup closeable="{{true}}" round="{{true}}" overlay="{{true}}" show="{{ show }}" bind:close="onClose">
                 <view class="weui-cells weui-cells_after-title">
-                    <radio-group bindchange="radioChange">
+                    <radio-group name="tag" value='{{radio}}' bindchange="radioChange">
                         <view class="redioContainer">
                             <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
                                 <view class="weui-cell__hd">
-                                    <radio color="#CADAFC" value="{{item.value}}" checked="true" />
+                                    <radio color="#CADAFC" model:value="{{ tag }}" name="tag"  value="{{item.value}}" checked="{{false}}" />
                                 </view>
                                 <view class="weui-cell__bd">{{item.name}}</view>
                             </label>

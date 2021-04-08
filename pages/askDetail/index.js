@@ -1,5 +1,7 @@
 // pages/askDetail/index.js
 import Toast from '../../miniprogram_npm/vant-weapp/toast/toast';
+// require from '../../utils/util.js'
+var utils = require('../../utils/util.js')
 Page({
 
   /**
@@ -17,6 +19,7 @@ Page({
       { value: "工学", name: "工学" },
       {value:"化学",name:'化学'}
     ],
+    commentList:[],
     avatar:'',
     content:'',
     create_on:'',
@@ -52,7 +55,6 @@ Page({
         this.setData({
           openid:result.data
         })
-        console.log(result.data);
         appInst.get('http://47.113.98.212:8000/api/v1/post',{
           openid:result.data,
           postId:options.post_id
@@ -61,21 +63,45 @@ Page({
           this.setData({
             ...res.lists
           })
-          console.log(this.data);
+          appInst.get('http://47.113.98.212:8000/api/v1/comments',{
+            openid:this.data.openid,
+            parentId:res.lists.post_id
+            // parentId:10
+          }).then((res)=>{
+            // var temp = utils.formatTime(Date.parse(new Date())-res.comments[0].created_on)
+            for(var i = 0;i<res.comments.length;i++){
+              // res.comments[i].created_on = utils.formatTime(Date.parse(new Date(res.comments[0].created_on)))
+              res.comments[i].created_on = utils.formatDate(new Date(res.comments[i].created_on)*1000)
+            }
+            this.setData({
+              commentList:res.comments
+            })
+          })
         })
       },
       fail: ()=>{},
-      complete: ()=>{}
+      complete: ()=>{
+        wx.getStorage({
+          key: 'userId',
+          success: (result)=>{
+            this.setData({
+              userId:result.data
+            })
+          },
+          fail: ()=>{},
+          complete: ()=>{
+           
+          }
+        });
+       
+      }
     });
-    wx.getStorage({
-      key: 'userId',
-      success: (result)=>{
-        this.setData({
-          userId:result.data
-        })
-      },
-      fail: ()=>{},
-      complete: ()=>{}
+   
+  },
+  handleBack:function(e){
+    console.log("返回");
+    wx.navigateBack({
+      delta: 1
     });
   },
   // 提交回复
@@ -110,6 +136,7 @@ Page({
   },
   handleres:function(){
     console.log("点击答复");
+    console.log(this.data.commentList);
     this.setData({
       isShow:true
     })
@@ -159,13 +186,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
-  },
-  handleBack:function(e){
-    console.log("返回");
-    wx.navigateBack({
-      delta: 1
-    });
+    
   },
   /**
    * 生命周期函数--监听页面隐藏

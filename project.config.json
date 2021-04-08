@@ -98,12 +98,13 @@
         {
           "name": "pages/askDetail/index",
           "pathName": "pages/askDetail/index",
-          "query": "",
+          "query": "openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&postId=10",
           "scene": null
         },
         {
           "name": "pages/loadImg/index",
           "pathName": "pages/loadImg/index",
+          "query": "",
           "scene": null
         }
       ]

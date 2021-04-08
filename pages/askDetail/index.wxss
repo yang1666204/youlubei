@@ -76,12 +76,6 @@
 }
 
 /* footer部分 */
-/* .footContainer {
-  position: absolute;
-  border-top: #cadafc;
-  bottom: 30rpx;
-  border: 1rpx solid black;
-} */
 .a,.b {
   /* margin-top: -50rpx; */
   color: #6ea3e9;
@@ -211,4 +205,22 @@
 }
 .weui-cell__hd{
   margin: 20rpx;
+}
+/* 评论 */
+.commentContent{
+  display: flex;
+  padding: 30rpx;
+}
+.commentName,.comments,.commentDate{
+  padding-bottom: 15rpx;
+}
+.commentName{
+  font-weight: 800;
+  color: #000000;
+}
+.comments{
+  color: #535353;
+}
+.commentDate{
+  color: #97A5B6;
 }
