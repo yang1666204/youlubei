@@ -1,8 +1,10 @@
+import { formatDate } from "../../utils/util";
 Page({
   // data: {
 
   // },
   data: {
+    isRefresh:false,
     active: 0,
     motto: "youlubei",
     userInfo: {},
@@ -10,10 +12,17 @@ Page({
     list: [],
     tag: "哲学",
     openid: "",
-    date:'',
-    imgUrls:["http://qq41fqbou.hn-bkt.clouddn.com/banner.png","http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png","http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png"],
+    date: "",
+    imgUrls: [
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner.png",
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png",
+      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png",
+    ],
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
+    selectTag:'哲学',
+    isRefresh:false,
+    page:"1"
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   // 事件处理函数
@@ -28,6 +37,45 @@ Page({
         canIUseGetUserProfile: true,
       });
     }
+    this.getTabBar().init();
+    const that = this;
+    const app = getApp();
+
+    wx.getStorage({
+      key: "openId",
+      success(res) {
+        console.log(res.data);
+        that.setData({
+          openid: res.data,
+        });
+        app
+          .get("http://47.113.98.212:8000/api/v1/posts", {
+            openid: res.data,
+            tag: "哲学",
+            page: that.data.page,
+          })
+          .then((res) => {
+            console.log("111", res);
+            for (let i = 0; i < res.lists.length; i++) {
+              res.lists[i].created_on = formatDate(
+                res.lists[i].created_on * 1000
+              );
+            }
+            that.setData({
+              list: res.lists,
+            });
+          })
+          .catch((err) => {
+            console.log("222", err);
+          });
+      },
+      fail() {
+        console.log("失败");
+      },
+      complete() {
+        // console.log(a)
+      },
+    });
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -50,42 +98,7 @@ Page({
       hasUserInfo: true,
     });
   },
-  onShow: function () {
-    this.getTabBar().init();
-    const that = this;
-    const app = getApp();
-
-    wx.getStorage({
-      key: "openId",
-      success(res) {
-        console.log(res.data);
-        that.setData({
-          openid: res.data,
-        });
-        app
-          .get("http://47.113.98.212:8000/api/v1/posts", {
-            openid: res.data,
-            tag: "哲学",
-            page: "1",
-          })
-          .then((res) => {
-            console.log("111", res);
-            that.setData({
-              list: res.lists,
-            });
-          })
-          .catch((err) => {
-            console.log("222", err);
-          });
-      },
-      fail() {
-        console.log("失败");
-      },
-      complete() {
-        // console.log(a)
-      },
-    });
-  },
+  onShow: function () {},
   handleClick() {
     wx.navigateTo({
       url: "../showQuestions/index",
@@ -111,6 +124,9 @@ Page({
   onTabchange(event) {
     const app = getApp();
     console.log(event.detail.title, this.data.openid);
+    this.setData({
+      selectTag:event.detail.title
+    })
     app
       .get("http://47.113.98.212:8000/api/v1/posts", {
         openid: this.data.openid,
@@ -118,7 +134,9 @@ Page({
         page: "1",
       })
       .then((res) => {
-        console.log("111", res.lists);
+        for (let i = 0; i < res.lists.length; i++) {
+          res.lists[i].created_on = formatDate(res.lists[i].created_on * 1000);
+        }
         this.setData({
           list: res.lists,
         });
@@ -127,10 +145,52 @@ Page({
         console.log("222", err);
       });
   },
-  upper(e){
-    // console.log(e);
+  handlerefresh(e) {
+    console.log("下拉刷新", e);
+    const that = this;
+    const app = getApp();
+    this.setData({
+      isRefresh:true
+    })
+    app
+      .get("http://47.113.98.212:8000/api/v1/posts", {
+        openid:this.data.openid,
+        tag: this.data.selectTag,
+        page: this.data.page,
+      })
+      .then((res) => {
+        for (let i = 0; i < res.lists.length; i++) {
+          res.lists[i].created_on = formatDate(res.lists[i].created_on * 1000);
+        }
+        that.setData({
+          list: res.lists,
+          isRefresh:false
+        });
+      })
+      .catch((err) => {
+        console.log("222", err);
+      });
   },
-  lower(e){
-    // console.log(e);
+  loadmore(e){
+    console.log("加载更多",e);
+    const app = getApp();
+    app
+      .get("http://47.113.98.212:8000/api/v1/posts", {
+        openid:this.data.openid,
+        tag: this.data.selectTag,
+        page: this.data.page+1,
+      })
+      .then((res) => {
+        for (let i = 0; i < res.lists.length; i++) {
+          res.lists[i].created_on = formatDate(res.lists[i].created_on * 1000);
+        }
+        that.setData({
+          list:this.data.list.concat(res.lists),
+          page:this.data.page+1
+        });
+      })
+      .catch((err) => {
+        console.log("222", err);
+      });
   }
 });
