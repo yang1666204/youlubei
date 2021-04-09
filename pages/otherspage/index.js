@@ -18,13 +18,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.avatar,"这是这里")
+   
     const that = this
     const app = getApp();
     wx.getStorage({
         key: 'openId',
         success (res) {
-        console.log(res.data);
+   
         that.setData({
           openid:res.data,
           avatar:options.avatar,
@@ -40,7 +40,7 @@ Page({
                         })
                      
                     }).catch(err=>{
-                        console.log('222',err )
+                   
                     }
                     )     
         app.get('http://47.113.98.212:8000/api/v1/user_note',{
@@ -52,28 +52,28 @@ Page({
                         })
                      
                     }).catch(err=>{
-                        console.log('222',err )
+                  
                     }
                     )  
         app.get('http://47.113.98.212:8000/api/v1/user_comment',{
           openid:res.data,
           userId:options.user_id
       }).then(res=>{
-                        console.log('com', res );
+                     
                          that.setData({
                           commentList: res.lists 
                         })
                      
                     }).catch(err=>{
-                        console.log('222',err )
+               
                     }
                     )                            
       },
       fail(){
-        console.log("失败")
+     
       },
       complete(){
-        // console.log(a)
+     
       }
     })
   },
@@ -128,18 +128,18 @@ Page({
   },
   onTabchange(event) {
     const app = getApp();
-    console.log(event.detail.title)
+
   //   app.get('http://zzc0309.top:8000/api/v1/notes',{
   //         openid:this.data.openid,
   //         tag:event.detail.title,
   //         page:"1"
   //     }).then(res=>{
-  //                       console.log('111',res);
+  //               
   //                        this.setData({
   //                         list: res.lists 
   //                       })                     
   //                   }).catch(err=>{
-  //                       console.log('222',err )
+  //             
   //                   })           
     
   },

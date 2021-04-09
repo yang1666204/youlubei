@@ -20,11 +20,10 @@ Page({
    */
   onReady: function () {
     setTimeout(()=>{
-      console.log("aa");
       wx.switchTab({
         url: '../index/index'
       })
-    },2000)
+    },1000)
   },
 
   /**

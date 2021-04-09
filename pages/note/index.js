@@ -25,13 +25,11 @@ Page({
    */
   onLoad: function (options) {
     const that = this
-    console.log('笔记页');
     this.getTabBar().init();
     const app = getApp();
     wx.getStorage({
         key: 'openId',
         success (res) {
-        console.log(res.data);
         that.setData({
           openid:res.data
         })
@@ -40,21 +38,21 @@ Page({
           tag:'哲学',
           page:1
       }).then(res=>{
-                        console.log('111', res );
+                  
                          that.setData({
                           list0: res.lists 
                         })
                      
                     }).catch(err=>{
-                        console.log('222',err )
+                     
                     }
                     )                   
       },
       fail(){
-        console.log("失败")
+      
       },
       complete(){
-        // console.log(a)
+     
       }
     })
   },
@@ -71,7 +69,7 @@ Page({
    */
    onShow: function () { 
     
-    // console(a)
+   
     
 },
 
@@ -123,7 +121,7 @@ Page({
     }
   },
   goTop(e) {  // 一键回到顶部
-    console.log(e)
+  
     this.setData({
       scrollTop: 0,
       floorstatus: false
@@ -141,7 +139,7 @@ Page({
       active:event.detail.index
     })    
     const app = getApp();
-    console.log(event.detail.index,this.data.page[event.detail.index])
+ 
     if(this.data.page[event.detail.index]==0){
       app.get('http://47.113.98.212:8000/api/v1/notes',{
         openid:this.data.openid,
@@ -149,7 +147,7 @@ Page({
         page:this.data.page[event.detail.index]
     }).then(res=>{
                         var pages = "page[" + event.detail.index + "]";
-                      console.log('111',res);
+                  
                               if(event.detail.title == "哲学"){
                                 this.setData({
                                   list0: this.data.list0.concat(res.lists),
@@ -189,14 +187,14 @@ Page({
                            }
                                         
                   }).catch(err=>{
-                      console.log('222',err )
+                    
                   })           
   
     }
     
   },
   toaddnote(){
-    console.log('11')
+   
     wx.navigateTo({
       url: '../addNote/index',
       events: {  
@@ -206,12 +204,12 @@ Page({
     })
   },
   toshownote(e){
-    console.log(e.currentTarget.dataset.noteid);
+   
     wx.navigateTo({
       url: '../showNote/index',
       events: { 
         acceptDataFromOpenedPage: function(data) {
-          console.log(data)
+        
         },
         
       },
@@ -221,17 +219,17 @@ Page({
     })
   },
   pushlist(){
-    console.log('到达底部')
+
     const app = getApp();
-    console.log(this.data.active)
+  
     app.get('http://47.113.98.212:8000/api/v1/notes',{
           openid:this.data.openid,
           tag:this.data.tag,
           page:this.data.page[this.data.active]+1
       }).then(res=>{
-                        console.log('111',);
+                   
                           if(this.data.page[this.data.active]>res.total/10){
-                             console.log("无需加页")
+                           
                           }
                            else{
                             var pages = "page[" + this.data.active + "]";
@@ -276,7 +274,7 @@ Page({
                            }   
                                           
                     }).catch(err=>{
-                        console.log('222',err )
+                      
                     })           
     
   },

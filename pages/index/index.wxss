@@ -93,6 +93,7 @@ swiper {
   margin-bottom: 20rpx;
   margin-top: 20rpx;
   height: 300rpx;
+  max-height: 400rpx;
   /* height: 80%;
   border: 1rpx solid black; */
 }
@@ -116,6 +117,7 @@ swiper {
 .topContent {
   display: flex;
   justify-content: space-between;
+  height: 80rpx;
 }
 .leftContent {
   display: flex;
@@ -154,7 +156,9 @@ swiper {
 .centerContent {
   height: 50%;
   margin-left: 15rpx;
+  margin-top: 15rpx;
   text-overflow: ellipsis;
+  height: 150rpx;
 }
 .driver {
   background: #cadafc;
@@ -198,6 +202,8 @@ swiper {
   display: flex;
   text-align: center;
   flex-direction: column;
+  height: 70rpx;
+  font-size: small;
 }
 .t {
   font-size: small;

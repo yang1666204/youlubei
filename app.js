@@ -19,7 +19,6 @@ App({
     wx.login({
       success: res => {
         var code = res.code// 登录凭证
-        console.log(code);
         wx.request({
           url: 'http://47.113.98.212:8000/wxAuth',
           data: {
@@ -31,7 +30,6 @@ App({
           responseType: 'text',
           success: (result) => {
             //获取openId,存缓存中   
-            console.log(result.data.data.openid);
             wx.setStorage({
               key:"openId",
               data:result.data.data.openid
@@ -42,7 +40,6 @@ App({
             })
           },
           fail: (err) => {
-            console.log(err);
           },
           complete: () => {}
         });
@@ -65,11 +62,9 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: (result) => {
-        console.log(result,result.data.data);
         resolve(result.data.data)
       },
       fail: (err) => {
-        console.log(err);
         reject(err);
       },
       complete: () => {}
@@ -91,10 +86,8 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: (result) => {
-        console.log(result);
       },
       fail: (err) => {
-        console.log(err);
       },
       complete: () => {}
     });   
@@ -109,10 +102,8 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: (result) => {
-        console.log(result);
       },
       fail: (err) => {
-        console.log(err);
       },
       complete: () => {}
     });   

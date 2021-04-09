@@ -38,7 +38,7 @@
     </button>
     <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
     <!-- 提问内容 -->
-    <scroll-view bindscrolltolower="loadmore" refresher-enabled="{{true}}" refresher-triggered="{{isRefresh}}" enhanced="{{true}}" bindrefresherrefresh="handlerefresh" paging-enabled="{{true}}" show-scrollbar="{{false}}" scroll-y="true" style="height: 700rpx;" class="scrollContent">
+    <scroll-view bindscrolltolower="loadmore" refresher-enabled="{{true}}" refresher-triggered="{{isRefresh}}" enhanced="{{true}}" bindrefresherrefresh="handlerefresh" paging-enabled="{{true}}" show-scrollbar="{{false}}" scroll-y="true" style="height: 55%;" class="scrollContent">
         <view wx:for="{{list}}">
             <view class="mainContent">
                 <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
@@ -68,11 +68,11 @@
                     <view class="footContent">
                         <view class="footFont">
                             <a class="b" href="#">关注</a>
-                            <text class="t">20</text>
+                            <view class="t">20</view>
                         </view>
                         <view class="footFont">
                             <a class="b" href="#">回答</a>
-                            <text class="t">40</text>
+                            <view class="t">40</view>
                         </view>
                     </view>
                 </navigator>

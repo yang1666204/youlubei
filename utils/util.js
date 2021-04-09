@@ -20,9 +20,7 @@ const formatTime = (date) => {
 const formatDate = (date) => {
   var date = new Date(date);
   // date = date.toString()
-  // console.log(typeof( date));
   let year = date.getFullYear();
-  console.log(year);
   let month = date.getMonth() + 1;
   let day = date.getDate();
   let temp;

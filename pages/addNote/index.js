@@ -35,13 +35,11 @@ Page({
     wx.getStorage({
       key: 'userId',
       success (res) {
-      console.log(res.data);
       that.setData({
         userId: res.data 
       })
     },
     fail(){
-      console.log("失败")
     }
   })
   },
@@ -81,7 +79,6 @@ Page({
 
   },
   showModal(error) {
-    console.log(error)
     wx.showModal({
       content: error.msg,
       showCancel: false
@@ -120,7 +117,6 @@ Page({
   },
   formSubmit(e) {
     const params =  e.detail.value
-    console.log(this.WxValidate, 'params')
     //校验表单
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
@@ -148,12 +144,10 @@ Page({
     wx.getStorage({
       key: 'openId',
       success (res) {
-      console.log(res.data);
     const data2= {
         ...data,
         userId:that.data.userId
       }
-      console.log(data2);
       app.post('http://47.113.98.212:8000/api/v1/notes?openid='+res.data,
        data2       
       )
@@ -162,7 +156,6 @@ Page({
       })
     },
     fail(){
-      console.log("失败")
     }
   })
     }

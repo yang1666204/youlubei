@@ -43,7 +43,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.post_id);
     // this.setData({
     //   parentId:options.post_id
     // })
@@ -59,7 +58,6 @@ Page({
           openid:result.data,
           postId:options.post_id
         }).then((res)=>{
-          console.log(res);
           this.setData({
             ...res.lists
           })
@@ -99,7 +97,6 @@ Page({
    
   },
   handleBack:function(e){
-    console.log("返回");
     wx.navigateBack({
       delta: 1
     });
@@ -120,7 +117,6 @@ Page({
       responseType: 'text',
       success: (result) => {
         Toast('提交成功');
-        console.log(result);
         this.setData({
           isShow:false,
           radio:'',
@@ -135,8 +131,6 @@ Page({
       
   },
   handleres:function(){
-    console.log("点击答复");
-    console.log(this.data.commentList);
     this.setData({
       isShow:true
     })
@@ -147,7 +141,6 @@ Page({
     })
   },
   handleClose:function(){
-    console.log("关闭遮罩层")
     this.setData({
       isShow:false
     })
@@ -156,8 +149,6 @@ Page({
     this.setData({ reShow: false });
   },
   radioChange(e) {
-    console.log("radio发生change事件，携带value值为：", e.detail.value);
-
     const items = this.data.items;
     for (let i = 0, len = items.length; i < len; ++i) {
       items[i].checked = items[i].value === e.detail.value;

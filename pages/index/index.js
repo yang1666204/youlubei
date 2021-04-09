@@ -44,7 +44,6 @@ Page({
     wx.getStorage({
       key: "openId",
       success(res) {
-        console.log(res.data);
         that.setData({
           openid: res.data,
         });
@@ -55,7 +54,6 @@ Page({
             page: that.data.page,
           })
           .then((res) => {
-            console.log("111", res);
             for (let i = 0; i < res.lists.length; i++) {
               res.lists[i].created_on = formatDate(
                 res.lists[i].created_on * 1000
@@ -66,14 +64,11 @@ Page({
             });
           })
           .catch((err) => {
-            console.log("222", err);
           });
       },
       fail() {
-        console.log("失败");
       },
       complete() {
-        // console.log(a)
       },
     });
   },
@@ -82,7 +77,6 @@ Page({
     wx.getUserProfile({
       desc: "展示用户信息", // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (res) => {
-        console.log(res);
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
@@ -92,7 +86,6 @@ Page({
   },
   getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
-    console.log(e);
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true,
@@ -105,10 +98,8 @@ Page({
       events: {
         // 为指定事件添加一个监听器，获取被打开页面传送到当前页面的数据
         // acceptDataFromOpenedPage: function(data) {
-        //   console.log(data)
         // },
         // someEvent: function(data) {
-        //   console.log(data)
         // }
       },
       success: function (res) {
@@ -123,7 +114,6 @@ Page({
   },
   onTabchange(event) {
     const app = getApp();
-    console.log(event.detail.title, this.data.openid);
     this.setData({
       selectTag:event.detail.title
     })
@@ -142,11 +132,9 @@ Page({
         });
       })
       .catch((err) => {
-        console.log("222", err);
       });
   },
   handlerefresh(e) {
-    console.log("下拉刷新", e);
     const that = this;
     const app = getApp();
     this.setData({
@@ -168,11 +156,9 @@ Page({
         });
       })
       .catch((err) => {
-        console.log("222", err);
       });
   },
   loadmore(e){
-    console.log("加载更多",e);
     const app = getApp();
     app
       .get("http://47.113.98.212:8000/api/v1/posts", {
@@ -190,7 +176,6 @@ Page({
         });
       })
       .catch((err) => {
-        console.log("222", err);
       });
   }
 });

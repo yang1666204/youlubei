@@ -19,20 +19,18 @@ Component({
       {
         "url": "/pages/person/index",
         "icon": "user-o",
-        "info": '3',
+        "info": '',
         "text": "我的"
       }
     ]
   },
   methods: {
     // jump(){
-    //   console.log('haha')
     //   this.setData({
     //     active: 1
     //   });
     // },
     onChange(e) {
-      // console.log(e, 'e')
       this.setData({
         active: e.detail
       });
@@ -42,7 +40,6 @@ Component({
     },
     init() {
       const page = getCurrentPages().pop();
-      console.log(page.route)
       this.setData({
         active: this.data.list.findIndex(item => item.url === `/${page.route}`)
       });
@@ -50,5 +47,4 @@ Component({
   }
 });
  
-// console.log('首页')
 // this.getTabBar().init();

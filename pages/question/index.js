@@ -16,7 +16,6 @@ Page({
   },
 
   handleToNote:function(){
-    console.log("a");
     wx.navigateTo({
       url: '../showNote/index',
       success: (result) => {

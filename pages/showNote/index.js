@@ -39,33 +39,27 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     const app = getApp();
     eventChannel.on('acceptDataFromOpenerPage', function(data) {
-      console.log(data.noteId)
       // that.setData({
       //   noteId: data.note_id 
       // })
       wx.getStorage({
         key: 'openId',
         success (res) {
-        console.log(res.data);
           app.get('http://47.113.98.212:8000/api/v1/note',{
           openid:res.data,
           noteId:data.noteId ,
       }).then(res=>{
-                        console.log('111', res );
                          that.setData({
                           detail: res.lists 
                         })
                      
                     }).catch(err=>{
-                        console.log('222',err )
                     }
                     )                   
       },
       fail(){
-        console.log("失败")
       },
       complete(){
-        // console.log(a)
       }
     })
 
@@ -73,7 +67,6 @@ Page({
     
     
     
-    // console(a)
   },
 
   /**
@@ -116,12 +109,10 @@ Page({
     })
   },
   // toothers(e){
-  //   console.log(e.currentTarget.dataset.userid);
   //   wx.navigateTo({
   //     url: '../toOthers/index',
   //     events: { 
   //       // acceptDataFromOpenedPage: function(data) {
-  //       //   console.log(data)
   //       // },
         
   //     },

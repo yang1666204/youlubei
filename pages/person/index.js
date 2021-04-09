@@ -29,35 +29,29 @@ Page({
    onShow: function () { 
      const that = this;
      const app = getApp();
-    console.log('个人中心');
     this.getTabBar().init();
     wx.getStorage({
       key: 'openId',
       success (res1) {
-      console.log(res1);
       that.setData({
         openid:res1.data
       })
        wx.getStorage({
         key: 'userId',
         success (res) {
-        console.log(res);
             app.get('http://47.113.98.212:8000/api/v1/user',{
         openid:res1.data,
         userId:res.data
     }).then(res=>{
-                      console.log('111',res);   
                               that.setData({
                          list:res.list
                        })      
                   }).catch(err=>{
-                      console.log('222',err)
                   }
                   )   
                
       },
       fail(){
-        console.log("失败")
       },
       complete(){
       }
@@ -66,10 +60,8 @@ Page({
                     
     },
     fail(){
-      console.log("失败")
     },
     complete(){
-      // console.log(a)
     }
   })
 },

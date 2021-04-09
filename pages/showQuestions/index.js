@@ -35,7 +35,6 @@ Page({
   },
 
   onChange(event) {
-    console.log(event.detail);
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -46,13 +45,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("增加提问");
-    console.log(this.data.radio);
     wx.getStorage({
       key: "openId",
       success: (result) => {
-        console.log("a");
-        console.log(result);
         this.setData({
           openid: result.data,
         });
@@ -62,7 +57,6 @@ Page({
             this.setData({
               userId: result.data,
             });
-            console.log(result);
           },
         });
       },
@@ -78,7 +72,6 @@ Page({
       const that = this;
       const app = getApp();
       let { value } = e.detail;
-      console.log( value);
       if(!value.tag){
         wx.showModal({
           content: '请选择标签',
@@ -86,10 +79,8 @@ Page({
         });
         return
       }
-      console.log(e);
       //接口没用学科这个参数  把tag代替的学科
       delete value.xueke
-      console.log(value);
       wx.request({
         url: "http://47.113.98.212:8000/api/v1/posts?openid="+this.data.openid,
         data: {
@@ -101,7 +92,6 @@ Page({
         dataType: "json",
         responseType: "text",
         success: (result) => {
-          console.log(result);
           this.setData({
             isShow: true,
             title: "",
@@ -112,16 +102,13 @@ Page({
           });
         },
         fail: () => {
-          console.log("a");
         },
         complete: () => {
-          console.log("b");
         },
       });
     }
   },
   handleBack: function (e) {
-    console.log("返回");
     wx.navigateBack({
       delta: 1,
     });
@@ -135,19 +122,16 @@ Page({
     this.setData({ show: false });
   },
   handleSelect(event) {
-    console.log(event.detail);
     this.setData({
       radio: event.detail,
     });
   },
   radioChange(e) {
-    console.log("radio发生change事件，携带value值为：", e.detail.value);
 
     const items = this.data.items;
     for (let i = 0, len = items.length; i < len; ++i) {
       items[i].checked = items[i].value === e.detail.value;
     }
-    console.log(e.detail.value,);
     this.setData({
       radio: e.detail.value,
     });
@@ -158,7 +142,6 @@ Page({
   },
   // 表单验证
   showModal(error) {
-    console.log(error);
     wx.showModal({
       content: error.msg,
       showCancel: false,
@@ -197,7 +180,6 @@ Page({
   },
   formSubmit(e) {
     const params = e.detail.value;
-    console.log(this.WxValidate, "params");
     //校验表单
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0];

@@ -41,7 +41,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   showModal(error) {
-    console.log(error)
     wx.showModal({
       content: error.msg,
       showCancel: false
@@ -102,7 +101,6 @@ Page({
   },
   formSubmit(e) {
     const params =  e.detail.value
-    console.log( 'params')
     //校验表单
     if (!this.WxValidate.checkForm(params)) {
       const error = this.WxValidate.errorList[0]
@@ -118,16 +116,13 @@ Page({
   },
  
   submit(e){
-    console.log(1)
     if(this.formSubmit(e)){
-      console.log(e.detail.value);
       const data = e.detail.value
       const app =  getApp();
       const that = this;
       wx.getStorage({
         key: 'openId',
         success (res) {
-        console.log(res.data);   
         app.put('http://47.113.98.212:8000/api/v1/user?openid='+res.data,
          data       
         )
@@ -136,7 +131,6 @@ Page({
         })
       },
       fail(){
-        console.log("失败")
       }
     })
     }      
