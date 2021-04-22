@@ -12,7 +12,9 @@ Page({
     grade:'',
     xueyuan:'',
     studentid:'',
-    isShow:false
+    isShow:false,
+    isdisabled:false,
+    //是否禁用按钮
 
   },
 
@@ -116,19 +118,26 @@ Page({
   },
  
   submit(e){
+    const that = this
     if(this.formSubmit(e)){
+      this.setData({
+        isdisabled:true
+      })
       const data = e.detail.value
       const app =  getApp();
       const that = this;
       wx.getStorage({
         key: 'openId',
         success (res) {
-        app.put('http://47.113.98.212:8000/api/v1/user?openid='+res.data,
+        app.put('https://zzc0309.top/api/v1/user?openid='+res.data,
          data       
         )
         that.setData({
-          isShow:true
+          isShow:true,
         })
+        setTimeout(()=> that.setData({
+          isShow:false
+          }),2000)
       },
       fail(){
       }

@@ -31,9 +31,7 @@ Component({
     //   });
     // },
     onChange(e) {
-      this.setData({
-        active: e.detail
-      });
+      console.log(e.detail)
       wx.switchTab({
         url: this.data.list[e.detail].url
       });

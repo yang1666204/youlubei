@@ -30,7 +30,7 @@ Page({
           avatar:options.avatar,
           user_name:options.user_name
         })
-          app.get('http://47.113.98.212:8000/api/v1/user_post',{
+          app.get('https://zzc0309.top/api/v1/user_post',{
           openid:res.data,
           userId:options.user_id
       }).then(res=>{
@@ -43,7 +43,7 @@ Page({
                    
                     }
                     )     
-        app.get('http://47.113.98.212:8000/api/v1/user_note',{
+        app.get('https://zzc0309.top/api/v1/user_note',{
           openid:res.data,
           userId:options.user_id
       }).then(res=>{
@@ -55,7 +55,7 @@ Page({
                   
                     }
                     )  
-        app.get('http://47.113.98.212:8000/api/v1/user_comment',{
+        app.get('https://zzc0309.top/api/v1/user_comment',{
           openid:res.data,
           userId:options.user_id
       }).then(res=>{

@@ -37,7 +37,7 @@
           </view>
       </view>
       <view class="note" hover-class="none" hover-stop-propagation="false">
-          <text style="color:#6ee3cf; text-align:center;width:80vw" >学霸笔记</text>
+          <text style="color:#6ee3cf; text-align:center;width:80vw;height:5vh;font-size:30rpx;line-height:5vh" >学霸笔记</text>
       </view>
 
       <view class="function" >

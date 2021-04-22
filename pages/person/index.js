@@ -39,7 +39,7 @@ Page({
        wx.getStorage({
         key: 'userId',
         success (res) {
-            app.get('http://47.113.98.212:8000/api/v1/user',{
+            app.get('https://zzc0309.top/api/v1/user',{
         openid:res1.data,
         userId:res.data
     }).then(res=>{

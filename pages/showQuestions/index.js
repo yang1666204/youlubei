@@ -82,7 +82,7 @@ Page({
       //接口没用学科这个参数  把tag代替的学科
       delete value.xueke
       wx.request({
-        url: "http://47.113.98.212:8000/api/v1/posts?openid="+this.data.openid,
+        url: "https://zzc0309.top/api/v1/posts?openid="+this.data.openid,
         data: {
           ...value,
           userId: this.data.userId,

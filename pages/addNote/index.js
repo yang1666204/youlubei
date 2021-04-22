@@ -10,7 +10,10 @@ Page({
     tag:'',
     content:'',
     userId:'1',
-    isShow:false
+    isShow:false,
+    isdisabled:false,
+    array: ['请选择学科','哲学', '经济学', '法学', '文学','历史学','理学','艺术学'],
+    index:0
   },
 
   /**
@@ -131,6 +134,13 @@ Page({
       isShow:false
     })
   },
+  //选择器切换
+  bindPickerChange(e){
+   console.log(e)
+   this.setData({
+    index:e.detail.value
+   })
+  },
   goback(){
     wx.navigateBack({
       delta: 1
@@ -138,6 +148,9 @@ Page({
   },
   submit(e){
     if(this.formSubmit(e)){
+      this.setData({
+        isdisabled:true
+      })
     const data = e.detail.value
     const app =  getApp();
     const that = this;
@@ -148,12 +161,16 @@ Page({
         ...data,
         userId:that.data.userId
       }
-      app.post('http://47.113.98.212:8000/api/v1/notes?openid='+res.data,
+      app.post('https://zzc0309.top/api/v1/notes?openid='+res.data,
        data2       
       )
       that.setData({
         isShow:true
       })
+      setTimeout(()=> that.setData({
+        isShow:false
+        }),2000)
+      
     },
     fail(){
     }

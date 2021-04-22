@@ -20,7 +20,7 @@ App({
       success: res => {
         var code = res.code// 登录凭证
         wx.request({
-          url: 'http://47.113.98.212:8000/wxAuth',
+          url: 'https://zzc0309.top/wxAuth',
           data: {
             code:code
           },
