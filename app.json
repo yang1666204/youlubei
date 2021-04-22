@@ -14,7 +14,8 @@
     "pages/toOthers/index",
     "pages/askDetail/index",
     "pages/edit/index",
-    "pages/otherspage/index"
+    "pages/otherspage/index",
+    "pages/changeavatar/index"
     
     
   ],

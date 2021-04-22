@@ -1,50 +1,20 @@
-// pages/toOthers/index.js
+// pages/changeavatar/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    avatar:'',
-    college:'',
-    grade:'',
-    role:'',
-    school:'',
-    signature:'',
-    user_id:'',
-    user_name:''
+    fileList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var appInst =  getApp();
-    this.setData({
-      user_id:options.user_id
-    })
-    wx.getStorage({
-      key: 'openId',
-      success: (result)=>{
-        appInst.get('https://zzc0309.top/api/v1/user',{
-          openid:result.data,
-          userId:options.user_id
-        }).then((res)=>{
-          this.setData({
-            ...res.list
-          })
-        })
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-   
+
   },
-  handleBack:function(){
-    wx.navigateBack({
-      delta: 1
-    });
-  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -98,4 +68,22 @@ Page({
       delta: 1
     })
   },
+  afterRead(event) {
+    const { file } = event.detail;
+    console.log(event)
+    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
+  //   wx.uploadFile({
+  //     url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
+  //     filePath: file.url,
+  //     name: 'file',
+  //     formData: { user: 'test' },
+  //     success(res) {
+  //       // 上传完成需要更新 fileList
+  //       const { fileList = [] } = this.data;
+  //       fileList.push({ ...file, url: res.data });
+  //       this.setData({ fileList });
+  //     },
+  //   });
+  },
+
 })

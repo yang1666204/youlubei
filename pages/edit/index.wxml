@@ -9,10 +9,12 @@
 <view class="head">
          <image class="" style="height:22vh;width:100vw" src="http://qq41fqbou.hn-bkt.clouddn.com/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
          <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
-          <view class="imgpic">
+         <navigator open-type="navigate" url="../changeavatar/index">
+          <view class="imgpic" >
                 <open-data type="userAvatarUrl" ></open-data> 
                 <!-- <image  mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
           </view>
+         </navigator>
 </view>
 <view class="" hover-class="none" hover-stop-propagation="false">
     <view class="userinfo">
@@ -99,7 +101,7 @@
             </van-field> 
                         
          </van-cell-group>
-         <button form-type="submit" class="button">保存编辑</button>
+         <button form-type="submit" class="button" disabled="{{isdisabled}}" >保存编辑</button>
 
       </form>
  </view>

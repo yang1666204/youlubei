@@ -48,7 +48,7 @@ Page({
           openid: res.data,
         });
         app
-          .get("http://47.113.98.212:8000/api/v1/posts", {
+          .get("https://zzc0309.top/api/v1/posts", {
             openid: res.data,
             tag: "哲学",
             page: that.data.page,
@@ -118,7 +118,7 @@ Page({
       selectTag:event.detail.title
     })
     app
-      .get("http://47.113.98.212:8000/api/v1/posts", {
+      .get("https://zzc0309.top/api/v1/posts", {
         openid: this.data.openid,
         tag: event.detail.title,
         page: "1",
@@ -141,7 +141,7 @@ Page({
       isRefresh:true
     })
     app
-      .get("http://47.113.98.212:8000/api/v1/posts", {
+      .get("https://zzc0309.top/api/v1/posts", {
         openid:this.data.openid,
         tag: this.data.selectTag,
         page: this.data.page,
@@ -152,16 +152,18 @@ Page({
         }
         that.setData({
           list: res.lists,
-          isRefresh:false
         });
       })
       .catch((err) => {
       });
+      setTimeout(()=> that.setData({
+        isRefresh:false
+        }),1500)
   },
   loadmore(e){
     const app = getApp();
     app
-      .get("http://47.113.98.212:8000/api/v1/posts", {
+      .get("https://zzc0309.top/api/v1/posts", {
         openid:this.data.openid,
         tag: this.data.selectTag,
         page: this.data.page+1,

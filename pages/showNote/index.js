@@ -45,7 +45,7 @@ Page({
       wx.getStorage({
         key: 'openId',
         success (res) {
-          app.get('http://47.113.98.212:8000/api/v1/note',{
+          app.get('https://zzc0309.top/api/v1/note',{
           openid:res.data,
           noteId:data.noteId ,
       }).then(res=>{
@@ -108,6 +108,7 @@ Page({
       delta: 1
     })
   },
+  
   // toothers(e){
   //   wx.navigateTo({
   //     url: '../toOthers/index',

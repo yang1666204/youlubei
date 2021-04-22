@@ -54,14 +54,14 @@ Page({
         this.setData({
           openid:result.data
         })
-        appInst.get('http://47.113.98.212:8000/api/v1/post',{
+        appInst.get('https://zzc0309.top/api/v1/post',{
           openid:result.data,
           postId:options.post_id
         }).then((res)=>{
           this.setData({
             ...res.lists
           })
-          appInst.get('http://47.113.98.212:8000/api/v1/comments',{
+          appInst.get('https://zzc0309.top/api/v1/comments',{
             openid:this.data.openid,
             parentId:res.lists.post_id
             // parentId:10
@@ -105,7 +105,7 @@ Page({
   handleSubmit:function(){
     let {openid,userId,post_id,inputValue} = this.data
     wx.request({
-      url: 'http://47.113.98.212:8000/api/v1/comment?openid='+openid,
+      url: 'https://zzc0309.top/api/v1/comment?openid='+openid,
       data: {
         userId:userId,
         parentId:post_id,

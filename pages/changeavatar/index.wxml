@@ -1,0 +1,8 @@
+<!--pages/changeavatar/index.wxml-->
+<view class="head">
+             <view class="flageone"><van-icon name="arrow-left" color="#f6f6f6" size="60rpx" bind:click="goback" /></view>          
+        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->               
+ </view>
+ <view class="body">
+     <van-uploader file-list="{{ fileList }}" bind:after-read="afterRead" />
+ </view>

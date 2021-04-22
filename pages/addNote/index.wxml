@@ -1,7 +1,7 @@
 <view class="shade" bind:tap="handleClose" wx:if="{{isShow===true}}"></view>
     <!-- 弹出面板 -->
     <view class="cont" wx:if="{{isShow===true}}">
-        <text class="contContent" decode="{{true}}" >提&nbsp;&nbsp;交&nbsp;&nbsp;完&nbsp;&nbsp;毕</text>
+        <text class="contContent" decode="{{true}}">提&nbsp;&nbsp;交&nbsp;&nbsp;完&nbsp;&nbsp;毕</text>
     </view>
 
 
@@ -26,23 +26,34 @@
                 placeholder="请再次输入题目"
                 border="{{ true }}"
                 input-class="input"
+                placeholder-style="color:#B1C1CE;font-size:30rpx;"
               />
             </view>
-            <view>
-               <van-field
+            <view class="{{index == 0 ? 'picker': 'picker2'}}"> 
+               <!-- <van-field
                 name="tag"
                 model:value="{{ tag }}"
                 placeholder="科目"
                 border="{{ false }}"
-              />
+              /> -->
+               <picker name="tag" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
+                    <view  style="font-size:30rpx;">
+                        {{array[index]}}
+                    </view>
+               </picker>
             </view>            
          </van-cell-group>
-         <textarea name="content" value="{{content}}"
-          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw" 
-          placeholder-style="font-size:20rpx" 
-          maxlength="200">           
-         </textarea>
-         <button form-type="submit" class="button">保存</button>
+               <view class="row" >
+                   <textarea name="content" value="{{content}}"
+                          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw " 
+                          placeholder-style="font-size:20rpx;color:#B1C1CE" 
+                          maxlength="500"
+                          class="text"
+                          >           
+                   </textarea>
+               </view>
+         
+         <button form-type="submit" class="button" disabled="{{isdisabled}}" >保存</button>
 
       </form>
  </view>

@@ -46,7 +46,16 @@
              </van-tabs>
         </view>      
     </view>
- <scroll-view scroll-y="true" style="height:57vh;"   bindscroll="scrolltoupper" scroll-top="{{scrollTop}}" bindscrolltolower="pushlist" >
+ <scroll-view scroll-y="true" style="height:57vh;"  
+   bindscroll="scrolltoupper"
+   scroll-top="{{scrollTop}}"
+   bindscrolltolower="pushlist"
+   scroll-with-animation="true" 
+   refresher-enabled="true"
+   bindrefresherrefresh="handlerefresh"
+   refresher-triggered="{{isRefresh}}">
+    <!-- 上拉动画效果 -->
+    
         <view class="list" style="height:57vh;">
              <wxs module="m1">
               var choselist = function(tag,list0,list1,list2,list3,list4,list5,list6) {

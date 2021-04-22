@@ -6,6 +6,7 @@ Page({
     scrollTop:0,
     page:[1,0,0,0,0,0,0], 
     floorstatus: false,
+    isRefresh:false,
     list0:[],
     list1:[],
     list2:[],
@@ -33,12 +34,11 @@ Page({
         that.setData({
           openid:res.data
         })
-          app.get('http://47.113.98.212:8000/api/v1/notes',{
+          app.get('https://zzc0309.top/api/v1/notes',{
           openid:res.data,
           tag:'哲学',
           page:1
       }).then(res=>{
-                  
                          that.setData({
                           list0: res.lists 
                         })
@@ -127,6 +127,74 @@ Page({
       floorstatus: false
     });
   },
+  //下拉刷新
+  handlerefresh(e) {
+    const that = this;
+    const app = getApp();
+    console.log(123)
+    this.setData({
+      isRefresh:true
+    })
+    app.get('https://zzc0309.top/api/v1/notes',{
+          openid:this.data.openid,
+          tag:this.data.tag,
+          page:this.data.page[this.data.active]
+      }).then(res=>{
+                                                       
+                            if(this.data.tag == "哲学"){     
+                              let list0 = this.data.list0;
+                              list0.splice((this.data.page[this.data.active]-1)*10,10,) 
+                              console.log(list0.concat(res.lists))                                                             
+                              this.setData({
+                                list0: list0.concat(res.lists),
+                              })    
+                         }else if(this.data.tag == "经济学"){
+                          let list1 = this.data.list1;
+                          list1.splice((this.data.page[this.data.active]-1)*10,10,) 
+                          this.setData({
+                            list1: list1.concat(res.lists),
+                          })    
+                         }
+                         else if(this.data.tag == "法学"){
+                          let list2 = this.data.list2;
+                          list2.splice((this.data.page[this.data.active]-1)*10,10,) 
+                          this.setData({
+                            list2: list2.concat(res.lists),
+                          })    
+                         }else if(this.data.tag == "文学"){
+                          let list3 = this.data.list3;
+                          list3.splice((this.data.page[this.data.active]-1)*10,10,)
+                          this.setData({
+                            list3: list3.concat(res.lists),
+                          })    
+                         }else if(this.data.tag == "历史学"){
+                          let list4 = this.data.list4;
+                          list4.splice((this.data.page[this.data.active]-1)*10,10,)
+                          this.setData({
+                            list4: list4.concat(res.lists), 
+                          })    
+                         }else if(this.data.tag == "理学"){
+                          let list5 = this.data.list5;
+                          list5.splice((this.data.page[this.data.active]-1)*10,10,)
+                          this.setData({
+                            list5:list5.concat(res.lists),
+                          })    
+                         }else{
+                          let list6 = this.data.list6;
+                          list6.splice((this.data.page[this.data.active]-1)*10,10,)
+                          this.setData({
+                            list6: list6.concat(res.lists),
+                          })    
+                         }
+                              
+                            
+                    }).catch(err=>{
+                        
+                    })
+        setTimeout(()=> that.setData({
+          isRefresh:false
+          }),1500)
+  },
   onChange(e) {
     this.setData({
       value: e.detail,
@@ -141,50 +209,52 @@ Page({
     const app = getApp();
  
     if(this.data.page[event.detail.index]==0){
-      app.get('http://47.113.98.212:8000/api/v1/notes',{
+      //用于判断是否需要发情求
+      app.get('https://zzc0309.top/api/v1/notes',{
         openid:this.data.openid,
         tag:event.detail.title,
         page:this.data.page[event.detail.index]
-    }).then(res=>{
-                        var pages = "page[" + event.detail.index + "]";
-                  
-                              if(event.detail.title == "哲学"){
-                                this.setData({
-                                  list0: this.data.list0.concat(res.lists),
-                                  [pages]:this.data.page[event.detail.index]+1
-                                })    
-                           }else if(event.detail.title == "经济学"){
-                            this.setData({
-                              list1: this.data.list1.concat(res.lists),
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }
-                           else if(event.detail.title == "法学"){
-                            this.setData({
-                              list2: this.data.list2.concat(res.lists),
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }else if(event.detail.title == "文学"){
-                            this.setData({
-                              list3: this.data.list3.concat(res.lists), 
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }else if(event.detail.title == "历史学"){
-                            this.setData({
-                              list4: this.data.list4.concat(res.lists),
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }else if(event.detail.title == "理学"){
-                            this.setData({
-                              list5: this.data.list5.concat(res.lists), 
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }else{
-                            this.setData({
-                              list6: this.data.list6.concat(res.lists),
-                              [pages]:this.data.page[event.detail.index]+1
-                            })    
-                           }
+    }).then(res=>{  
+                       var pages = "page[" + event.detail.index + "]";                                             
+                        if(event.detail.title == "哲学"){
+                          this.setData({
+                            list0: this.data.list0.concat(res.lists),
+                            [pages]:this.data.page[event.detail.index]+1
+                          })    
+                     }else if(event.detail.title == "经济学"){
+                      this.setData({
+                        list1: this.data.list1.concat(res.lists),
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }
+                     else if(event.detail.title == "法学"){
+                      this.setData({
+                        list2: this.data.list2.concat(res.lists),
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }else if(event.detail.title == "文学"){
+                      this.setData({
+                        list3: this.data.list3.concat(res.lists), 
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }else if(event.detail.title == "历史学"){
+                      this.setData({
+                        list4: this.data.list4.concat(res.lists),
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }else if(event.detail.title == "理学"){
+                      this.setData({
+                        list5: this.data.list5.concat(res.lists), 
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }else{
+                      this.setData({
+                        list6: this.data.list6.concat(res.lists),
+                        [pages]:this.data.page[event.detail.index]+1
+                      })    
+                     }
+                       
+                       
                                         
                   }).catch(err=>{
                     
@@ -219,10 +289,9 @@ Page({
     })
   },
   pushlist(){
-
     const app = getApp();
-  
-    app.get('http://47.113.98.212:8000/api/v1/notes',{
+    console.log(this.data.page[this.data.active]);
+    app.get('https://zzc0309.top/api/v1/notes',{
           openid:this.data.openid,
           tag:this.data.tag,
           page:this.data.page[this.data.active]+1

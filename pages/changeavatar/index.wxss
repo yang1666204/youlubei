@@ -1,0 +1,13 @@
+/* pages/changeavatar/index.wxss */
+.flageone{
+    height: 160rpx;
+    width: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .head{
+    position: relative;
+    height: 20vh;
+  }

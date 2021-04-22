@@ -81,6 +81,7 @@
     border-radius:20rpx ;
     margin: 1vh 10vw;
     display: flex;
+    justify-content: center;
 }
 .function{
     height: 30vh;
