@@ -15,8 +15,8 @@ Page({
     date: "",
     imgUrls: [
       "http://qq41fqbou.hn-bkt.clouddn.com/banner.png",
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%281%29.png",
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner%20%282%29.png",
+      "http://icknsd.cn/banner%20%281%29.png",
+      "http://icknsd.cn/banner%20%282%29.png",
     ],
     // canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
