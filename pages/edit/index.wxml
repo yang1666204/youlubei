@@ -7,7 +7,7 @@
     </view>
 
 <view class="head">
-         <image class="" style="height:22vh;width:100vw" src="http://qq41fqbou.hn-bkt.clouddn.com/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
+         <image class="" style="height:22vh;width:100vw" src="http://icknsd.cn/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
          <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
          <navigator open-type="navigate" url="../changeavatar/index">
           <view class="imgpic" >

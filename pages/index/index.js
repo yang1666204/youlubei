@@ -14,7 +14,7 @@ Page({
     openid: "",
     date: "",
     imgUrls: [
-      "http://qq41fqbou.hn-bkt.clouddn.com/banner.png",
+      "http://icknsd.cn/banner.png",
       "http://icknsd.cn/banner%20%281%29.png",
       "http://icknsd.cn/banner%20%282%29.png",
     ],
