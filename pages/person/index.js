@@ -6,7 +6,8 @@ Page({
    */
   data: {
     openid:'',
-    list:{}
+    list:{},
+
   },
 
   /**
@@ -30,40 +31,43 @@ Page({
      const that = this;
      const app = getApp();
     this.getTabBar().init();
-    wx.getStorage({
-      key: 'openId',
-      success (res1) {
-      that.setData({
-        openid:res1.data
-      })
-       wx.getStorage({
-        key: 'userId',
-        success (res) {
-            app.get('https://zzc0309.top/api/v1/user',{
-        openid:res1.data,
-        userId:res.data
-    }).then(res=>{
-                              that.setData({
-                         list:res.list
-                       })      
-                  }).catch(err=>{
-                  }
-                  )   
+      that.setData({
+                      list:app.globalData.studentinfo
+                    })      
+  //   wx.getStorage({
+  //     key: 'openId',
+  //     success (res1) {
+  //     that.setData({
+  //       openid:res1.data
+  //     })
+  //      wx.getStorage({
+  //       key: 'userId',
+  //       success (res) {
+  //           app.get('https://zzc0309.top/api/v1/user',{
+  //       openid:res1.data,
+  //       userId:res.data
+  //   }).then(res=>{
+  //                             that.setData({
+  //                        list:res.list
+  //                      })      
+  //                 }).catch(err=>{
+  //                 }
+  //                 )   
                
-      },
-      fail(){
-      },
-      complete(){
-      }
-    })
+  //     },
+  //     fail(){
+  //     },
+  //     complete(){
+  //     }
+  //   })
       
                     
-    },
-    fail(){
-    },
-    complete(){
-    }
-  })
+  //   },
+  //   fail(){
+  //   },
+  //   complete(){
+  //   }
+  // })
 },
   /**
    * 生命周期函数--监听页面隐藏

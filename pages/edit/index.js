@@ -14,6 +14,7 @@ Page({
     studentid:'',
     isShow:false,
     isdisabled:false,
+    info:''
     //是否禁用按钮
 
   },
@@ -23,6 +24,11 @@ Page({
    */
   onLoad: function (options) {
     this.initValidate();
+    // const app = getApp();
+    // this.setData({
+    //   info:app.globalData.studentinfo
+    // })
+
   },
  
   /**
@@ -36,7 +42,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const app = getApp();
+    this.setData({
+      info:app.globalData.studentinfo
+    })
   },
 
   /**

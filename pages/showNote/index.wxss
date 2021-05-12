@@ -17,12 +17,14 @@
     height: 20vh;
   }
   .flageone{
-    height: 160rpx;
-    width: 160rpx;
+    height: 140rpx;
+    width: 140rpx;
     display: flex;
     justify-content: center;
     align-items: center;
-
+    position: absolute;
+    top: 20rpx;
+    left: 0;
   }
   .mid{
       padding: 0;

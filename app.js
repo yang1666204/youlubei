@@ -1,5 +1,15 @@
 // app.js
 App({
+  globalData: {
+    userInfo: null,
+    //这里暂时忘记是什么作用了
+    studentinfo:{},
+    //存储个人的信息
+    openId:'',
+
+    userId:'',
+
+  },
   onLaunch() {
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
@@ -29,11 +39,13 @@ App({
           dataType: 'json',
           responseType: 'text',
           success: (result) => {
-            //获取openId,存缓存中   
+            //获取openId,useid全部存缓存中   
             wx.setStorage({
               key:"openId",
               data:result.data.data.openid
             })
+            this.globalData.openId = result.data.data.openid;
+            this.globalData.userId = result.data.data.userId;
             wx.setStorage({
               key:"userId",
               data:result.data.data.userId
@@ -48,9 +60,7 @@ App({
       }
     })
   },
-  globalData: {
-    userInfo: null
-  },
+ 
   get(url,data){
    return new Promise((resolve, reject) => {
     wx.request({
