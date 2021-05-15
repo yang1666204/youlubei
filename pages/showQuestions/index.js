@@ -1,5 +1,7 @@
 // pages/showQuestions/index.js
 import WxValidate from "../../utils/WxValidate";
+
+
 Page({
   /**
    * 页面的初始数据
@@ -25,6 +27,11 @@ Page({
     xueke: "",
     content: "",
     jifen: 10,
+    xkList:[
+      '语文',
+      '数学',
+      '英语'
+    ]
   },
 
   /**
@@ -62,6 +69,11 @@ Page({
       },
     });
   },
+  //学科改变
+  xkChange:function(e){
+    console.log(e);
+  },
+
   handleClose: function (e) {
     this.setData({
       isShow: false,

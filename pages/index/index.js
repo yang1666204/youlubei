@@ -129,6 +129,7 @@ Page({
     });
   },
   handleClick() {
+    wx.vibrateShort(); 
     wx.navigateTo({
       url: "../showQuestions/index",
       events: {

@@ -94,6 +94,7 @@ swiper {
   margin-top: 20rpx;
   height: 300rpx;
   max-height: 400rpx;
+  border-bottom: 1rpx solid rgb(221, 221, 221);
   /* height: 80%;
   border: 1rpx solid black; */
 }
@@ -167,8 +168,9 @@ swiper {
   margin: 0 auto 0 auto;
 }
 .queContent {
+  color: #000000;
   font-size: x-small;
-  color: #97a5b6;
+  /* color: #97a5b6; */
   margin-top: 20rpx;
   display: -webkit-box;
   word-break: break-all;
@@ -198,6 +200,12 @@ swiper {
   background-color: #65e3cd;
   color: #ffffff;
 }
+
+.click{
+  transform: scale(0.9,0.9);
+  background-color: #ccc;
+}
+
 .footFont {
   display: flex;
   text-align: center;
@@ -212,3 +220,5 @@ swiper {
 .title {
   color: #535353;
 }
+
+
