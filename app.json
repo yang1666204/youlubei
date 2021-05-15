@@ -15,7 +15,10 @@
     "pages/askDetail/index",
     "pages/edit/index",
     "pages/otherspage/index",
-    "pages/changeavatar/index"
+    "pages/changeavatar/index",
+    "pages/mynote/index",
+    "pages/myanswer/index",
+    "pages/myquestion/index"
     
     
   ],

@@ -15,7 +15,8 @@ Page({
     list5:[],
     list6:[],
     tag:'哲学',
-    openid:''
+    openid:'',
+    avatar:''
   },
   /**
    * 页面的初始数据
@@ -28,6 +29,9 @@ Page({
     const that = this
     this.getTabBar().init();
     const app = getApp();
+    this.setData({
+      avatar:app.globalData.studentinfo.avatar
+    })
     wx.getStorage({
         key: 'openId',
         success (res) {
@@ -68,9 +72,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
    onShow: function () { 
-    
-   
-    
+    const app = getApp();
+    this.setData({
+      avatar: app.globalData.studentinfo.avatar,
+    });
 },
 
   /**

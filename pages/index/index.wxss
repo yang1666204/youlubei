@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 100vh;
 }
-.imgpic {
+/* .imgpic {
   border-radius: 50%;
   overflow: hidden;
   width: 100rpx;
@@ -13,7 +13,7 @@
   position: absolute;
   bottom: -40rpx;
   left: calc(50% - 50rpx);
-}
+} 不在使用*/
 .topContainer {
   width: 1200rpx;
   height: 387rpx;

@@ -4,9 +4,9 @@
         <view class="flageone">
             <text class="fontAsk">问答</text>
         </view>
-        <view class="imgpic">
-            <open-data type="userAvatarUrl"></open-data>
-            <!-- <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:550rpx" mode="aspectFill" src="https://img.alicdn.com/bao/uploaded/i2/634491/O1CN01T9PnWc1j2vIMn6gk2_!!634491.jpg_180x180q90.jpg_.webp" /> -->
+        <view >
+            <!-- <open-data type="userAvatarUrl"></open-data> -->
+            <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
         </view>
         <view class="flagetwo">
             <text class="font">笔记</text>

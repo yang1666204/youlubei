@@ -3,7 +3,6 @@
          <image class="" style="height:22vh;width:100vw" src="http://icknsd.cn/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
          <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
           <view class="imgpic">
-                <!-- <open-data type="userAvatarUrl" ></open-data>  -->
                 <image style="width: 100rpx; height: 100rpx;" mode="aspectFill" src="{{avatar}}" mode="scaleToFill" />
           </view>
 </view>

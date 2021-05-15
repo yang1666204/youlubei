@@ -2,5 +2,5 @@
     <view class="loading">
         <van-loading type="spinner" color="#1989fa" size="24px">加载中...</van-loading>
     </view>
-    <image mode="scaleToFill" class="loadImg" src="http://qq41fqbou.hn-bkt.clouddn.com/%E5%B0%81%E9%9D%A21-01.jpg" />
+    <image mode="scaleToFill" class="loadImg" src="http://icknsd.cn/%E5%B0%81%E9%9D%A21-01.jpg" />
 </view>

@@ -22,7 +22,8 @@ Page({
     canIUseGetUserProfile: false,
     selectTag:'哲学',
     isRefresh:false,
-    page:"1"
+    page:"1",
+    avatar:''
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   // 事件处理函数
@@ -40,31 +41,60 @@ Page({
     this.getTabBar().init();
     const that = this;
     const app = getApp();
-
+    
     wx.getStorage({
       key: "openId",
-      success(res) {
+      success(res1) {
         that.setData({
-          openid: res.data,
+          openid: res1.data,
         });
-        app
-          .get("https://zzc0309.top/api/v1/posts", {
-            openid: res.data,
-            tag: "哲学",
-            page: that.data.page,
-          })
-          .then((res) => {
-            for (let i = 0; i < res.lists.length; i++) {
-              res.lists[i].created_on = formatDate(
-                res.lists[i].created_on * 1000
-              );
-            }
-            that.setData({
-              list: res.lists,
-            });
-          })
-          .catch((err) => {
-          });
+        wx.getStorage({
+          key: "userId",
+          success(res2) {
+                  app
+                   .get("https://zzc0309.top/api/v1/posts", {
+                     openid: res1.data,
+                     tag: "哲学",
+                     page: that.data.page,
+                   })
+                   .then((res) => {
+                     for (let i = 0; i < res.lists.length; i++) {
+                       res.lists[i].created_on = formatDate(
+                         res.lists[i].created_on * 1000
+                       );
+                     }
+                     that.setData({
+                       list: res.lists,
+                     });
+                   })
+                   .catch((err) => {
+                   });
+
+                   app
+                   .get("https://zzc0309.top/api/v1/user", {
+                    openid:res1.data,
+                    userId:res2.data
+                   })
+                   .then((res) => {
+                     console.log(res.list)
+                     that.setData({
+                       avatar:res.list.avatar
+                     })
+                     app.globalData.studentinfo =  res.list
+                     //这里再全局获取了个人信息进行了储存
+                     that.setData({
+                      avatar: res.list.avatar,
+                    });
+                   })
+                   .catch((err) => {
+                   });
+            
+          },
+          fail() {
+          },
+          complete() {
+          },
+        });
       },
       fail() {
       },
@@ -91,7 +121,13 @@ Page({
       hasUserInfo: true,
     });
   },
-  onShow: function () {},
+  onShow: function () {
+
+    const app = getApp();
+    this.setData({
+      avatar: app.globalData.studentinfo.avatar,
+    });
+  },
   handleClick() {
     wx.vibrateShort(); 
     wx.navigateTo({
