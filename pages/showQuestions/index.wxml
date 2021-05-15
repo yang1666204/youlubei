@@ -33,12 +33,13 @@
                 <!-- 分割线 -->
                 <view class="driver"></view>
             </view>
-            <input name="xueke"model:value="{{ xueke }}" class="inputContent" value="{{xueke}}" type="text" placeholder="学科" />
-            <view>
+            <!-- 学科和添加标签重复
+            <input name="xueke"model:value="{{ xueke }}" class="inputContent" value="{{xueke}}" type="text" placeholder="学科" /> -->
+            <!-- <view>
                 <view class="driver"></view>
-            </view>
+            </view> -->
             <textarea name="content" placeholder="想问什么呢~" value="{{content}}" class="textareaContent"></textarea>
-            <view class="tagContainer">
+            <!-- <view class="tagContainer">
                 <van-button bind:tap="addTag"color="#CADAFC" size="small" round class="addbq">
                     +点击添加标签
                 </van-button>
@@ -60,7 +61,12 @@
                     </radio-group>
                 </view>
               
-            </van-popup>
+            </van-popup> -->
+            <picker value="{{index}}" range="{{xkList}}" bindchange="xjChange" >
+                <view class="xkContainer">
+                    当前选择：{{xkList[index]}}
+                </view>
+            </picker>
             <view>
                 <view class="adriver"></view>
             </view>
@@ -70,7 +76,7 @@
                         <text class="xsContent">积分悬赏</text>
                     </view>
                     <view>
-                        <van-stepper plus="color:white" custom-class="stepContent" plus-class="step"  minus-class="step" step="5" value="{{ jifen }}" bind:change="onChange" />
+                        <van-stepper plus="color:white" max="{{20}}" min="{{0}}" custom-class="stepContent" plus-class="step"  minus-class="step" step="5" value="{{ jifen }}" bind:change="onChange" />
                     </view>
                 </view>
                 <text class="yqContent">邀请回答</text>

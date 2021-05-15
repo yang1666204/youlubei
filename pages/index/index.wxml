@@ -33,12 +33,21 @@
             <van-tab title="工学"></van-tab>
         </van-tabs>
     </view>
-    <button bind:tap="handleClick" class="floatBtn">
+    <button hover-class="click" bind:tap="handleClick" class="floatBtn">
         <text decode="{{true}}">我&nbsp;&nbsp;要&nbsp;&nbsp;提&nbsp;&nbsp;问</text>
     </button>
     <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
     <!-- 提问内容 -->
-    <scroll-view bindscrolltolower="loadmore" refresher-enabled="{{true}}" refresher-triggered="{{isRefresh}}" enhanced="{{true}}" bindrefresherrefresh="handlerefresh" paging-enabled="{{true}}" show-scrollbar="{{false}}" scroll-y="true" style="height: 55%;" class="scrollContent">
+    <scroll-view 
+        bindscrolltolower="loadmore" 
+        refresher-enabled="{{true}}" 
+        refresher-triggered="{{isRefresh}}" 
+        enhanced="{{true}}" 
+        bindrefresherrefresh="handlerefresh" 
+        paging-enabled="{{true}}" 
+        scroll-with-animation="{{true}}" 
+        scroll-y="true" 
+        style="height: 65vh;" >
         <view wx:for="{{list}}">
             <view class="mainContent">
                 <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
