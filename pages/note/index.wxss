@@ -138,3 +138,12 @@
   margin-top: 20rpx;
   margin-left: 20rpx;
 }
+.cancel{
+  height: 80rpx;
+  width: 80rpx;
+  position: fixed;
+  bottom: 100rpx;
+  right: 30rpx;
+  border-radius: 50%;
+  background-color: #6ee3cf;
+}

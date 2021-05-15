@@ -2,6 +2,8 @@
 Page({
   data: {
     value:'',
+    searchvalue:'',
+    searchsign:false,
     active:0,
     scrollTop:0,
     page:[1,0,0,0,0,0,0], 
@@ -114,6 +116,7 @@ Page({
 
   },
   // method{}
+  //一键返回顶部是否显示
   scrolltoupper(e){
     if (e.detail.scrollTop > 100) {
       this.setData({
@@ -132,8 +135,9 @@ Page({
       floorstatus: false
     });
   },
-  //下拉刷新
+  //下拉刷新这个逻辑需要改善
   handlerefresh(e) {
+    let title = this.data.searchsign? this.data.searchvalue:'';
     const that = this;
     const app = getApp();
     console.log(123)
@@ -143,7 +147,8 @@ Page({
     app.get('https://zzc0309.top/api/v1/notes',{
           openid:this.data.openid,
           tag:this.data.tag,
-          page:this.data.page[this.data.active]
+          page:this.data.page[this.data.active],
+          title:title
       }).then(res=>{
                                                        
                             if(this.data.tag == "哲学"){     
@@ -203,10 +208,17 @@ Page({
   onChange(e) {
     this.setData({
       value: e.detail,
+      searchvalue:e.detail
     });
 
   },
+  //科目直接转换的函数
   onTabchange(event) {
+    if(this.data.searchsign){
+      this.setData({
+        searchsign:false,
+      })    
+    }
     this.setData({
       tag:event.detail.title,
       active:event.detail.index
@@ -268,6 +280,7 @@ Page({
     }
     
   },
+//页面跳转
   toaddnote(){
    
     wx.navigateTo({
@@ -293,13 +306,17 @@ Page({
       }
     })
   },
+  // 按需加载函数
   pushlist(){
+    let title = this.data.searchsign? this.data.searchvalue:'';
+    console.log(title)
     const app = getApp();
     console.log(this.data.page[this.data.active]);
     app.get('https://zzc0309.top/api/v1/notes',{
           openid:this.data.openid,
           tag:this.data.tag,
-          page:this.data.page[this.data.active]+1
+          page:this.data.page[this.data.active]+1,
+          title:title,
       }).then(res=>{
                    
                           if(this.data.page[this.data.active]>res.total/10){
@@ -352,10 +369,53 @@ Page({
                     })           
     
   },
-  onSearch() {
+  onSearch(e) {
     // Toast('搜索' + this.data.value);
+    // console.log(e)
   },
-  onClick() {
+  onClick(e) {
     // Toast('搜索' + this.data.value);
+    console.log(this.data.value)
+    const app = getApp();
+        app.get('https://zzc0309.top/api/v1/notes',{
+        openid:this.data.openid,
+        tag:this.data.tag,
+        page:1,
+        title:this.data.value
+    }).then(res=>{
+                       var pages = "page[" + this.data.active + "]";   
+                       var list = "list"+this.data.active     
+                       console.log(list)                                           
+                       this.setData({
+                        [list]: res.lists,
+                        [pages]:1,
+                        value: '' ,
+                        searchsign:true
+                      })
+                   console.log(res.lists);
+                  }).catch(err=>{                   
+                  })                   
   },
+  cancel(e){
+    console.log(e);
+    // this.onLoad()
+    const app = getApp();
+        app.get('https://zzc0309.top/api/v1/notes',{
+        openid:this.data.openid,
+        tag:this.data.tag,
+        page:1,
+    }).then(res=>{
+                       var pages = "page[" + this.data.active + "]";   
+                       var list = "list"+this.data.active     
+                       console.log(list)                                           
+                       this.setData({
+                        [list]: res.lists,
+                        [pages]:1,
+                        value: '' ,
+                        searchsign:false
+                      })
+                   console.log(res.lists);
+                  }).catch(err=>{                   
+                  }) 
+  }
 })

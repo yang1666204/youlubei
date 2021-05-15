@@ -121,6 +121,10 @@
       <view class='add'>
            <van-icon name="plus"  color="#fff" size="40rpx" custom-class="plus" bind:tap="toaddnote" />
       </view>
+
+      <view class='cancel' bind:tap="cancel" wx:if="{{searchsign}}">
+           <text style="display: block;height: 80rpx;width: 80rpx;color:#fff;text-align:center;font-size:30rpx">取消搜索</text>
+      </view>
 </view>
 
 </view>

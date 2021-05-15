@@ -161,7 +161,7 @@ Page({
         ...data,
         userId:that.data.userId
       }
-      app.post('https://zzc0309.top/api/v1/notes?openid='+res.data,
+      app.post('https://zzc0309.top/api/v2/notes?openid='+res.data,
        data2       
       )
       that.setData({
