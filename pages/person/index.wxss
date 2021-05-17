@@ -112,3 +112,7 @@
     justify-content: center;
     
   }
+  .hoverbutton{
+    transform: scale(0.9,0.9);
+    background-color: #ccc;
+  }

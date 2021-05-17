@@ -1,18 +1,8 @@
-
+<!--pages/search/index.wxml-->
 <view class="Notecontainer">
-    <view class="topContainer"></view>
-        
-      <view class="head">
-        <view class="flageone"><text class="font">问答</text></view>
-             <view >
-                <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-                <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:10rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
-             </view>
-        <view class="flagetwo"><text class="fontleft">笔记</text></view>
-     </view>
-
- <view class="maincontainer">
-    <view class="mid">          
+<view class="maincontainer">
+    <view class="mid">
+        <view class="flageone"><van-icon name="arrow-left" color="#a6b2c1" size="50rpx" bind:click="goback" /></view>           
         <view >
              <van-search
                shape="round"
@@ -20,11 +10,11 @@
                value="{{ value }}"
                placeholder="请输入搜索关键词"
                use-action-slot
+               bind:change="onChange"
+               bind:search="onSearch"
                custom-class="search"
-               bind:tap="onClick"
-               
               >
-                      <view slot="action" data-searchvalue="{{value}}" >搜索</view>
+                      <view slot="action" bind:tap="onClick">搜索</view>
              </van-search>
         </view>  
  
@@ -46,7 +36,7 @@
              </van-tabs>
         </view>      
     </view>
- <scroll-view scroll-y="true" style="height:57vh;"  
+ <scroll-view scroll-y="true" style="height:65vh;"  
    bindscroll="scrolltoupper"
    scroll-top="{{scrollTop}}"
    bindscrolltolower="pushlist"
@@ -57,32 +47,7 @@
     <!-- 上拉动画效果 -->
     
         <view class="list" style="height:57vh;">
-             <wxs module="m1">
-              var choselist = function(tag,list0,list1,list2,list3,list4,list5,list6) {
-              var list = {};
-                    if(tag == "哲学"){
-                         list=list0
-                    }else if(tag == "经济学"){
-                         list=list1
-                    }
-                    else if(tag == "法学"){
-                         list=list2
-                    }else if(tag == "文学"){
-                         list=list3
-                    }else if(tag == "历史学"){
-                         list=list4
-                    }else if(tag =="理学"){
-                         list=list5
-                    }else{
-                         list=list6
-                    }
-               
-                    return list;
-                   }
-
-                module.exports.choselist = choselist;
-            </wxs>
-              <view wx:for="{{m1.choselist(tag,list0,list1,list2,list3,list4,list5,list6)}}" 
+              <view wx:for="{{list}}" 
                wx:key="note_id"  class="listitem"  catch:tap="toshownote" data-noteid="{{item.note_id}}" >
                       <wxs module="note">
                                   var change = function(created_on) {
@@ -117,14 +82,11 @@
       <view class='goTop'  bindtap="goTop" hidden='{{!floorstatus}}'>
            <van-icon name="arrow-up"  color="#fff" size="40rpx" custom-class="gotop" />
       </view>
-
-      <view class='add' hover-class="hoveradd" >
-           <van-icon name="plus"  color="#fff" size="40rpx" custom-class="plus" bind:tap="toaddnote" />
-      </view>
-
+    
       <!-- <view class='cancel' bind:tap="cancel" wx:if="{{searchsign}}">
            <text style="display: block;height: 80rpx;width: 80rpx;color:#fff;text-align:center;font-size:30rpx">取消搜索</text>
       </view> -->
- </view>
+</view>
 
 </view>
+

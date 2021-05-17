@@ -1,0 +1,15 @@
+/* pages/myquestion/index.wxss */
+.head{
+    position: relative;
+    height: 18vh;
+}
+.flageone{
+    position: absolute;
+    height: 160rpx;
+    width: 160rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 2vh;
+    left: 0;
+  }

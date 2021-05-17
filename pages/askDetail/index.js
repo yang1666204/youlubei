@@ -46,8 +46,8 @@ Page({
     // this.setData({
     //   parentId:options.post_id
     // })
+     
     var appInst =  getApp();
-    
     wx.getStorage({
       key: 'openId',
       success: (result)=>{
