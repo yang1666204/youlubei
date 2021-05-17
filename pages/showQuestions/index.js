@@ -31,7 +31,8 @@ Page({
       '语文',
       '数学',
       '英语'
-    ]
+    ],
+    index:0,
   },
 
   /**
@@ -71,7 +72,9 @@ Page({
   },
   //学科改变
   xkChange:function(e){
-    console.log(e);
+    this.setData({
+      index:e.detail.value
+    })
   },
 
   handleClose: function (e) {

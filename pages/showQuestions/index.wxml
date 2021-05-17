@@ -62,9 +62,11 @@
                 </view>
               
             </van-popup> -->
-            <picker value="{{index}}" range="{{xkList}}" bindchange="xjChange" >
+            <view class="_xkContainer"></view>
+            <picker value="{{index}}" range="{{xkList}}" bindchange="xkChange" >
                 <view class="xkContainer">
-                    当前选择：{{xkList[index]}}
+                    <text >请选择学科：</text> 
+                    <text >{{xkList[index]}}</text>
                 </view>
             </picker>
             <view>

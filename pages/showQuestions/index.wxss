@@ -153,3 +153,11 @@
   font-weight: 500;
   font-size: large;
 }
+
+.xkContainer{
+  width: 70%;
+  margin: 30rpx auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  color:#8c97a5 ;
+}

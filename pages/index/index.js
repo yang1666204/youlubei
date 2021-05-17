@@ -23,7 +23,9 @@ Page({
     selectTag:'哲学',
     isRefresh:false,
     page:"1",
-    avatar:''
+    avatar:'',
+    user_name:'',
+    user_id:0,
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   // 事件处理函数
@@ -77,13 +79,15 @@ Page({
                    })
                    .then((res) => {
                      console.log(res.list)
-                     that.setData({
-                       avatar:res.list.avatar
-                     })
+                    //  that.setData({
+                    //    avatar:res.list.avatar
+                    //  })
                      app.globalData.studentinfo =  res.list
                      //这里再全局获取了个人信息进行了储存
                      that.setData({
                       avatar: res.list.avatar,
+                      user_name:res.list.user_name,
+                      user_id:res.list.user_id
                     });
                    })
                    .catch((err) => {
