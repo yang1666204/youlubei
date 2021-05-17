@@ -21,6 +21,7 @@
     align-items: center;
     top: 2vh;
     left: 0;
+    z-index: 10;
   }
   .userinfo{
     display: flex;
@@ -98,4 +99,8 @@
   left: 25vw;
   font-weight: 500;
   font-size: large;
+}
+.hoverbutton{
+  transform: scale(0.9,0.9);
+  background-color: #ccc;
 }

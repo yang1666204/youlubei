@@ -16,12 +16,13 @@
                                 src="{{item}}"
                                 data-index="{{index}}" mode="aspectFill" bindtap="previewImg">           
                         </image>
-                         <icon type='success' color="red" class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>
+                         <!-- <icon type='success' color="red" ></icon> -->
+                         <van-icon name="close" color="red" class="delete-btn" data-index="{{index}}" catchtap="deleteImg" />
                     </view>                             
                   <!-- <view class="weui-uploader__input-box pic" bindtap="chooseImg"> </view> -->
          <view class="button_view" hover-class="none" hover-stop-propagation="false">
-             <button class="button" bindtap="chooseImg" disabled="{{isdisabled}}" type='primary'>拍照  / 上传</button>
-             <button class="button" bindtap="commitImg" disabled="{{!isdisabled}}" type='primary'>提交</button>
+             <button class="button" hover-class="hoverbutton" bindtap="chooseImg" disabled="{{isdisabled && imgs.length}}" type='primary'>拍照  / 上传</button>
+             <button class="button" hover-class="hoverbutton" bindtap="commitImg" disabled="{{!(isdisabled && imgs.length)}}" type='primary'>提交</button>
          </view>
             
  </view>

@@ -42,20 +42,26 @@
 
       <view class="function" >
          <!-- <navigator open-type="navigate" url="../changeavatar/index"> -->
-          <text class="funitem" selectable="false" space="false" decode="false">
-              我的提问
-          </text>
-          <text class="funitem" selectable="false" space="false" decode="false">
-              我的积分
-          </text>
-          <text class="funitem" selectable="false" space="false" decode="false">
-              我的问答
-          </text>
-          <text class="funitem" selectable="false" space="false" decode="false">
-              回复我的
-          </text>
+         <navigator open-type="navigate" url="../mypage/index" class="funitem">
+             <text  selectable="false" space="false" decode="false">
+                  个人主页
+             </text>  
+         </navigator>
+         <navigator open-type="navigate" url="../mycollect/index" class="funitem">
+             <text  selectable="false" space="false" decode="false">
+                  我的收藏
+             </text>
+         </navigator>
+         <navigator open-type="navigate" url="../myattention/index" class="funitem">
+             <text  selectable="false" space="false" decode="false">
+                  我的关注
+             </text>
+         </navigator>                 
+              <text class="funitem" selectable="false" space="false" decode="false">
+                  敬请期待
+              </text>
             
       </view>
-      <button form-type="submit" class="button" bind:tap="toedit">编辑信息</button>
+      <button form-type="submit" hover-class="hoverbutton" class="button" bind:tap="toedit">编辑信息</button>
 </view>
 

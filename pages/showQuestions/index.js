@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    info:'',
     userId: "",
     openid: "",
     show: false,
@@ -53,6 +54,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const app = getApp();
+      this.setData({
+                      info:app.globalData.studentinfo
+                    })      
     wx.getStorage({
       key: "openId",
       success: (result) => {

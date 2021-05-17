@@ -1,4 +1,4 @@
-// pages/mynote/index.js
+// pages/mycollect/index.js
 Page({
 
   /**
@@ -62,5 +62,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  goback(){
+    wx.navigateBack({
+      delta: 1
+    })
+  },
 })

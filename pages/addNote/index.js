@@ -13,7 +13,8 @@ Page({
     isShow:false,
     isdisabled:false,
     array: ['请选择学科','哲学', '经济学', '法学', '文学','历史学','理学','艺术学'],
-    index:0
+    index:0,
+    info:''
   },
 
   /**
@@ -21,6 +22,7 @@ Page({
    */
   onLoad: function (options) {
     this.initValidate();
+
   },
 
   /**
@@ -34,6 +36,10 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const app = getApp();
+      this.setData({
+                      info:app.globalData.studentinfo
+                    })      
     const that = this;
     wx.getStorage({
       key: 'userId',

@@ -2,8 +2,8 @@
 Page({
   data: {
     value:'',
-    searchvalue:'',
-    searchsign:false,
+    // searchvalue:'',
+    // searchsign:false,
     active:0,
     scrollTop:0,
     page:[1,0,0,0,0,0,0], 
@@ -137,7 +137,7 @@ Page({
   },
   //下拉刷新这个逻辑需要改善
   handlerefresh(e) {
-    let title = this.data.searchsign? this.data.searchvalue:'';
+    // let title = this.data.searchsign? this.data.searchvalue:'';
     const that = this;
     const app = getApp();
     console.log(123)
@@ -148,7 +148,7 @@ Page({
           openid:this.data.openid,
           tag:this.data.tag,
           page:this.data.page[this.data.active],
-          title:title
+          // title:title
       }).then(res=>{
                                                        
                             if(this.data.tag == "哲学"){     
@@ -205,20 +205,20 @@ Page({
           isRefresh:false
           }),1500)
   },
-  onChange(e) {
-    this.setData({
-      value: e.detail,
-      searchvalue:e.detail
-    });
+  // onChange(e) {
+  //   this.setData({
+  //     value: e.detail,
+  //     // searchvalue:e.detail
+  //   });
 
-  },
+  // },
   //科目直接转换的函数
   onTabchange(event) {
-    if(this.data.searchsign){
-      this.setData({
-        searchsign:false,
-      })    
-    }
+    // if(this.data.searchsign){
+    //   this.setData({
+    //     searchsign:false,
+    //   })    
+    // }
     this.setData({
       tag:event.detail.title,
       active:event.detail.index
@@ -302,21 +302,24 @@ Page({
         
       },
       success: function(res) {       
-        res.eventChannel.emit('acceptDataFromOpenerPage', { noteId:e.currentTarget.dataset.noteid })
+        res.eventChannel.emit('acceptDataFromOpenerPage', { 
+          noteId:e.currentTarget.dataset.noteid,
+         
+        })
       }
     })
   },
   // 按需加载函数
   pushlist(){
-    let title = this.data.searchsign? this.data.searchvalue:'';
-    console.log(title)
+    // let title = this.data.searchsign? this.data.searchvalue:'';
+    // console.log(title)
     const app = getApp();
     console.log(this.data.page[this.data.active]);
     app.get('https://zzc0309.top/api/v1/notes',{
           openid:this.data.openid,
           tag:this.data.tag,
           page:this.data.page[this.data.active]+1,
-          title:title,
+          // title:title,
       }).then(res=>{
                    
                           if(this.data.page[this.data.active]>res.total/10){
@@ -369,53 +372,77 @@ Page({
                     })           
     
   },
-  onSearch(e) {
-    // Toast('搜索' + this.data.value);
-    // console.log(e)
-  },
+  
   onClick(e) {
     // Toast('搜索' + this.data.value);
-    console.log(this.data.value)
-    const app = getApp();
-        app.get('https://zzc0309.top/api/v1/notes',{
-        openid:this.data.openid,
-        tag:this.data.tag,
-        page:1,
-        title:this.data.value
-    }).then(res=>{
-                       var pages = "page[" + this.data.active + "]";   
-                       var list = "list"+this.data.active     
-                       console.log(list)                                           
-                       this.setData({
-                        [list]: res.lists,
-                        [pages]:1,
-                        value: '' ,
-                        searchsign:true
-                      })
-                   console.log(res.lists);
-                  }).catch(err=>{                   
-                  })                   
+    const that = this
+    
+      wx.navigateTo({
+        url: '../search/index',
+        events: { 
+          // acceptDataFromOpenedPage: function(data) {
+          
+          // },
+          
+        },
+        success: function(res) {       
+          // res.eventChannel.emit('acceptDataFromOpenerPage',
+          //  {
+          //    searchvalue:e.currentTarget.dataset.searchvalue,
+          //    tag: that.data.tag
+          //  })
+        }
+      })
+    
+    
+    // const app = getApp();
+    //     app.get('https://zzc0309.top/api/v1/notes',{
+    //     openid:this.data.openid,
+    //     tag:this.data.tag,
+    //     page:1,
+    //     // title:this.data.value
+    // }).then(res=>{
+    //                    var pages = "page[" + this.data.active + "]";   
+    //                    var list = "list"+this.data.active     
+    //                    console.log(list)                                           
+    //                    this.setData({
+    //                     [list]: res.lists,
+    //                     [pages]:1,
+    //                     value: '' ,
+    //                     // searchsign:true
+    //                   })
+    //                console.log(res.lists);
+    //               }).catch(err=>{                   
+    //               })                   
   },
-  cancel(e){
-    console.log(e);
-    // this.onLoad()
-    const app = getApp();
-        app.get('https://zzc0309.top/api/v1/notes',{
-        openid:this.data.openid,
-        tag:this.data.tag,
-        page:1,
-    }).then(res=>{
-                       var pages = "page[" + this.data.active + "]";   
-                       var list = "list"+this.data.active     
-                       console.log(list)                                           
-                       this.setData({
-                        [list]: res.lists,
-                        [pages]:1,
-                        value: '' ,
-                        searchsign:false
-                      })
-                   console.log(res.lists);
-                  }).catch(err=>{                   
-                  }) 
+  //预览图片
+  showpic(){
+     let urls = []
+     urls[0] = this.data.avatar;
+    wx.previewImage({
+      urls:  urls  // 需要预览的图片http链接列表
+      })
   }
+  // cancel(e){
+  //   console.log(e);
+  //   // this.onLoad()
+  //   const app = getApp();
+  //       app.get('https://zzc0309.top/api/v1/notes',{
+  //       openid:this.data.openid,
+  //       tag:this.data.tag,
+  //       page:1,
+  //   }).then(res=>{
+  //                      var pages = "page[" + this.data.active + "]";   
+  //                      var list = "list"+this.data.active     
+  //                      console.log(list)                                           
+  //                      this.setData({
+  //                       [list]: res.lists,
+  //                       [pages]:1,
+  //                       value: '' ,
+  //                       searchsign:false
+  //                     })
+  //                  console.log(res.lists);
+  //                 }).catch(err=>{                   
+  //                 }) 
+  // }
 })

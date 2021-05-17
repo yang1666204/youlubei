@@ -1,44 +1,12 @@
+/* pages/search/index.wxss */
 /* pages/questions/index.wxss */
 .Notecontainer{
-    background-color: #F6F6F6;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  .topContainer{
-    width: 1200rpx;
-    height: 387rpx;
-    border-radius: 50%;
-    margin: -250rpx 0rpx 60rpx -230rpx;
-    /* margin-top: -250rpx;
-    margin-left: -230rpx; */
-    display: block;
-    background-color: #CADAFC;
-    /* z-index: 1; */
-    position: absolute;
-  }
-  .head{
-    position: relative;
-    height: 15vh;
-  }
-  .flageone,.flagetwo{
-    width: 66rpx;
-    height: 66rpx;
-    position: absolute;
-    border-radius: 50%;
-    /* margin-left: -230rpx; */
-    bottom: 45rpx;
-    background-color: #fff;
-    font-size: small;
-    z-index: 2;
-  }
-  .flageone{
-    left: 100rpx;
-  }
-  .flagetwo{
-    left: 570rpx;
-  }
+  background-color: #F6F6F6;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
   .font{
     display: flex;
     justify-content: center;
@@ -62,9 +30,20 @@
   }
   .mid{
     height: 15vh;
+    position: relative;
+  }
+  .flageone{
+    position: absolute;
+    height: 50rpx;
+    width: 50rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* top: 2vh; */
+    left: 0;
   }
   .maincontainer{  
-    margin: 3vh 90rpx 0rpx 90rpx;
+    margin: 10vh 90rpx 0rpx 90rpx;
   }
   
   .tab{

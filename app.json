@@ -16,9 +16,10 @@
     "pages/edit/index",
     "pages/otherspage/index",
     "pages/changeavatar/index",
-    "pages/mynote/index",
-    "pages/myanswer/index",
-    "pages/myquestion/index"
+    "pages/mypage/index",
+    "pages/mycollect/index",
+    "pages/myattention/index",
+    "pages/search/index"
     
     
   ],

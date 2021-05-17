@@ -101,7 +101,7 @@
             </van-field> 
                         
          </van-cell-group>
-         <button form-type="submit" class="button" disabled="{{isdisabled}}" >保存编辑</button>
+         <button form-type="submit" hover-class="hoverbutton" class="button" disabled="{{isdisabled}}" >保存编辑</button>
 
       </form>
  </view>
