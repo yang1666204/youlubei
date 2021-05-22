@@ -1,4 +1,4 @@
-
+// pages/modify/index.js
 Page({
 
   /**
@@ -16,7 +16,8 @@ Page({
       // user_name: "黑黑"
      },
      avater:  '',
-     user_name: ''
+     user_name: '',
+     isdisabled:false,
   },
 
   /**
@@ -41,9 +42,10 @@ Page({
     const eventChannel = this.getOpenerEventChannel()
     const app = getApp();
     eventChannel.on('acceptDataFromOpenerPage', function(data) {
-      // that.setData({
-      //   noteId: data.note_id 
-      // })
+      console.log( data.noteId)
+      that.setData({
+        noteId: data.noteId 
+      })
       wx.getStorage({
         key: 'openId',
         success (res3) {
@@ -108,11 +110,104 @@ Page({
   onShareAppMessage: function () {
 
   },
+  delete(){
+    const app =  getApp();
+    const that = this;
+    wx.vibrateShort();
+    console.log(123) 
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.getStorage({
+            key: 'openId',
+            success (res) {           
+          const data= {
+              userId:app.globalData.userId,
+              noteId:that.data.noteId
+            }
+            app.del('https://zzc0309.top/api/v2/notes?openid='+res.data,
+             data       
+            ).then(res=>{
+              console.log(res)
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }).catch(err=>{
+                console.log(err)
+            })
+            
+          
+          },
+          fail(){
+          }
+        })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
   goback(){
     wx.navigateBack({
       delta: 1
     })
   },
+  submit(e){
+    const data = e.detail.value
+    const app =  getApp();
+    const that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定保存编辑吗？',
+      success (res) {
+        if (res.confirm) {
+          
+          console.log('用户点击确定')
+          that.setData({
+            isdisabled:true
+          })
+          wx.getStorage({
+            key: 'openId',
+            success (res) {
+              
+          const data2= {
+              ...data,
+              userId:app.globalData.userId,
+              noteId:that.data.noteId
+            }
+            app.put('https://zzc0309.top/api/v2/notes?openid='+res.data,
+             data2       
+            ).then(res=>{
+              console.log(res)
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }).catch(err=>{
+                console.log(err)
+            })
+            
+          
+          },
+          fail(){
+          }
+        })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+   
+    
+    
+     
+  }
   
   // toothers(e){
   //   wx.navigateTo({

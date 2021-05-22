@@ -6,7 +6,7 @@
         </view>
         <view >
             <!-- <open-data type="userAvatarUrl"></open-data> -->
-            <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
+            <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
         </view>
         <view class="flagetwo">
             <text class="font">笔记</text>

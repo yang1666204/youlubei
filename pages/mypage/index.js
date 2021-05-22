@@ -1,18 +1,79 @@
 // pages/mypage/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-
+    active:0,
+    avatar:'',
+    quslist:[],
+    notelist:[],
+    commentList:[],
+    user_name:'',
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   console.log(options)
+    const that = this
+    const app = getApp();
+    wx.getStorage({
+        key: 'openId',
+        success (res) {   
+        that.setData({
+          openid:res.data,
+          avatar:app.globalData.studentinfo.avatar,
+          user_name:app.globalData.studentinfo.user_name
+        })
+          app.get('https://zzc0309.top/api/v1/user_post',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                        
+                         that.setData({
+                          quslist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                   
+                    }
+                    )     
+        app.get('https://zzc0309.top/api/v1/user_note',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                         that.setData({
+                          notelist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                  
+                    }
+                    )  
+        app.get('https://zzc0309.top/api/v1/user_comment',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                     
+                         that.setData({
+                          commentList: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+               
+                    }
+                    )                            
+      },
+      fail(){
+     
+      },
+      complete(){
+     
+      }
+    })
   },
 
   /**
@@ -25,8 +86,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow: function (options) {
+   
   },
 
   /**
@@ -63,9 +124,26 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onTabchange(event) {
+    const app = getApp();
+
+  //   app.get('http://zzc0309.top:8000/api/v1/notes',{
+  //         openid:this.data.openid,
+  //         tag:event.detail.title,
+  //         page:"1"
+  //     }).then(res=>{
+  //               
+  //                        this.setData({
+  //                         list: res.lists 
+  //                       })                     
+  //                   }).catch(err=>{
+  //             
+  //                   })           
+    
+  },
   goback(){
     wx.navigateBack({
       delta: 1
     })
-  },
+  }
 })

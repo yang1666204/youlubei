@@ -1,6 +1,5 @@
 // pages/otherspage/index.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -11,20 +10,18 @@ Page({
     notelist:[],
     commentList:[],
     user_name:'',
-  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    console.log(options) 
     const that = this
     const app = getApp();
     wx.getStorage({
         key: 'openId',
-        success (res) {
-   
+        success (res) {   
         that.setData({
           openid:res.data,
           avatar:options.avatar,
@@ -33,16 +30,12 @@ Page({
           app.get('https://zzc0309.top/api/v1/user_post',{
           openid:res.data,
           userId:options.user_id
-      }).then(res=>{
-                        
+      }).then(res=>{                        
                          that.setData({
                           quslist: res.lists 
-                        })
-                     
+                        })                     
                     }).catch(err=>{
-                   
-                    }
-                    )     
+                    })     
         app.get('https://zzc0309.top/api/v1/user_note',{
           openid:res.data,
           userId:options.user_id
@@ -53,8 +46,7 @@ Page({
                      
                     }).catch(err=>{
                   
-                    }
-                    )  
+                    })  
         app.get('https://zzc0309.top/api/v1/user_comment',{
           openid:res.data,
           userId:options.user_id
@@ -66,8 +58,7 @@ Page({
                      
                     }).catch(err=>{
                
-                    }
-                    )                            
+                    })                            
       },
       fail(){
      

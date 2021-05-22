@@ -1,5 +1,4 @@
 <!--component/hisnote/index.wxml-->
-
 <scroll-view scroll-y="true" style="height:45vh;"   >
      <view class="maincontainer">
         <view class="list" style="height:57vh;">
@@ -13,14 +12,13 @@
                    var day =date.getDate();
                         return  year+"年"+month+"月"+day+"日"
                        }
-
                 module.exports.change = change;
             </wxs>
-                  
-                     <view class="listitem1"> 
-                          <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
+                 
+                     <view class="listitem1" catch:tap="toshownote" data-noteid="{{item.note_id}}"> 
+                          <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:10rpx" />
                             <view style="width:180rpx;display:flex;flex-direction:column;justify-content: space-between;" >
-                                 <text  style="font-size:45rpx;font-weight: 600;height:45rpx;line-height:45rpx">{{item.user_name}}</text>
+                                 <text  style="font-size:35rpx;font-weight: 600;height:35rpx;line-height:35rpx">{{item.user_name}}</text>
                                  <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{component1.change(item.created_on)}}</text>
                             </view>
                            
@@ -28,9 +26,9 @@
                                <van-tag round type="primary" >{{item.tag}}</van-tag>
                           </view> 
                      </view>    
-                     <view class="listitem2">{{item.title}}</view> 
-                     <view class="listitem3">{{item.content}}</view> 
-                  
+                     <view class="listitem2" catch:tap="toshownote"  data-noteid="{{item.note_id}}">{{item.title}}</view> 
+                     <view class="listitem3" catch:tap="toshownote"  data-noteid="{{item.note_id}}">{{item.content}}</view> 
+
              </view>
         </view> 
      </view>

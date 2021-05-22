@@ -1,4 +1,6 @@
+<!--pages/modify/index.wxml-->
 <view class="topContainer"></view>
+<form bindsubmit="submit">
  <view class="head">
              <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>          
         <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
@@ -15,10 +17,10 @@
                      <view class="infoleft">
                      <wxs module="shownote">
                                   var change = function(created_on) {
-                                   var date = getDate(created_on*1000);
-                                   var year = date.getFullYear();
-                                   var month = date.getMonth()+1;
-                                   var day = date.getDate();
+                                   var date=getDate(created_on*1000);
+                                   var year =date.getFullYear();
+                                   var month =date.getMonth()+1;
+                                   var day =date.getDate();
                                         return  year+"年"+month+"月"+day+"日"
                                        }
                 
@@ -43,18 +45,30 @@
                           
           </view>    
      </view>
-     <view class="content" >
-      <scroll-view scroll-y="true" style="height:57vh;" >
+     <view   style="margin:0 5vw" >
+      <!-- <scroll-view scroll-y="true" style="height:57vh;" >
         <text class="" selectable="false" space="false" decode="false" style="font-family:SimSun">
             {{detail.content}}
         </text> 
-       </scroll-view>   
+       </scroll-view>  -->
+                
+                   <textarea name="content" value="{{detail.content}}"
+                          placeholder="写下你的笔记" style="width:30vw; font-size:25rpx; " 
+                          placeholder-style="font-size:20rpx;color:#B1C1CE" 
+                          maxlength="500"
+                          class="text"
+                          style="height:57vh"
+                          >           
+                   </textarea>    
+                   
+                
      </view>      
  </view>
    <view class="bottom">  
-          <text class="bottomtext">
-               关注
-          </text>           
+   <button form-type="submit" class="btn" hover-class="hoverbutton"  disabled="{{isdisabled}}" >保存编辑</button>
+         
    </view>
-          
-
+   <view class='del' hover-class="hoverdel" >
+           <van-icon name="clear"  color="#fff" size="60rpx" custom-class="clear" catch:tap="delete" />
+    </view>
+</form>   
