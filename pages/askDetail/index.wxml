@@ -21,7 +21,10 @@
                 </view>
             </view>
              </navigator>
-            <van-button bind:tap="handlgz">关注</van-button>
+            <van-button bind:tap="handlegz">
+            <view wx:if="{{is_attention_user}}">取消关注</view>
+            <view wx:else >关注</view>
+            </van-button>
             <!-- <view class="rightContent">
                 <text class="jfFont">{{score}}积分</text>
                 <text class="jdFont">待解答</text>
@@ -32,7 +35,7 @@
         <scroll-view scroll-y="{{true}}" style="height:60vh">
             <text class="fontContent">{{content}}</text>
             <view class="commentContainer">
-                <text decode="{{true}}">评论&nbsp;40</text>
+                <text decode="{{true}}">评论&nbsp;{{comment_num}}</text>
                 <view wx:for="{{commentList}}">
                     <view class="commentContent">
                         <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}' />
@@ -57,8 +60,8 @@
         <view class="Line"></view>
     </view>
     <a class="a" bind:tap="handlesc" href="#">
-    <view wx:if="{{isSC}}" >收藏</view>
-    <viwe wx:else >已收藏</viwe>    
+    <view wx:if="{{is_attention}}" >已收藏</view>
+    <viwe wx:else >收藏</viwe>    
     </a>
     <view>
         <view class="divLine"></view>

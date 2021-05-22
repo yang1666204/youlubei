@@ -1,18 +1,29 @@
 // pages/myquestion/index.js
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    user_avatar:'',
+    user_name:'',
+    signature:'',
+    lists:[],
+    user_attention_num:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log("app",app);
+    var user = app.globalData.studentinfo
+    this.setData({
+      user_avatar:user.avatar,
+      signature:user.signature,
+      user_name:user.user_name
+    })
   },
 
   /**
@@ -26,7 +37,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    var openId = wx.getStorageSync('openId')
+    var userId = wx.getStorageSync('userId')
+    wx.request({
+      url: 'http://zzc0309.top:8000/api/v1/attention_user?'+'openid='+openId+'&userId='+userId+'&userId02='+userId,
+      method:"GET",
+      success:(res)=>{
+        console.log(res);
+        this.setData({
+          lists:res.data.data.lists,
+          user_attention_num:res.data.data.lists.length
+        })
+      }
+    })
   },
 
   /**

@@ -36,7 +36,9 @@ Page({
     userId: "",
     post_id: "",
     parentId: "",
-    isSC:false
+    is_attention:false,
+    is_attention_user:false,
+    comment_num:0
   },
 
   /**
@@ -47,61 +49,12 @@ Page({
     // this.setData({
     //   parentId:options.post_id
     // })
-    var appInst = getApp();
-
-    wx.getStorage({
-      key: "openId",
-      success: (result) => {
-        this.setData({
-          openid: result.data,
-        });
-        appInst
-          .get("https://zzc0309.top/api/v1/post", {
-            openid: result.data,
-            postId: options.post_id,
-          })
-          .then((res) => {
-            console.log(res);
-            this.setData({
-              ...res.lists,
-            });
-            appInst
-              .get("https://zzc0309.top/api/v1/comments", {
-                openid: this.data.openid,
-                parentId: res.lists.post_id,
-                // parentId:10
-              })
-              .then((res) => {
-                // var temp = utils.formatTime(Date.parse(new Date())-res.comments[0].created_on)
-                for (var i = 0; i < res.comments.length; i++) {
-                  // res.comments[i].created_on = utils.formatTime(Date.parse(new Date(res.comments[0].created_on)))
-                  res.comments[i].created_on = utils.formatDate(
-                    new Date(res.comments[i].created_on) * 1000
-                  );
-                }
-                this.setData({
-                  commentList: res.comments,
-                });
-              });
-          }
-          
-          );
-          
-      },
-      fail: () => {},
-      complete: () => {
-        wx.getStorage({
-          key: "userId",
-          success: (result) => {
-            this.setData({
-              userId: result.data,
-            });
-          },
-          fail: () => {},
-          complete: () => {},
-        });
-      },
-    });
+    console.log(options);
+    var {post_id} = options
+    this.setData({
+      post_id : post_id
+    })
+  
    
       
   },
@@ -173,16 +126,77 @@ Page({
     });
   },
   //关注人
-  handdlegz: function () {},
+  
+  handlegz:function(){
+    var data;
+    wx.getStorage({
+      key: 'userId',
+      success:(res)=>{
+        data = res.data
+        if(this.data.is_attention_user){
+          //点击取消关注
+          wx.request({
+            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
+            data: {},
+            header: {'content-type':'application/json'},
+            method: 'DELETE',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result) => {
+              console.log(result);
+              if(result.data.code === 200){
+                wx.showToast({
+                  title: '已取消',
+                  icon:'success',
+                  success:()=>{
+                    this.setData({
+                      is_attention_user:false
+                    })
+                  }
+                })
+              }
+            },
+          });
+        }else{
+          //点击关注
+         wx.request({
+           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
+           data: {},
+           header: {'content-type':'application/json'},
+           method: 'POST',
+           dataType: 'json',
+           responseType: 'text',
+           success: (result) => {
+             console.log(result);
+             if(result.data.code === 200){
+               wx.showToast({
+                 title: '已关注！',
+                 icon:'success',
+                 success:()=>{
+                   this.setData({
+                     is_attention_user:true
+                   })
+                 }
+               })
+             }
+           },
+         });
+           
+        }
+      }
+    })
+   
+  
+  },
 
   //收藏问题
   handlesc: function () {
     var appInst = getApp();
-    console.log(this.data.user_id);
-    if(!this.data.isSC){
+    if(!this.data.is_attention){
+      console.log("aa");
       wx.request({
-        url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
-        // url: "https://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
+        // url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
+        url: "http://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
         header: { "content-type": "application/json" },
         method: "POST",
         dataType: "json",
@@ -198,16 +212,15 @@ Page({
               mask: false,
               success: (result)=>{
                 this.setData({
-                  isSC:true
+                  is_attention:true
                 })
               },
             });
           }
         },
-        fail: () => {},
-        complete: () => {},
       });
     }else{
+      console.log("b");
       wx.request({
         url: 'http://zzc0309.top:8000/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
         data: {},
@@ -226,15 +239,13 @@ Page({
               mask: false,
               success: (result) => {
                 this.setData({
-                  isSC:false
+                  is_attention:false
                 })
               },
             });
               
           }
         },
-        fail: () => {},
-        complete: () => {}
       });
         
     }
@@ -242,6 +253,7 @@ Page({
 
   
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -251,7 +263,65 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    var appInst = getApp();
+    console.log(appInst.globalData.userId);
+    var user_id = appInst.globalData.userId;
+    wx.getStorage({
+      key: "openId",
+      success: (result) => {
+        this.setData({
+          openid: result.data,
+        });
+        appInst
+          .get("https://zzc0309.top/api/v1/post", {
+            openid: result.data,
+            postId: this.data.post_id,
+            userId: user_id
+          })
+          .then((res) => {
+            console.log(res);
+            this.setData({
+              ...res.lists,
+            });
+            appInst
+              .get("https://zzc0309.top/api/v1/comments", {
+                openid: this.data.openid,
+                parentId: res.lists.post_id,
+                // parentId:10
+              })
+              .then((res) => {
+                // var temp = utils.formatTime(Date.parse(new Date())-res.comments[0].created_on)
+                for (var i = 0; i < res.comments.length; i++) {
+                  // res.comments[i].created_on = utils.formatTime(Date.parse(new Date(res.comments[0].created_on)))
+                  res.comments[i].created_on = utils.formatDate(
+                    new Date(res.comments[i].created_on) * 1000
+                  );
+                }
+                this.setData({
+                  commentList: res.comments,
+                });
+              });
+          }
+          
+          );
+          
+      },
+      fail: () => {},
+      complete: () => {
+        wx.getStorage({
+          key: "userId",
+          success: (result) => {
+            this.setData({
+              userId: result.data,
+            });
+          },
+          fail: () => {},
+          complete: () => {},
+        });
+      },
+    });
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

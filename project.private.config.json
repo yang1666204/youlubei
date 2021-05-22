@@ -1,0 +1,64 @@
+{
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/showQuestions/index",
+          "pathName": "pages/showQuestions/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/note/index",
+          "pathName": "pages/note/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/person/index",
+          "pathName": "pages/person/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/toOthers/index",
+          "pathName": "pages/toOthers/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/askDetail/index",
+          "pathName": "pages/askDetail/index",
+          "query": "openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&postId=10",
+          "scene": null
+        },
+        {
+          "name": "pages/loadImg/index",
+          "pathName": "pages/loadImg/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/myattention/index",
+          "pathName": "pages/myattention/index",
+          "scene": null
+        }
+      ]
+    }
+  }
+}
