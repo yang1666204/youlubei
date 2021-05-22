@@ -11,7 +11,7 @@
 
                 module.exports.change = change;
             </wxs>
- <view wx:for="{{commentList}}">
+ <view wx:for="{{commentList}}" wx:key="created_on">
                     <view class="commentContent">
                         <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}' />
                         <view class="rightComment">

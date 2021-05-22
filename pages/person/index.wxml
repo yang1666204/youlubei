@@ -4,7 +4,7 @@
          <image class="" style="height:15vh;width:100vw" src="http://icknsd.cn/smallCat.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
           <view >
                 <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-                <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:10rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{list.avatar}}" />
+                <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:10rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{list.avatar}}" />
           </view>
     </view>
       <view class="info" >

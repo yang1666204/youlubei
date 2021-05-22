@@ -87,6 +87,7 @@ App({
   
 
   post(url,data){
+    return new Promise((resolve, reject) => {
     wx.request({
       // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
       url:url,
@@ -96,26 +97,59 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: (result) => {
+        console.log(result)
+        resolve(result.data.data)
       },
       fail: (err) => {
+        reject(err);
       },
       complete: () => {}
-    });   
+    });  
+    
+   })
   },
   put(url,data){
-    wx.request({
-      // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
-      url:url,
-      data: data,
-      header: {'content-type':'application/json'},
-      method: 'PUT',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result) => {
-      },
-      fail: (err) => {
-      },
-      complete: () => {}
-    });   
+    return new Promise((resolve, reject) => {
+      wx.request({
+        // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
+        url:url,
+        data: data,
+        header: {'content-type':'application/json'},
+        method: 'PUT',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result) => {
+          resolve(result)
+        },
+        fail: (err) => {
+          reject(err);
+        },
+        complete: () => {}
+      });   
+  
+    })
+    
+  },
+  del(url,data){
+    return new Promise((resolve, reject) => {
+      wx.request({
+        // url:url+'?openid='+res.data.openid+'&tag=理学'+'&page=1',
+        url:url,
+        data: data,
+        header: {'content-type':'application/json'},
+        method: 'DELETE',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result) => {
+          resolve(result)
+        },
+        fail: (err) => {
+          reject(err);
+        },
+        complete: () => {}
+      });   
+  
+    })
+    
   }
 })

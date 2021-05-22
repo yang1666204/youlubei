@@ -111,5 +111,12 @@ Page({
       success: function(res) {       
       }
     })
-  }
+  },
+  showpic(){
+    let urls = []
+    urls[0] = this.data.list.avatar;
+   wx.previewImage({
+     urls:  urls  // 需要预览的图片http链接列表
+     })
+ }
 })

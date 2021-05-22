@@ -6,8 +6,17 @@ Component({
   properties: {
     quslist:{
       type:Array,
-      value:[]
-    }
+      value:[],
+     
+    },
+    leftmes:{
+      type:String,
+      value:''
+    },
+    rightmes:{
+      type:String,
+      value:''
+    },
   },
 
   /**

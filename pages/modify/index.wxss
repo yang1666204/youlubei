@@ -1,0 +1,77 @@
+/* pages/modify/index.wxss */
+.topContainer{
+    width: 1200rpx;
+    height: 387rpx;
+    border-radius: 50%;
+    margin: -250rpx 0rpx 60rpx -230rpx;
+    /* margin-top: -250rpx;
+    margin-left: -230rpx; */
+    display: block;
+    background-color: #CADAFC;
+    /* z-index: 1; */
+    position: absolute;
+  }
+  .head{
+    position: relative;
+    height: 20vh;
+  }
+  .flageone{
+    height: 140rpx;
+    width: 140rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 20rpx;
+    left: 0;
+  }
+  .mid{
+      padding: 0;
+      height: 70vh;
+      margin: 0 5vw;
+  }
+  .listitem1{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    height:100rpx
+
+   }
+   .infoleft{
+    display: flex;
+    width: 50vw;
+    justify-content: space-between;
+   }
+   .bottom{
+       /* display: flex; */
+       border-top: 5rpx solid #6EA3E9;
+       height: 9vh;
+       width: 100vw;
+       color: #6EA3E9;     
+       justify-content: center;
+       align-items: center;
+   }
+   .btn{
+     background-color:#fff;
+     color: #6EA3E9; 
+     height: 9vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+   }
+   .btn::after {
+    border: 0; 
+ }
+ .del{
+  height: 60rpx;
+  width: 60rpx;
+  position: fixed;
+  bottom: 200rpx;
+  right: 10rpx;
+  border-radius: 50%;
+  background-color: red;
+}
+.hoverdel{
+  transform: scale(0.9,0.9);
+  background-color: #ccc;
+}

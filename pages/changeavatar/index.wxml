@@ -1,11 +1,11 @@
 <!--pages/changeavatar/index.wxml-->
 <view class="head">
-              <image class="" style="height:22vh;width:100vw" src="http://icknsd.cn/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
+              <image class=""  style="height:22vh;width:100vw" src="http://icknsd.cn/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
              <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>          
         <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->   
              <view  >
                 <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-                <image  style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:60rpx;left:calc(50% - 50rpx);" mode="aspectFill"  src="{{info.avatar}}" />
+                <image  bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:60rpx;left:calc(50% - 50rpx);" mode="aspectFill"  src="{{info.avatar}}" />
              </view>            
  </view>
  <view class="body">

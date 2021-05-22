@@ -140,13 +140,18 @@ Page({
         success (res) {
         app.put('https://zzc0309.top/api/v1/user?openid='+res.data,
          data       
-        )
-        that.setData({
-          isShow:true,
+        ).then(res=>{
+          that.setData({
+            isShow:true,
+          })
+          setTimeout(()=> that.setData({
+            isShow:false
+            }),2000)
+
+        }).catch(err=>{
+
         })
-        setTimeout(()=> that.setData({
-          isShow:false
-          }),2000)
+       
       },
       fail(){
       }

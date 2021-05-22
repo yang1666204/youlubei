@@ -19,7 +19,8 @@
     "pages/mypage/index",
     "pages/mycollect/index",
     "pages/myattention/index",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/modify/index"
     
     
   ],
