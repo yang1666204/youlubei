@@ -21,7 +21,8 @@
     "pages/myattention/index",
     "pages/search/index",
     "pages/modify/index",
-    "pages/editques/index"
+    "pages/editques/index",
+    "pages/resDetail/index"
     
   ],
   "window": {

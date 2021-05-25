@@ -1,16 +1,4 @@
-/* page {
-  background: #F6F6F6;
-} */
-
-.topContainer {
-  width: 1200rpx;
-  height: 387rpx;
-  border-radius: 50%;
-  margin: -250rpx 0rpx 60rpx -230rpx;
-  display: block;
-  background-color: #cadafc;
-  position: relative;
-}
+@import "../../template/res_content.wxss";
 
 .scroll_container {
   background-color: #ffffff;
@@ -22,51 +10,12 @@
   padding-left: 20rpx;
   padding-right: 20rpx;
 }
-
-.title {
-  text-align: center;
-  font-weight: 600;
-  color: #535353;
-  /* margin-top: -30rpx; */
-  margin-bottom: 40rpx;
-}
-
 /* 个人信息部分 */
-.infoContainer {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.leftContent {
-  display: flex;
-}
 
 .rightContent {
   display: flex;
 
   flex-direction: column;
-}
-
-.infoContent {
-  display: flex;
-  flex-direction: column;
-}
-
-.name {
-  width: 28px;
-  height: 19px;
-  font-weight: 600;
-  line-height: 19px;
-  color: #000000;
-  opacity: 1;
-  /* margin: 5rpx; */
-  margin: 5rpx 20rpx 5rpx 5rpx;
-}
-
-.date {
-  font-size: x-small;
-  color: #a6b2c1;
-  margin: 5rpx;
 }
 
 .jdFont {
@@ -85,20 +34,7 @@
   margin-bottom: 100rpx;
   /* font-family: PingFangSC-Regular, sans-serif; */
   font-family: 'SimSun';
-  margin-top: 50rpx;
-}
-
-.fontContent {
-  color: #000000;
-  padding: 20rpx;
-}
-
-.font_content {
-  font-size: 15px;
-  font-weight: 300;
-  line-height: 29px;
-  color: #000000;
-  opacity: 0.85;
+  margin-top: 20rpx;
 }
 
 /* footer部分 */
@@ -175,16 +111,8 @@
   margin: 5rpx;
 }
 
-.tagbtn {
-  width: 100rpx;
-  border-radius: 30rpx;
-  text-align: center;
-  font-size: xx-small;
-}
 
-.fontcolor {
-  color: #5593E5;
-}
+
 
 /* 遮罩层 */
 .mask {
@@ -289,35 +217,7 @@
   color: #97A5B6;
 }
 
-.attention_btn {
-  margin-right: 0rpx;
-  width: 70px !important;
-  height: 25px;
-  background: #65E3CD;
-  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.34);
-  opacity: 1;
-  border-radius: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.attention_font {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 21px;
-  color: #FFFFFF;
-  opacity: 1;
-}
-
-.pic_container {
-  width: 100vw;
-  height: 166px;
-  background: #CFD9EF;
-  border: 0px solid #707070;
-  opacity: 1;
-  margin-bottom: 20rpx;
-}
 
 .line_gap {
   width: 100vw;

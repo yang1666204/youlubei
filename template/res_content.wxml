@@ -1,0 +1,39 @@
+<template name="template_res" >
+  <view class="title">{{title}}</view>
+         
+         <view class="infoContainer">
+             <navigator open-type="navigate"
+                 url="../otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
+                 <view class="leftContent">
+                     <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;"
+                         src="{{avatar}}" alt="" />
+                     <view class="infoContent">
+                         <view>
+                             <text class="name">{{user_name}}</text>
+                             <van-button color="#CADAFC" round size="mini" class="tagbtn">
+                                 <text class="fontcolor">{{tag}}</text>
+                             </van-button>
+                         </view>
+
+                         <text class="date">{{created_on}}</text>
+                     </view>
+                 </view>
+             </navigator>
+             <button class="attention_btn" bindtap="handlegz">
+                 <text class="attention_font" wx:if="{{is_attention_user}}">已订阅</text>
+                 <text class="attention_font" wx:else>订阅</text>
+             </button>
+             <!-- <view class="rightContent">
+             <text class="jfFont">{{score}}积分</text>
+             <text class="jdFont">待解答</text>
+         </view> -->
+         </view>
+         <view class="pic_container">
+
+         </view>
+         <view class="fontContent"> <text class="font_content">{{content}}</text></view>
+</template>
+
+<template name="template_top">
+    <view class="topContainer"></view>
+</template>
