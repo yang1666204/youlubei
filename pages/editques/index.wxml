@@ -21,14 +21,8 @@
                 </view>
             </view>
              </navigator>
-            <van-button bind:tap="handlegz">
-            <view wx:if="{{is_attention_user}}">取消关注</view>
-            <view wx:else >关注</view>
-            </van-button>
-            <!-- <view class="rightContent">
-                <text class="jfFont">{{score}}积分</text>
-                <text class="jdFont">待解答</text>
-            </view> -->
+
+            
         </view>
    
     <view class="content">
@@ -59,9 +53,8 @@
     <view>
         <view class="Line"></view>
     </view>
-    <a class="a" bind:tap="handlesc" href="#">
-    <view wx:if="{{is_attention}}" >已收藏</view>
-    <view wx:else >收藏</view>    
+    <a class="a" bind:tap="del" href="#">
+    <view >删除</view>    
     </a>
     <view>
         <view class="divLine"></view>

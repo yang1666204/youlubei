@@ -43,7 +43,7 @@
                tab-class="tab-class"
                tab-active-class="tab-active-class"
             >
-             <van-tab title="我的提问"><his-question quslist="{{quslist}}" leftmes="编辑" rightmes="删除"  /></van-tab>
+             <van-tab title="我的提问"><his-question quslist="{{quslist}}" leftmes="关注" rightmes="回答" sign='my' /></van-tab>
              <van-tab title="我的回答"><his-answer  commentList="{{commentList}}" /></van-tab>
              <van-tab title="我的笔记"><his-note   notelist="{{notelist}}" sign='my' /></van-tab>
              </van-tabs>

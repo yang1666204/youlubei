@@ -14,8 +14,25 @@
 
                 module.exports.change = change;
                   </wxs>      
+                  <wxs module="component3">
+                  var change = function(sign,post_id) {
+                     
+                           if(sign=="other"){
+                             return '../askDetail/index?post_id='+post_id
+                             
+                           }
+                           else {
+                             return  '../editques/index?post_id='+post_id
+                              
+                           }
+                           
+                       }
+
+                module.exports.change = change;
+                  </wxs>     
+                  <!-- {{sign=="other" ? "../askDetail/index?post_id={{item.post_id}}":"../askDetail/index?post_id={{item.post_id}}"}} -->
                 <!-- 头像、积分、日期、名字 -->
-                <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" open-type="navigate">  
+                <navigator class="" target="" url="{{component3.change(sign,item.post_id)}}" open-type="navigate">  
                   <view class="topContent">   
                     <view class="leftContent">
                         <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
@@ -42,11 +59,11 @@
                   <view class="footContent">
                     <view class="footFont">
                         <a class="b" href="#">{{leftmes}}</a>
-                        <text class="t">20</text>
+                        <text class="t">{{item.attention_num}}</text>
                     </view>
                     <view class="footFont">
                         <a class="b" href="#">{{rightmes}}</a>
-                        <text class="t">40</text>
+                        <text class="t">{{item.comment_num}}</text>
                     </view>
                   </view>
             </view>
