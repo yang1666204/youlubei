@@ -21,7 +21,7 @@ Page({
     commentList: [],
     avatar: "",
     content: "",
-    create_on: "",
+    created_on: "",
     is_solve: "",
     score: "",
     tag: "",
@@ -38,7 +38,8 @@ Page({
     parentId: "",
     is_attention:false,
     is_attention_user:false,
-    comment_num:0
+    comment_num:0,
+    isShow_foot:true
   },
 
   /**
@@ -81,6 +82,7 @@ Page({
         Toast("提交成功");
         this.setData({
           isShow: false,
+          isShow_foot:true,
           radio: "",
           inputValue: "",
         });
@@ -91,6 +93,7 @@ Page({
   },
   handleres: function () {
     this.setData({
+      isShow_foot:false,
       isShow: true,
     });
   },
@@ -102,6 +105,7 @@ Page({
   handleClose: function () {
     this.setData({
       isShow: false,
+      isShow_foot:true
     });
   },
   onClose() {
@@ -120,11 +124,11 @@ Page({
       items,
     });
   },
-  addTag: function () {
-    this.setData({
-      reShow: true,
-    });
-  },
+  // addTag: function () {
+  //   this.setData({
+  //     reShow: true,
+  //   });
+  // },
   //关注人
   
   handlegz:function(){
@@ -281,6 +285,8 @@ Page({
           })
           .then((res) => {
             console.log(res);
+            res.lists.created_on = utils.formatDate( new Date(res.lists.created_on) * 1000)
+            console.log(res.lists.created_on);
             this.setData({
               ...res.lists,
             });
@@ -298,6 +304,7 @@ Page({
                     new Date(res.comments[i].created_on) * 1000
                   );
                 }
+                console.log("res.comments",res.comments);
                 this.setData({
                   commentList: res.comments,
                 });

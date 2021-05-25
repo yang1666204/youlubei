@@ -14,7 +14,7 @@
     </view>
     <!-- 轮播图 -->
     <swiper next-margin="60px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
-        <block wx:for="{{imgUrls}}">
+        <block wx:for="{{imgUrls}}" wx:key="index" >
             <swiper-item class="lbt">
                 <image class="swiper-image" src="{{item}}" />
             </swiper-item>
@@ -42,13 +42,12 @@
         bindscrolltolower="loadmore" 
         refresher-enabled="{{true}}" 
         refresher-triggered="{{isRefresh}}" 
-        enhanced="{{true}}" 
         bindrefresherrefresh="handlerefresh" 
         paging-enabled="{{true}}" 
         scroll-with-animation="{{true}}" 
         scroll-y="true" 
         style="height: 65vh;" >
-        <view wx:for="{{list}}">
+        <view wx:for="{{list}}" wx:key="index" >
             <view class="mainContent">
                 <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
                     <!-- 头像、积分、日期、名字 -->

@@ -2,71 +2,94 @@
 <view class="Container">
     <view class="topContainer"></view>
     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
-    <view class="title">{{title}}</view>
-    <!-- <navigator open-type="navigate" url="../toOthers/index?user_id={{user_id}}"> -->
-    
-        <view class="infoContainer">
-        <navigator open-type="navigate" url="../otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
-            <view class="leftContent">
-                <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
-                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}" alt="" />
-                <view class="infoContent">
-                    <view>
-                        <text class="name">{{user_name}}</text>
-                        <van-button color="#CADAFC" round size="mini" class="tagbtn">
-                            <text class="fontcolor">{{tag}}</text>
-                        </van-button>
+    <scroll-view scroll-y="{{true}}" style="height:80vh" enhanced="{{ture}}" show-scrollbar="{{false}}">
+        <view class="scroll_container">
+            <view class="title">{{title}}</view>
+            <!-- <navigator open-type="navigate" url="../toOthers/index?user_id={{user_id}}"> -->
+
+            <view class="infoContainer">
+                <navigator open-type="navigate"
+                    url="../otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
+                    <view class="leftContent">
+                        <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
+                        <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;"
+                            src="{{avatar}}" alt="" />
+                        <view class="infoContent">
+                            <view>
+                                <text class="name">{{user_name}}</text>
+                                <van-button color="#CADAFC" round size="mini" class="tagbtn">
+                                    <text class="fontcolor">{{tag}}</text>
+                                </van-button>
+                            </view>
+
+                            <text class="date">{{created_on}}</text>
+                        </view>
                     </view>
-                    <text class="date">{{create_on}}</text>
-                </view>
-            </view>
-             </navigator>
-            <van-button bind:tap="handlegz">
-            <view wx:if="{{is_attention_user}}">取消关注</view>
-            <view wx:else >关注</view>
-            </van-button>
-            <!-- <view class="rightContent">
+                </navigator>
+                <button class="attention_btn" bindtap="handlegz">
+                    <text class="attention_font" wx:if="{{is_attention_user}}">已订阅</text>
+                    <text class="attention_font" wx:else>订阅</text>
+                </button>
+                <!-- <view class="rightContent">
                 <text class="jfFont">{{score}}积分</text>
                 <text class="jdFont">待解答</text>
             </view> -->
-        </view>
-   
-    <view class="content">
-        <scroll-view scroll-y="{{true}}" style="height:60vh">
-            <text class="fontContent">{{content}}</text>
-            <view class="commentContainer">
-                <text decode="{{true}}">评论&nbsp;{{comment_num}}</text>
-                <view wx:for="{{commentList}}"  wx:key="created_on">
-                    <view class="commentContent">
-                        <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}' />
-                        <view class="rightComment">
-                            <view class="commentName">
-                                {{item.user_name}}
+            </view>
+
+            <view class="content">
+                <view class="pic_container">
+
+                </view>
+                <view class="fontContent"> <text class="font_content">{{content}}</text></view>
+                <view class="line_gap"></view>
+                <view class="commentContainer">
+                    <view class="font_hd"> <text decode="{{true}}">回答&ensp;{{comment_num}}</text></view>
+
+                    <view class="comment_container"  wx:for="{{commentList}}" wx:key="index">
+                        <!-- <view class="commentContent">
+                            <image style="margin-right:30rpx;min-width:60rpx;max-width:60rpx;opacity: 1; height:60rpx; border-radius: 50%;" src='{{item.avatar}}' />
+                            <view class="rightComment">
+                                <view class="commentName">
+                                    {{item.user_name}}
+                                </view>
+                                <view class="comments">
+                                    {{item.comment}}
+                                </view>
+                                <view class="commentDate">
+                                    {{item.created_on}}
+                                </view>
                             </view>
-                            <view class="comments">
-                                {{item.comment}}
-                            </view>
-                            <view class="commentDate">
-                                {{item.created_on}}
-                            </view>
+                        </view> -->
+                        <view class="hd_top" >
+                            <image src="{{item.avatar}}" style="margin-right:30rpx;min-width:60rpx;max-width:60rpx;opacity: 1; height:60rpx; border-radius: 50%;" ></image>
+                            <view class="hd_name" >{{item.user_name}}</view>
+                        </view>
+                        <view class="hd_content" >
+                            {{item.comment}}
+                        </view>
+                        <view class="hd_date" >
+                            {{item.created_on}}
                         </view>
                     </view>
                 </view>
+
             </view>
-        </scroll-view>
-    </view>
+        </view>
+    </scroll-view>
     <!-- <view class="footContainer"> -->
-    <view>
-        <view class="Line"></view>
-    </view>
-    <a class="a" bind:tap="handlesc" href="#">
-    <view wx:if="{{is_attention}}" >已收藏</view>
-    <viwe wx:else >收藏</viwe>    
-    </a>
-    <view>
-        <view class="divLine"></view>
-    </view>
-    <a class="b" bind:tap="handleres" href="#">回答</a>
+    <cover-view wx:if="{{isShow_foot}}" class="footContainer">
+        <cover-view>
+            <cover-view class="Line"></cover-view>
+        </cover-view>
+        <a class="a" bind:tap="handlesc" href="#">
+            <cover-view wx:if="{{is_attention}}">已收藏</cover-view>
+            <cover-view wx:else>收藏</cover-view>
+        </a>
+        <cover-view>
+            <cover-view class="divLine"></cover-view>
+        </cover-view>
+        <a class="b" bind:tap="handleres" href="#">回答</a>
+    </cover-view>
     <!-- </view> -->
     <!-- 遮罩层 -->
     <view class="mask" wx:if="{{isShow}}" bind:tap="handleClose"></view>
@@ -74,23 +97,24 @@
 </view>
 <view class="popContent" wx:if="{{isShow}}">
     <textarea class="resContent" bindinput="getValue" placeholder="想说点什么呢"></textarea>
-    
-     <van-popup custom-class="popup" closeable="{{true}}" round="{{true}}" overlay="{{true}}" show="{{reShow}}" bind:close="onClose">
-            <view class="weui-cells weui-cells_after-title">
-                <radio-group bindchange="radioChange">
-                    <view class="redioContainer">
-                        <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
-                            <view class="weui-cell__hd">
-                                <radio color="#CADAFC" value="{{item.value}}" checked="true" />
-                            </view>
-                            <view class="weui-cell__bd">{{item.name}}</view>
-                        </label>
-                    </view>
-                </radio-group>
-            </view>
-        </van-popup>
-       
-    <view class="footbtn">
+
+    <!-- <van-popup custom-class="popup" closeable="{{true}}" round="{{true}}" overlay="{{true}}" show="{{reShow}}"
+        bind:close="onClose">
+        <view class="weui-cells weui-cells_after-title">
+            <radio-group bindchange="radioChange">
+                <view class="redioContainer">
+                    <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
+                        <view class="weui-cell__hd">
+                            <radio color="#CADAFC" value="{{item.value}}" checked="true" />
+                        </view>
+                        <view class="weui-cell__bd">{{item.name}}</view>
+                    </label>
+                </view>
+            </radio-group>
+        </view>
+    </van-popup> -->
+
+    <!-- <view class="footbtn">
         <view class="tagContainer">
             <van-button bind:tap="addTag" round color="#CADAFC" size="small">
                 <text style="color:#FFFFFF"> +点击添加标签</text>
@@ -98,9 +122,9 @@
             <van-tag color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
                 {{radio}}
             </van-tag>
-        </view>
-       
-    </view>
+        </view> -->
+
+    <!-- </view> -->
     <view>
         <view class="line"></view>
     </view>

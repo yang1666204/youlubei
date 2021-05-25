@@ -23,7 +23,8 @@
                   <image src="{{item.avatar}}" style="width:40px;height:40px;border-radius:50%;" ></image>
                   <view class="item_userInfo" >
                         <view class="item_user">
-                              <view class="item_role" >{{item.role}}</view>
+                              
+                              <view class="{{item.role == '学生' ? 'item_role' : 'item_role_teacher'}}" >{{item.role}}</view>
                               <text class="item_username" >{{item.user_name}}</text>
                         </view>
                       
