@@ -1,4 +1,4 @@
-// pages/askDetail/index.js
+// pages/editques/index.js
 import Toast from "../../miniprogram_npm/vant-weapp/toast/toast";
 // require from '../../utils/util.js'
 var utils = require("../../utils/util.js");
@@ -21,7 +21,7 @@ Page({
     commentList: [],
     avatar: "",
     content: "",
-    created_on: "",
+    create_on: "",
     is_solve: "",
     score: "",
     tag: "",
@@ -36,10 +36,7 @@ Page({
     userId: "",
     post_id: "",
     parentId: "",
-    is_attention:false,
-    is_attention_user:false,
-    comment_num:0,
-    isShow_foot:true
+    comment_num:0
   },
 
   /**
@@ -67,7 +64,7 @@ Page({
   // 提交回复
   handleSubmit: function () {
     let { openid, userId, post_id, inputValue } = this.data;
-    const that =this
+    const that = this
     wx.request({
       url: "https://zzc0309.top/api/v2/comment?openid=" + openid,
       data: {
@@ -83,10 +80,10 @@ Page({
         Toast("提交成功");
         this.setData({
           isShow: false,
-          isShow_foot:true,
           radio: "",
           inputValue: "",
         });
+        
       },
       fail: () => {},
       complete: () => {
@@ -96,7 +93,6 @@ Page({
   },
   handleres: function () {
     this.setData({
-      isShow_foot:false,
       isShow: true,
     });
   },
@@ -108,7 +104,6 @@ Page({
   handleClose: function () {
     this.setData({
       isShow: false,
-      isShow_foot:true
     });
   },
   onClose() {
@@ -127,140 +122,57 @@ Page({
       items,
     });
   },
-  // addTag: function () {
-  //   this.setData({
-  //     reShow: true,
-  //   });
-  // },
+  addTag: function () {
+    this.setData({
+      reShow: true,
+    });
+  },
   //关注人
   
-  handlegz:function(){
-    var data;
-    wx.getStorage({
-      key: 'userId',
-      success:(res)=>{
-        data = res.data
-        if(this.data.is_attention_user){
-          //点击取消关注
-          wx.request({
-            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
-            data: {},
-            header: {'content-type':'application/json'},
-            method: 'DELETE',
-            dataType: 'json',
-            responseType: 'text',
-            success: (result) => {
-              console.log(result);
-              if(result.data.code === 200){
-                wx.showToast({
-                  title: '已取消',
-                  icon:'success',
-                  success:()=>{
-                    this.setData({
-                      is_attention_user:false
-                    })
-                  }
-                })
-              }
-            },
-          });
-        }else{
-          //点击关注
-         wx.request({
-           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
-           data: {},
-           header: {'content-type':'application/json'},
-           method: 'POST',
-           dataType: 'json',
-           responseType: 'text',
-           success: (result) => {
-             console.log(result);
-             if(result.data.code === 200){
-               wx.showToast({
-                 title: '已关注！',
-                 icon:'success',
-                 success:()=>{
-                   this.setData({
-                     is_attention_user:true
-                   })
-                 }
-               })
-             }
-           },
-         });
-           
+  
+
+  del(){
+    const app =  getApp();
+    const that = this;
+    wx.vibrateShort();
+    console.log(123) 
+    wx.showModal({
+      title: '提示',
+      content: '确定删除吗',
+      success (res) {
+        if (res.confirm) {
+          console.log('用户点击确定')
+          wx.getStorage({
+            key: 'openId',
+            success (res) {           
+          const data= {
+              userId:app.globalData.userId,
+              postId:that.data.post_id
+            }
+            app.del('https://zzc0309.top/api/v2/posts?openid='+app.globalData.openId,
+             data       
+            ).then(res=>{
+              console.log(res)
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }).catch(err=>{
+                console.log(err)
+            })
+            
+          
+          },
+          fail(){
+          }
+        })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
         }
       }
     })
-   
-  
   },
-
-  //收藏问题
-  handlesc: function () {
-    var appInst = getApp();
-    if(!this.data.is_attention){
-      console.log("aa");
-      wx.request({
-        // url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
-        url: "http://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
-        header: { "content-type": "application/json" },
-        method: "POST",
-        dataType: "json",
-        responseType: "text",
-        success: (result) => {
-          console.log(result);
-          if(result.data.code === 200){
-            wx.showToast({
-              title: '收藏成功！',
-              icon: 'success',
-              image: '',
-              duration: 1500,
-              mask: false,
-              success: (result)=>{
-                this.setData({
-                  is_attention:true
-                })
-              },
-            });
-          }
-        },
-      });
-    }else{
-      console.log("b");
-      wx.request({
-        url: 'http://zzc0309.top:8000/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
-        data: {},
-        header: {'content-type':'application/json'},
-        method: 'DELETE',
-        dataType: 'json',
-        responseType: 'text',
-        success: (result) => {
-          console.log(result);
-          if(result.data.code === 200){
-            wx.showToast({
-              title: '已取消收藏',
-              icon: 'success',
-              image: '',
-              duration: 1500,
-              mask: false,
-              success: (result) => {
-                this.setData({
-                  is_attention:false
-                })
-              },
-            });
-              
-          }
-        },
-      });
-        
-    }
-   
-
-  
-  },
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -288,8 +200,6 @@ Page({
           })
           .then((res) => {
             console.log(res);
-            res.lists.created_on = utils.formatDate( new Date(res.lists.created_on) * 1000)
-            console.log(res.lists.created_on);
             this.setData({
               ...res.lists,
             });
@@ -307,7 +217,6 @@ Page({
                     new Date(res.comments[i].created_on) * 1000
                   );
                 }
-                console.log("res.comments",res.comments);
                 this.setData({
                   commentList: res.comments,
                 });
