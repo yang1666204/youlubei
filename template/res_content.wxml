@@ -20,7 +20,7 @@
                  </view>
              </navigator>
              <button class="attention_btn" bindtap="handlegz">
-                 <text class="attention_font" wx:if="{{is_attention_user}}">已订阅</text>
+                 <text class="attention_font" wx:if="{{is_attention_user == true}}">已订阅</text>
                  <text class="attention_font" wx:else>订阅</text>
              </button>
              <!-- <view class="rightContent">
