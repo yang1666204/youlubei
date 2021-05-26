@@ -105,7 +105,7 @@ Page({
   },
   toedit(){
     wx.navigateTo({
-      url: '../edit/index',
+      url: '../../packageB/pages/edit/index',
       events: {  
       },
       success: function(res) {       

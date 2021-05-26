@@ -3,7 +3,7 @@
          
          <view class="infoContainer">
              <navigator open-type="navigate"
-                 url="../otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
+                 url="../../../pages/otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
                  <view class="leftContent">
                      <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;"
                          src="{{avatar}}" alt="" />

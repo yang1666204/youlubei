@@ -1,30 +1,63 @@
 {
   "pages": [
-    
     "pages/loadImg/index",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/question/index",
-    "pages/showQuestions/index",
-    "pages/addNote/index",
-    "pages/person/index",
-    "pages/showNote/index",
-    "pages/showPerson/index",
     "pages/note/index",
-    "pages/toOthers/index",
-    "pages/askDetail/index",
-    "pages/edit/index",
-    "pages/otherspage/index",
-    "pages/changeavatar/index",
-    "pages/mypage/index",
-    "pages/mycollect/index",
-    "pages/myattention/index",
-    "pages/search/index",
-    "pages/modify/index",
-    "pages/editques/index",
-    "pages/resDetail/index"
-    
+    "pages/logs/logs",
+    "pages/person/index",
+    "pages/question/index",
+    "pages/resDetail/index",
+    "pages/otherspage/index"                                    
   ],
+  "subpackages": [
+    {
+      "root": "packageA",
+      "name": "pack1",
+      "pages": [
+        "pages/addNote/index",
+        "pages/search/index",
+        "pages/showNote/index"       
+      ]
+    }, 
+    {
+      "root": "packageC",
+      "name": "pack3",
+      "pages": [
+        "pages/askDetail/index",
+        "pages/showQuestions/index",
+        "pages/showPerson/index" 
+        
+      ]
+    }, 
+    {
+      "root": "packageB",
+      "name": "pack2",
+      "pages": [
+        "pages/changeavatar/index",
+        "pages/mypage/index",
+        "pages/mycollect/index",
+        "pages/myattention/index",
+        "pages/modify/index",
+        "pages/edit/index",
+        "pages/editques/index"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": ["packageC"]
+    },
+    "pages/note/index": {
+      "network": "all",
+      "packages": ["packageA"]
+    },
+    "pages/person/index": {
+      "network": "all",
+      "packages": ["packageB"]
+    }
+   
+  },
   "window": {
     "navigationStyle": "custom"
   },

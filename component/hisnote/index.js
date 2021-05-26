@@ -29,7 +29,7 @@ Component({
    
       if(this.properties.sign=='other'){
         wx.navigateTo({
-          url: '../showNote/index',
+          url: '../../packageA/pages/showNote/index',
           events: { 
             acceptDataFromOpenedPage: function(data) {
             
@@ -45,7 +45,7 @@ Component({
         })
       }else{
         wx.navigateTo({
-          url: '../modify/index',
+          url: '../../../packageB/pages/modify/index',
           events: { 
             acceptDataFromOpenedPage: function(data) {
             

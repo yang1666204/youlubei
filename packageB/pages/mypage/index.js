@@ -1,5 +1,4 @@
-// pages/otherspage/index.js
-// import WxValidate from '../../packageA/pages/showNote/index'
+// pages/mypage/index.js
 Page({
   /**
    * 页面的初始数据
@@ -11,63 +10,15 @@ Page({
     notelist:[],
     commentList:[],
     user_name:'',
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options) 
-    const that = this
-    const app = getApp();
-    wx.getStorage({
-        key: 'openId',
-        success (res) {   
-        that.setData({
-          openid:res.data,
-          avatar:options.avatar,
-          user_name:options.user_name
-        })
-          app.get('https://zzc0309.top/api/v1/user_post',{
-          openid:res.data,
-          userId:options.user_id
-      }).then(res=>{                        
-                         that.setData({
-                          quslist: res.lists 
-                        })                     
-                    }).catch(err=>{
-                    })     
-        app.get('https://zzc0309.top/api/v1/user_note',{
-          openid:res.data,
-          userId:options.user_id
-      }).then(res=>{
-                         that.setData({
-                          notelist: res.lists 
-                        })
-                     
-                    }).catch(err=>{
-                  
-                    })  
-        app.get('https://zzc0309.top/api/v1/user_comment',{
-          openid:res.data,
-          userId:options.user_id
-      }).then(res=>{
-                     
-                         that.setData({
-                          commentList: res.lists 
-                        })
-                     
-                    }).catch(err=>{
-               
-                    })                            
-      },
-      fail(){
-     
-      },
-      complete(){
-     
-      }
-    })
+   console.log(options)
+    
   },
 
   /**
@@ -80,8 +31,63 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (options) {
-   
+  onShow: function () {
+    const that = this
+    const app = getApp();
+    wx.getStorage({
+        key: 'openId',
+        success (res) {   
+        that.setData({
+          openid:res.data,
+          avatar:app.globalData.studentinfo.avatar,
+          user_name:app.globalData.studentinfo.user_name
+        })
+          app.get('https://zzc0309.top/api/v1/user_post',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                        
+                         that.setData({
+                          quslist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                   
+                    }
+                    )     
+        app.get('https://zzc0309.top/api/v1/user_note',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                         that.setData({
+                          notelist: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+                  
+                    }
+                    )  
+        app.get('https://zzc0309.top/api/v1/user_comment',{
+          openid:res.data,
+          userId:app.globalData.userId
+      }).then(res=>{
+                     
+                         that.setData({
+                          commentList: res.lists 
+                        })
+                     
+                    }).catch(err=>{
+               
+                    }
+                    )                            
+      },
+      fail(){
+     
+      },
+      complete(){
+     
+      }
+    })
   },
 
   /**

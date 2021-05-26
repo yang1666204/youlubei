@@ -284,7 +284,7 @@ Page({
   toaddnote(){
    
     wx.navigateTo({
-      url: '../addNote/index',
+      url: '../../packageA/pages/addNote/index',
       events: {  
       },
       success: function(res) {       
@@ -294,7 +294,7 @@ Page({
   toshownote(e){
    
     wx.navigateTo({
-      url: '../showNote/index',
+      url: '../../packageA/pages/showNote/index',
       events: { 
         acceptDataFromOpenedPage: function(data) {
         
@@ -378,7 +378,7 @@ Page({
     const that = this
     
       wx.navigateTo({
-        url: '../search/index',
+        url: '../../packageA/pages/search/index',
         events: { 
           // acceptDataFromOpenedPage: function(data) {
           

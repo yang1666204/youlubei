@@ -42,17 +42,17 @@
 
       <view class="function" >
          <!-- <navigator open-type="navigate" url="../changeavatar/index"> -->
-         <navigator open-type="navigate" url="../mypage/index" class="funitem">
+         <navigator open-type="navigate" url="../../packageB/pages/mypage/index" class="funitem">
              <text  selectable="false" space="false" decode="false">
                   个人主页
              </text>  
          </navigator>
-         <navigator open-type="navigate" url="../mycollect/index" class="funitem">
+         <navigator open-type="navigate" url="../../packageB/pages/mycollect/index" class="funitem">
              <text  selectable="false" space="false" decode="false">
                   我的收藏
              </text>
          </navigator>
-         <navigator open-type="navigate" url="../myattention/index" class="funitem">
+         <navigator open-type="navigate" url="../../packageB/pages/myattention/index" class="funitem">
              <text  selectable="false" space="false" decode="false">
                   我的关注
              </text>
