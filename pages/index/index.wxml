@@ -49,7 +49,7 @@
         style="height: 65vh;" >
         <view wx:for="{{list}}" wx:key="index" >
             <view class="mainContent">
-                <navigator class="" target="" url="../askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
+                <navigator class="" target="" url="../../packageC/pages/askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
                     <!-- 头像、积分、日期、名字 -->
                     <view class="topContent">
                         <view class="leftContent">

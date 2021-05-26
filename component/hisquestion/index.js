@@ -34,43 +34,43 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    toshownote(e){
-   
-      if(this.properties.sign=='other'){
-        console.log("other")
-        wx.navigateTo({
-          url: '../askDetail/index',
-          events: { 
-            acceptDataFromOpenedPage: function(data) {
+    // toshownote(e){
+    //   console.log("other")
+    //   if(this.properties.sign=='other'){
+    //     console.log("other")
+    //     wx.navigateTo({
+    //       url: '../../packageC/pages/askDetail/index',
+    //       events: { 
+    //         acceptDataFromOpenedPage: function(data) {
             
-            },
+    //         },
             
-          },
-          success: function(res) {       
-            res.eventChannel.emit('acceptDataFromOpenerPage', { 
-              noteId:e.currentTarget.dataset.noteid,
+    //       },
+    //       success: function(res) {       
+    //         res.eventChannel.emit('acceptDataFromOpenerPage', { 
+    //           noteId:e.currentTarget.dataset.noteid,
              
-            })
-          }
-        })
-      }else{
-        wx.navigateTo({
-          url: '../editques/index',
-          events: { 
-            acceptDataFromOpenedPage: function(data) {
+    //         })
+    //       }
+    //     })
+    //   }else{
+    //     wx.navigateTo({
+    //       url: '../../../packageC/pages/editques/index',
+    //       events: { 
+    //         acceptDataFromOpenedPage: function(data) {
             
-            },
+    //         },
             
-          },
-          success: function(res) {       
-            res.eventChannel.emit('acceptDataFromOpenerPage', { 
-              noteId:e.currentTarget.dataset.noteid,
+    //       },
+    //       success: function(res) {       
+    //         res.eventChannel.emit('acceptDataFromOpenerPage', { 
+    //           noteId:e.currentTarget.dataset.noteid,
              
-            })
-          }
-        })
-      }
+    //         })
+    //       }
+    //     })
+    //   }
      
-    },
+    // },
   }
 })

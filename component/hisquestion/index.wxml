@@ -18,11 +18,11 @@
                   var change = function(sign,post_id) {
                      
                            if(sign=="other"){
-                             return '../askDetail/index?post_id='+post_id
+                             return '../../packageC/pages/askDetail/index?post_id='+post_id
                              
                            }
                            else {
-                             return  '../editques/index?post_id='+post_id
+                             return  '../../../packageB/pages/editques/index?post_id='+post_id
                               
                            }
                            
