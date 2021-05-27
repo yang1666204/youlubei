@@ -140,6 +140,8 @@ Page({
       key: 'userId',
       success:(res)=>{
         data = res.data
+        console.log("data",data);
+        console.log(this.data.userId);
         if(this.data.is_attention_user== true){
           //点击取消关注
           wx.request({
@@ -203,7 +205,7 @@ Page({
       console.log("aa");
       wx.request({
         // url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
-        url: "http://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
+        url: "http://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
         header: { "content-type": "application/json" },
         method: "POST",
         dataType: "json",
@@ -229,7 +231,7 @@ Page({
     }else{
       console.log("b");
       wx.request({
-        url: 'http://zzc0309.top:8000/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.user_id+"&postId="+this.data.post_id,
+        url: 'http://zzc0309.top:8000/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
         data: {},
         header: {'content-type':'application/json'},
         method: 'DELETE',
@@ -274,6 +276,7 @@ Page({
     var appInst = getApp();
     //访问人的user_id
     var user_id = appInst.globalData.userId;
+    console.log("user_id",user_id);
     wx.getStorage({
       key: "openId",
       success: (result) => {
