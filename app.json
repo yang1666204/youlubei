@@ -25,8 +25,8 @@
       "pages": [
         "pages/askDetail/index",
         "pages/showQuestions/index",
-        "pages/showPerson/index" 
-        
+        "pages/showPerson/index",
+        "pages/resDetail/index"
       ]
     }, 
     {
