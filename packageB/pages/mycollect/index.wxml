@@ -1,5 +1,37 @@
 <!--pages/mycollect/index.wxml-->
 <view class="head">
-         <image class="" style="height:22vh;width:100vw" src="http://icknsd.cn/%E5%9B%BE%E5%B1%82%202.png" mode="scaleToFill" lazy-load="false" binderror="" bindload="" />
-         <view class="flageone"><van-icon name="arrow-left" color="#f4f4f4" size="60rpx" bind:click="goback" /></view>
+      <image class="" style="height:15vh;width:100vw" src="http://icknsd.cn/smallCat.png" mode="scaleToFill"
+            lazy-load="false" binderror="" bindload="" />
+      <view class="flageone">
+            <van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" />
+      </view>
+      <view class="userinfo_container">
+            <!-- <open-data type="userAvatarUrl" ></open-data>  -->
+            <image style="width:60px;height:60px;border-radius:50%;position:absolute;bottom:130rpx;rpx;left:calc(50% - 50rpx);"
+                  mode="aspectFill" src="{{user_avatar}}" />
+            <view class="userinfo_attention">
+                  <text class="user_attention">我的收藏</text>
+                  <text decode="true" class="user_attention_num">收藏&nbsp;{{user_attention_num}}</text>
+            </view>
+
+      </view>
 </view>
+<scroll-view scroll-y="true" style="height:70vh">
+      <view class="scroll_container" wx:for="{{lists}}" wx:key="item.user_id">
+         <navigator open-type="navigate" url="../../../pages/otherspage/index?user_id={{item.user_id}}&avatar={{item.avatar}}&user_name={{item.user_name}}">
+            <view class="list_item" >
+                  <view style="padding:20rpx" ></view>
+                  <image src="{{item.avatar}}" style="width:40px;height:40px;border-radius:50%;" ></image>
+                  <view class="item_userInfo" >
+                        <view class="item_user">
+                              
+                              <view class="{{item.role == '学生' ? 'item_role' : 'item_role_teacher'}}" >{{item.role}}</view>
+                              <text class="item_username" >{{item.user_name}}</text>
+                        </view>
+                      
+                        <text class="item_usersig" >{{item.signature}}</text>
+                  </view>
+            </view>
+         </navigator>
+      </view>
+</scroll-view>
