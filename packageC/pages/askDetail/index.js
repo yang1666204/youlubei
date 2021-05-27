@@ -140,10 +140,10 @@ Page({
       key: 'userId',
       success:(res)=>{
         data = res.data
-        if(this.data.is_attention_user){
+        if(this.data.is_attention_user== true){
           //点击取消关注
           wx.request({
-            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
+            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
             data: {},
             header: {'content-type':'application/json'},
             method: 'DELETE',
@@ -167,7 +167,7 @@ Page({
         }else{
           //点击关注
          wx.request({
-           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data.userId+'&userId02='+this.data.user_id,
+           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
            data: {},
            header: {'content-type':'application/json'},
            method: 'POST',
@@ -272,7 +272,7 @@ Page({
    */
   onShow: function () {
     var appInst = getApp();
-    console.log(appInst.globalData.userId);
+    //访问人的user_id
     var user_id = appInst.globalData.userId;
     wx.getStorage({
       key: "openId",
@@ -287,9 +287,7 @@ Page({
             userId: user_id
           })
           .then((res) => {
-            console.log(res);
             res.lists.created_on = utils.formatDate( new Date(res.lists.created_on) * 1000)
-            console.log(res.lists.created_on);
             this.setData({
               ...res.lists,
             });
@@ -297,17 +295,13 @@ Page({
               .get("https://zzc0309.top/api/v1/comments", {
                 openid: this.data.openid,
                 parentId: res.lists.post_id,
-                // parentId:10
               })
               .then((res) => {
-                // var temp = utils.formatTime(Date.parse(new Date())-res.comments[0].created_on)
                 for (var i = 0; i < res.comments.length; i++) {
-                  // res.comments[i].created_on = utils.formatTime(Date.parse(new Date(res.comments[0].created_on)))
                   res.comments[i].created_on = utils.formatDate(
                     new Date(res.comments[i].created_on) * 1000
                   );
                 }
-                console.log("res.comments",res.comments);
                 this.setData({
                   commentList: res.comments,
                 });
@@ -327,10 +321,13 @@ Page({
             });
           },
           fail: () => {},
-          complete: () => {},
+          complete: () => {
+            
+          },
         });
       },
     });
+ 
   },
   /**
    * 生命周期函数--监听页面隐藏
