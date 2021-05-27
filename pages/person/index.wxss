@@ -47,7 +47,7 @@
 }
 .attitem{
     height: 10vh;
-    width: 40vw;
+    width: 80vw;
     display: flex;
     flex-direction: column;
     font-size: 30rpx;
@@ -55,16 +55,16 @@
 .attitem1{
     text-align: center;
     height: 40rpx;
-    width: 40vw;
+    width: 80vw;
     
 }
 .attitem2{
     text-align: center;
     height:  40rpx;
-    width: 40vw;
+    width: 80vw;
     color: #6ee3cf;
 }
-.attitem3{
+/* .attitem3{
     text-align: center;
     height:  40rpx;
     width: 40vw;
@@ -74,7 +74,7 @@
     height:  40rpx;
     width: 40vw;
     color: #6ee3cf;
-}
+} */
 .note{
     height: 5vh;
     background-color: #fff;

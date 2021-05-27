@@ -12,7 +12,7 @@ Page({
     userId:'1',
     isShow:false,
     isdisabled:false,
-    array: ['请选择学科','哲学', '经济学', '法学', '文学','历史学','理学','艺术学'],
+    array: ['哲学', '经济学', '法学', '文学','历史学','理学','艺术学'],
     index:0,
     info:''
   },

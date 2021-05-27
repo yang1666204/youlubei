@@ -46,7 +46,7 @@ Page({
           openid:res.data,
           userId:app.globalData.userId
       }).then(res=>{
-                        
+                        console.log('qus',res.lists)
                          that.setData({
                           quslist: res.lists 
                         })
@@ -71,7 +71,7 @@ Page({
           openid:res.data,
           userId:app.globalData.userId
       }).then(res=>{
-                     
+                     console.log('commentList',res.lists)
                          that.setData({
                           commentList: res.lists 
                         })

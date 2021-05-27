@@ -19,21 +19,14 @@
           <view class="attention">
               <view class="attitem">
                   <text class="attitem1" selectable="false" space="false" decode="false">
-                      关注
+                      粉丝
                   </text>
                   <text class="attitem2" selectable="false" space="false" decode="false">
-                      10
+                      {{list.attention_num}}
                   </text>
                   
               </view>
-              <view class="attitem">
-                  <text class="attitem3" selectable="false" space="false" decode="false">
-                      读者
-                  </text>
-                  <text class="attitem4" selectable="false" space="false" decode="false">
-                      100
-                  </text>
-              </view>
+              
           </view>
       </view>
       <view class="note" hover-class="none" hover-stop-propagation="false">

@@ -198,6 +198,7 @@ Page({
 
   //收藏问题
   handlesc: function () {
+    console.log(123)
     var appInst = getApp();
     if(!this.data.is_attention){
       console.log("aa");
@@ -270,7 +271,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+   onShow: function () {
     var appInst = getApp();
     //访问人的user_id
     var user_id = appInst.globalData.userId;
@@ -288,6 +289,7 @@ Page({
           })
           .then((res) => {
             res.lists.created_on = utils.formatDate( new Date(res.lists.created_on) * 1000)
+            console.log(res.lists)
             this.setData({
               ...res.lists,
             });
