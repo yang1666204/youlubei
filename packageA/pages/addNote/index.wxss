@@ -33,6 +33,7 @@
     height: 65vh;
   }
   .row{
+    margin-top: 10rpx;
     height: 40vh;
   }
   .text{
@@ -50,10 +51,7 @@
     padding: 0 4vw;
     margin: 10rpx 0;
   }
-  .input{
-    border-bottom: 1 solid black !important;
-    
-  }
+  
   .button{
     background-color: #6ee3cf;
     border-radius: 50rpx;
@@ -107,3 +105,10 @@
     transform: scale(0.9,0.9);
     background-color: #ccc;
   }
+  .xkContainer{
+    margin: 30rpx auto 30rpx auto;
+    display: flex;
+    justify-content:space-between;
+    color:#B1C1CE ;
+  }
+ 

@@ -154,6 +154,23 @@ Page({
        
       },
       fail(){
+      },
+      complete(){
+                  app
+                   .get("https://zzc0309.top/api/v1/user", {
+                    openid:app.globalData.openId,
+                    userId:app.globalData.userId
+                   })
+                   .then((res) => {
+                     console.log(res.list)
+                    //  that.setData({
+                    //    avatar:res.list.avatar
+                    //  })
+                     app.globalData.studentinfo =  res.list
+                     //这里再全局获取了个人信息进行了储存
+                   })
+                   .catch((err) => {
+                   });
       }
     })
     }      

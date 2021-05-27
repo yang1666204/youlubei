@@ -21,13 +21,12 @@
       <form bindsubmit="submit">
          <van-cell-group>
             <view  style="border: 1 solid black">
-              <van-field
+              <input 
                 name="title"
                 model:value="{{ title }}"
                 placeholder="请再次输入题目"
-                border="{{ true }}"
-                input-class="input"
                 placeholder-style="color:#B1C1CE;font-size:30rpx;"
+                style="color:#B1C1CE ;padding:0 4vw" 
               />
             </view>
             <view class="{{index == 0 ? 'picker': 'picker2'}}"> 
@@ -38,15 +37,16 @@
                 border="{{ false }}"
               /> -->
                <picker name="tag" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
-                    <view  style="font-size:30rpx;">
-                        {{array[index]}}
-                    </view>
+                   <view class="xkContainer">
+                    <text >请选择学科：</text> 
+                    <text >{{array[index]}}</text>
+                </view>
                </picker>
             </view>            
          </van-cell-group>
                <view class="row" >
                    <textarea name="content" value="{{content}}"
-                          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw " 
+                          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw ;color:#B1C1CE " 
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
                           maxlength="500"
                           class="text"
