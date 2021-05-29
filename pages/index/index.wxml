@@ -54,7 +54,7 @@
                     <view class="topContent">
                         <view class="leftContent">
                             <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
-                            <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{item.avatar}}" />
+                            <image mode="aspectFill" style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{item.avatar}}" />
                             <view class="infoContent">
                                 <text class="name">{{item.user_name}}</text>
                                 <text class="date">{{item.created_on}}</text>

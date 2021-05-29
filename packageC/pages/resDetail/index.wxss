@@ -1,2 +1,6 @@
 
 @import "../../../template/res_content.wxss";
+.hf_container{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}

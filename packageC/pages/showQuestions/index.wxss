@@ -1,3 +1,5 @@
+@import "../../../template/res_content.wxss";
+
 .topContainer {
   width: 1200rpx;
   height: 387rpx;
@@ -11,136 +13,161 @@
 
   position: relative;
 }
-.imgpic{
+
+.imgpic {
   border-radius: 50%;
   overflow: hidden;
   width: 100rpx;
   height: 100rpx;
-  position:absolute;
-  bottom:-40rpx;
-  left:calc(50% - 50rpx)
+  position: absolute;
+  bottom: -40rpx;
+  left: calc(50% - 50rpx)
 }
-.backbtn{
+
+.backbtn {
   width: 100rpx;
   height: 0rpx;
   border-radius: 30rpx;
   opacity: 0.5;
   text-align: center;
-  top: 30rpx;
+  top: 75rpx;
   left: 20rpx;
   position: absolute;
   font-size: xx-small;
   color: #FFFFFF;
 }
 
-.formContainer{
+.formContainer {
   margin-top: 150rpx;
 }
-.Container{
+
+.Container {
   background-color: #FFFFFF;
 }
-.driver,.adriver{
+
+.driver,
+.adriver {
   background: #CADAFC;
   width: 70%;
   height: 2rpx;
   margin: 20rpx auto 0 auto;
- }
- .inputContent,.inputContenta{
-   width: 70%;
-   margin: 30rpx auto 0 auto;
-   color:#A6B2C1 ;
- }
- .footerContent{
-   margin-top: 50rpx;
-   display: flex;
-   justify-content: space-around;
- }
- .inputContenta{
-   height: 400rpx;
- }
-.textareaContent{
+}
+
+.inputContent,
+.inputContenta,
+._xkContainer {
+  width: 70%;
+  margin: 30rpx auto 0 auto;
+  color: #A6B2C1;
+}
+
+.footerContent {
+  margin-top: 50rpx;
+  display: flex;
+  justify-content: space-around;
+}
+
+.textareaContent {
+  height: 400rpx;
   width: 70%;
   color: #97A5B6;
   font-size: small;
   margin: 30rpx auto 30rpx auto;
 }
-.xsContent,.yqContent{
+
+.xsContent,
+.yqContent {
   color: #97A5B6;
 }
-.yqContent{
+
+.yqContent {
   margin-left: 107rpx;
   margin-top: 50rpx;
 }
-.addbq{
+
+.addbq {
   margin-right: 50rpx;
   margin-bottom: 20rpx;
   margin-left: 107rpx;
 }
-.adriver{
+
+.adriver {
   margin-top: 20rpx;
 }
-.footer{
+
+.footer {
   margin-bottom: 70rpx;
 }
-.submitFont{
+
+.submitFont {
   margin-left: 80rpx;
   margin-right: 80rpx;
 }
-.aabtn{
+
+.aabtn {
+  margin-top: 30rpx;
   margin-left: auto;
   margin-right: auto;
-  background-color:#65E3CD;
+  background-color: #65E3CD;
   width: 50vw;
   border-radius: 20rpx;
   color: #FFFFFF;
 }
+
 /* 标签 */
-.tagContainer{
+.tagContainer {
   display: flex;
   justify-content: left;
 }
 
-.redioContainer{
+.redioContainer {
   padding: 30rpx;
   display: flex;
   flex-wrap: wrap;
   width: 50vw;
 
 }
-.radioxueke{
+
+.radioxueke {
   margin: 20rpx;
 }
-.taghidden{
+
+.taghidden {
   display: none;
 }
-.weui-cell__hd{
+
+.weui-cell__hd {
   margin: 20rpx;
 }
-.step{
-  background-color:#CADAFC !important;
+
+.step {
+  background-color: #CADAFC !important;
   color: #FFFFFF;
 }
+
 /* 遮罩层 */
-.shade{
+.shade {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1;
-  background-color: rgba(0,0,0,0.8);
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0.2;
   overflow: hidden;
   /* box-shadow: 10px 10px 5px #A7BBB7; */
-}  
-.contContent{
+}
+
+.contContent {
   color: #65E3CD;
   /* text-align: center; */
   display: flex;
   justify-content: center;
   margin-top: 50rpx;
 }
-.cont{
+
+.cont {
   position: fixed;
   z-index: 2;
   overflow: hidden;
@@ -154,10 +181,12 @@
   font-size: large;
 }
 
-.xkContainer{
+.xkContainer {
   width: 70%;
   margin: 30rpx auto 0 auto;
   display: flex;
   justify-content: space-between;
-  color:#8c97a5 ;
+  color: #8c97a5;
 }
+
+

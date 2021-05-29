@@ -9,7 +9,7 @@
         <view class="scroll_container">
             <!-- 模板开始 -->
             <template is="template_res"
-                data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content}}" />
+                data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,image}}" />
             <!-- 模板结束 -->
             <view class="line_gap"></view>
             <view class="content">
@@ -19,7 +19,7 @@
 
                     <view class="comment_container" wx:for="{{commentList}}" wx:key="index">
                         <navigator
-                            url="../resDetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}">
+                            url="../resDetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}&imageUrl={{item.image}}">
                             <view class="hd_top">
                                 <image src="{{item.avatar}}"
                                     style="margin-right:30rpx;min-width:60rpx;max-width:60rpx;opacity: 1; height:60rpx; border-radius: 50%;">
@@ -39,21 +39,19 @@
             </view>
         </view>
     </scroll-view>
-    <!-- <view class="footContainer"> -->
-    <cover-view wx:if="{{isShow_foot}}" class="footContainer">
-        <cover-view>
-            <cover-view class="Line"></cover-view>
-        </cover-view>
+        <view wx:if="{{isShow_foot}}" class="footContainer">
+        <view>
+            <view class="Line"></view>
+        </view>
         <a class="a" bind:tap="handlesc" href="#">
-            <cover-view wx:if="{{is_attention}}">已收藏</cover-view>
-            <cover-view wx:else>收藏</cover-view>
+            <view wx:if="{{is_attention}}">已收藏</view>
+            <view wx:else>收藏</view>
         </a>
-        <cover-view>
-            <cover-view class="divLine"></cover-view>
-        </cover-view>
+        <view>
+            <view class="divLine"></view>
+        </view>
         <a class="b" bind:tap="handleres" href="#">回答</a>
-    </cover-view>
-    <!-- </view> -->
+    </view>
     <!-- 遮罩层 -->
     <view class="mask" wx:if="{{isShow}}" bind:tap="handleClose"></view>
     <!-- 弹窗 -->
@@ -61,33 +59,7 @@
 <view class="popContent" wx:if="{{isShow}}">
     <textarea class="resContent" bindinput="getValue" placeholder="想说点什么呢"></textarea>
 
-    <!-- <van-popup custom-class="popup" closeable="{{true}}" round="{{true}}" overlay="{{true}}" show="{{reShow}}"
-        bind:close="onClose">
-        <view class="weui-cells weui-cells_after-title">
-            <radio-group bindchange="radioChange">
-                <view class="redioContainer">
-                    <label class="weui-cell weui-check__label" wx:for="{{items}}" wx:key="{{item.value}}">
-                        <view class="weui-cell__hd">
-                            <radio color="#CADAFC" value="{{item.value}}" checked="true" />
-                        </view>
-                        <view class="weui-cell__bd">{{item.name}}</view>
-                    </label>
-                </view>
-            </radio-group>
-        </view>
-    </van-popup> -->
-
-    <!-- <view class="footbtn">
-        <view class="tagContainer">
-            <van-button bind:tap="addTag" round color="#CADAFC" size="small">
-                <text style="color:#FFFFFF"> +点击添加标签</text>
-            </van-button>
-            <van-tag color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
-                {{radio}}
-            </van-tag>
-        </view> -->
-
-    <!-- </view> -->
+    <template is="template_photo" data="{{imageUrl}}"></template>
     <view>
         <view class="line"></view>
     </view>

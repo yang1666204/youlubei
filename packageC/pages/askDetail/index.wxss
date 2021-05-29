@@ -103,7 +103,7 @@
   border-radius: 30rpx;
   opacity: 0.5;
   text-align: center;
-  top: 30rpx;
+  top: 75rpx;
   left: 20rpx;
   position: absolute;
   font-size: xx-small;
@@ -140,7 +140,7 @@
 }
 
 .line {
-  width: 80%;
+  width: 75%;
   height: 0;
   border: 3rpx solid #CADAFC;
   margin: 20rpx auto 20rpx auto;

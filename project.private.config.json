@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -12,8 +13,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/showQuestions/index",
-          "pathName": "pages/showQuestions/index",
+          "name": "packageC/pages/showQuestions/index",
+          "pathName": "packageC/pages/showQuestions/index",
           "query": "",
           "scene": null
         },
@@ -56,6 +57,7 @@
         {
           "name": "pages/myattention/index",
           "pathName": "pages/myattention/index",
+          "query": "",
           "scene": null
         }
       ]

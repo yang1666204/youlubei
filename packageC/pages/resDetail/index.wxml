@@ -2,6 +2,7 @@
 <template is="template_top" ></template>
 
 <!-- 模板开始 -->
-<import src="../../../template/res_content.wxml" />
-<template is="template_res" data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content}}" />
+<view class="hf_container" >
+<template is="template_res" data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,imageUrl}}" />
+</view>
 <!-- 模板结束 -->

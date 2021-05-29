@@ -7,27 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
+    imageUrl:'',
     info:'',
     userId: "",
     openid: "",
     show: false,
-    radio: "",
-    items: [
-      { value: "哲学", name: "哲学" },
-      { value: "经济学", name: "经济学" },
-      { value: "法学", name: "法学" },
-      { value: "文学", name: "文学" },
-      { value: "历史学", name: "历史学" },
-      { value: "理学", name: "理学" },
-     
-      { value: "工学", name: "工学" },
-      { value: "艺术学", name: "艺术学" },
-    ],
     isShow: false,
     title: "",
-    xueke: "",
+    tag: "",
     content: "",
-    jifen: 10,
     xkList:[
       '哲学',
       '经济学',
@@ -48,8 +36,6 @@ Page({
     this.initValidate();
   },
 
-  onChange(event) {
-  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -87,29 +73,74 @@ Page({
     })
   },
 
+  //拍照上传
+  handlePhoto:function(){
+    console.log("点击上传图片");
+    var that = this,temp_url
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        var tempFilePaths = res.tempFilePaths;
+        this.upload(that,tempFilePaths)
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
+
+  upload:function(ctx,url){
+    var openId = wx.getStorageSync('openId');
+    console.log(openId);
+    wx.showToast({
+      title: '正在上传',
+      icon: 'loading'
+    });
+    console.log(openId,url[0]);
+    wx.uploadFile({
+      url: 'https://zzc0309.top/api/v1/upload?openid='+openId+'&isAvatar=0',
+      filePath: url[0],
+      name: 'image',
+      success: (result)=>{
+        //JSON.parse 字符串转JSON
+        var _imageUrl = JSON.parse(result.data)
+        console.log("imageUrl",_imageUrl.data.image_url);
+        ctx.setData({
+          imageUrl:_imageUrl.data.image_url
+        })
+      },
+      fail: ()=>{
+        wx.showModal({
+          title: '提示',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+      complete: ()=>{
+        wx.hideToast();
+      }
+    });
+  },
+
   handleClose: function (e) {
     this.setData({
       isShow: false,
     });
   },
   handleSubmit: function (e) {
+    console.log(e);
     if (this.formSubmit(e)) {
       const that = this;
       const app = getApp();
       let { value } = e.detail;
-      if(!value.tag){
-        wx.showModal({
-          content: '请选择标签',
-          showCancel: false,
-        });
-        return
-      }
-      //接口没用学科这个参数  把tag代替的学科
-      delete value.xueke
+      console.log("value",value);
       wx.request({
-        url: "https://zzc0309.top/api/v1/posts?openid="+this.data.openid,
+        url: "http://zzc0309.top:8000/api/v2/posts?openid="+this.data.openid,
         data: {
           ...value,
+          image:this.data.imageUrl,
           userId: this.data.userId,
         },
         header: { "content-type": "application/json" },
@@ -117,19 +148,13 @@ Page({
         dataType: "json",
         responseType: "text",
         success: (result) => {
+          console.log(result);
           this.setData({
             isShow: true,
             title: "",
-            xueke: "",
             content: "",
-            jifen: 10,
-            radio: "",
           });
-        },
-        fail: () => {
-        },
-        complete: () => {
-        },
+        }
       });
     }
   },
@@ -151,20 +176,6 @@ Page({
       radio: event.detail,
     });
   },
-  radioChange(e) {
-
-    const items = this.data.items;
-    for (let i = 0, len = items.length; i < len; ++i) {
-      items[i].checked = items[i].value === e.detail.value;
-    }
-    this.setData({
-      radio: e.detail.value,
-    });
-
-    this.setData({
-      items,
-    });
-  },
   // 表单验证
   showModal(error) {
     wx.showModal({
@@ -182,7 +193,7 @@ Page({
         required: true,
         maxlength: 100,
       },
-      xueke:{
+      tag:{
         required:true
       },
     };
@@ -192,7 +203,7 @@ Page({
         required: "请输入题目",
         // maxlength: '名字不能超过10个字'
       },
-      xueke:{
+      tag:{
         required:"请输入学科"
       },
       content: {
@@ -213,4 +224,11 @@ Page({
     }
     return true;
   },
+  
+  handle_preview:function(){
+    wx.previewImage({
+      urls: [this.data.imageUrl],
+    })
+}
 });
+

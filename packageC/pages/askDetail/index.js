@@ -39,7 +39,9 @@ Page({
     is_attention:false,
     is_attention_user:false,
     comment_num:0,
-    isShow_foot:true
+    isShow_foot:true,
+    image:'',
+    imageUrl:''
   },
 
   /**
@@ -114,25 +116,7 @@ Page({
   onClose() {
     this.setData({ reShow: false });
   },
-  radioChange(e) {
-    const items = this.data.items;
-    for (let i = 0, len = items.length; i < len; ++i) {
-      items[i].checked = items[i].value === e.detail.value;
-    }
-    this.setData({
-      radio: e.detail.value,
-    });
-
-    this.setData({
-      items,
-    });
-  },
-  // addTag: function () {
-  //   this.setData({
-  //     reShow: true,
-  //   });
-  // },
-  //关注人
+  
   
   handlegz:function(){
     var data;
@@ -263,7 +247,63 @@ Page({
 
   
   },
+  //预览图片
+  handle_preview:function(){
+    wx.previewImage({
+      urls: [this.data.imageUrl],
+    })
+},
+  //上传图片
+  handlePhoto:function(){
+    console.log("点击上传图片");
+    var that = this,temp_url
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: (res) => {
+        var tempFilePaths = res.tempFilePaths;
+        this.upload(that,tempFilePaths)
+      },
+      fail: () => {},
+      complete: () => {}
+    });
+      
+  },
 
+
+  upload:function(ctx,url){
+    var openId = wx.getStorageSync('openId');
+    console.log(openId);
+    wx.showToast({
+      title: '正在上传',
+      icon: 'loading'
+    });
+    console.log(openId,url[0]);
+    wx.uploadFile({
+      url: 'https://zzc0309.top/api/v1/upload?openid='+openId+'&isAvatar=0',
+      filePath: url[0],
+      name: 'image',
+      success: (result)=>{
+        //JSON.parse 字符串转JSON
+        var _imageUrl = JSON.parse(result.data)
+        console.log("imageUrl",_imageUrl.data.image_url);
+        ctx.setData({
+          imageUrl:_imageUrl.data.image_url
+        })
+      },
+      fail: ()=>{
+        wx.showModal({
+          title: '提示',
+          content: '上传失败',
+          showCancel: false
+        })
+      },
+      complete: ()=>{
+        wx.hideToast();
+      }
+    });
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -307,6 +347,7 @@ Page({
                     new Date(res.comments[i].created_on) * 1000
                   );
                 }
+                console.log("res.comments",res.comments);
                 this.setData({
                   commentList: res.comments,
                 });
