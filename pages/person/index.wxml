@@ -42,7 +42,7 @@
          </navigator>
          <navigator open-type="navigate" url="../../packageB/pages/mycollect/index" class="funitem">
              <text  selectable="false" space="false" decode="false">
-                  我的收藏
+                  问题收藏
              </text>
          </navigator>
          <navigator open-type="navigate" url="../../packageB/pages/myattention/index" class="funitem">

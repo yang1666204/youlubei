@@ -28,7 +28,6 @@ Page({
     title: "",
     user_name: "",
     isShow: false,
-    reShow: false,
     radio: "",
     user_id: "",
     inputValue: "",
@@ -36,7 +35,8 @@ Page({
     userId: "",
     post_id: "",
     parentId: "",
-    comment_num:0
+    comment_num:0,
+    isdisabled:false
   },
 
   /**
@@ -122,11 +122,11 @@ Page({
       items,
     });
   },
-  addTag: function () {
-    this.setData({
-      reShow: true,
-    });
-  },
+  // addTag: function () {
+  //   this.setData({
+  //     reShow: true,
+  //   });
+  // },
   //关注人
   
   
@@ -268,4 +268,55 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {},
+  submit(e){
+    const data = e.detail.value
+    const app =  getApp();
+    const that = this;
+    wx.showModal({
+      title: '提示',
+      content: '确定保存编辑吗？',
+      success (res) {
+        if (res.confirm) {
+          
+          console.log('用户点击确定')
+          that.setData({
+            isdisabled:true
+          })
+          wx.getStorage({
+            key: 'openId',
+            success (res) {
+              
+          const data2= {
+              ...data,
+              userId:app.globalData.userId,
+              postId:that.data.post_id
+            }
+            app.put('https://zzc0309.top/api/v2/posts?openid='+res.data,
+             data2       
+            ).then(res=>{
+              console.log(res)
+              wx.showToast({
+                title: '成功',
+                icon: 'success',
+                duration: 2000
+              })
+            }).catch(err=>{
+                console.log(err)
+            })
+            
+          
+          },
+          fail(){
+          }
+        })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+   
+    
+    
+     
+  }
 });

@@ -1,4 +1,0 @@
-<!--pages/note/index.wxml-->
-
-<van-button type="primary" bind:click="handleToNote" >我要提问</van-button>
-<Tabbar></Tabbar>

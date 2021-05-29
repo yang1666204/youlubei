@@ -71,7 +71,21 @@
   justify-content: center;
   align-items: center;
 }
-
+.attention_btn2{
+  margin-right: 0rpx;
+  width: 70px !important;
+  height: 25px;
+  background: #fff;
+  opacity: 1;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.attention_btn2::after{
+  border: none;
+}
 .attention_font{
   font-size: 14px;
   font-weight: 400;

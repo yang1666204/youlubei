@@ -39,7 +39,8 @@ Page({
     is_attention:false,
     is_attention_user:false,
     comment_num:0,
-    isShow_foot:true
+    isShow_foot:true,
+    is_myself:false
   },
 
   /**
@@ -163,6 +164,7 @@ Page({
                     })
                   }
                 })
+                
               }
             },
           });
@@ -310,7 +312,13 @@ Page({
                 this.setData({
                   commentList: res.comments,
                 });
+                 
               });
+              if(res.lists.user_id===appInst.globalData.userId){
+                this.setData({
+                  is_myself:true
+                 })
+             }
           }
           
           );

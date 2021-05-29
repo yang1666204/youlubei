@@ -11,7 +11,22 @@
  <view class="mid">
      <view class="personinfo">
           <view class="listitem1"> 
-              <navigator open-type="navigate" url="../../../pages/otherspage/index?user_id={{detail.user_id}}&avatar={{detail.avatar}}&user_name={{detail.user_name}}" >
+              <wxs module="component">
+                  var geturl = function(user_id,avatar,user_name,is_myself) {
+                      var url = ''
+                      if(is_myself!==true){
+                          url =  '../../../pages/otherspage/index?user_id='+user_id+'&avatar='+avatar+'&user_name='+user_name
+                      }
+                      else{
+                          url = "../../../packageB/pages/mypage/index"
+                      }
+                         return  url
+                       }
+            
+
+                module.exports.geturl = geturl;
+            </wxs>
+              <navigator open-type="navigate" url="{{component.geturl(detail.user_id,detail.avatar,detail.user_name,is_myself)}}" >
                      <view class="infoleft">
                      <wxs module="shownote">
                                   var change = function(created_on) {
@@ -35,9 +50,12 @@
                           </view> 
                      </view>
                </navigator>     
-                     <view>
-                         <text style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx;color:#65E3CD;float:left">
-                             10积分
+                     <view wx:if ="{{!is_myself}}">
+                         <text wx:if="{{detail.is_attention_user}}" bindtap="subscribe" style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx;color:#65E3CD;float:left">
+                             已关注
+                         </text>
+                         <text  wx:else  bindtap="subscribe"    style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx;color:#65E3CD;float:left">
+                             关注
                          </text>
                      </view>
                           
@@ -52,9 +70,12 @@
      </view>      
  </view>
    <view class="bottom">  
-          <text class="bottomtext">
-               关注
+          <text  wx:if="{{detail.is_attention}}"  bind:tap="collect" class="bottomtext">
+               已收藏
           </text>           
+          <text bind:tap="collect" wx:else  class="bottomtext">
+               收藏
+          </text>     
    </view>
           
 

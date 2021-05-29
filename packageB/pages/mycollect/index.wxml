@@ -18,18 +18,34 @@
 </view>
 <scroll-view scroll-y="true" style="height:70vh">
       <view class="scroll_container" wx:for="{{lists}}" wx:key="item.user_id">
-         <navigator open-type="navigate" url="../../../pages/otherspage/index?user_id={{item.user_id}}&avatar={{item.avatar}}&user_name={{item.user_name}}">
+             <!-- <wxs module="component">
+                  var geturl = function(user_id,avatar,user_name,userId) {
+                      var url = ''
+                      if(user_id!==userId){
+                          url =  '../../../pages/otherspage/index?user_id='+user_id+'&avatar='+avatar+'&user_name='+user_name
+                      }
+                      else{
+                          url = "../../../packageB/pages/mypage/index"
+                      }
+                         return  url
+                       }
+            
+
+                module.exports.geturl = geturl;
+            </wxs> -->
+         <navigator open-type="navigate" url="../../../packageC/pages/askDetail/index?post_id={{item.post_id}}">
+           
             <view class="list_item" >
                   <view style="padding:20rpx" ></view>
                   <image src="{{item.avatar}}" style="width:40px;height:40px;border-radius:50%;" ></image>
                   <view class="item_userInfo" >
                         <view class="item_user">
                               
-                              <view class="{{item.role == '学生' ? 'item_role' : 'item_role_teacher'}}" >{{item.role}}</view>
-                              <text class="item_username" >{{item.user_name}}</text>
+                              <view class="{{item.role == '学生' ? 'item_role' : 'item_role_teacher'}}" >{{item.user_name}}</view>
+                              <text class="item_username" >{{}}</text>
                         </view>
                       
-                        <text class="item_usersig" >{{item.signature}}</text>
+                        <text class="item_usersig" >{{item.title}}</text>
                   </view>
             </view>
          </navigator>
