@@ -24,13 +24,13 @@
 </view> -->
 <view class="font" >
     <text class="" >
-        关注 10
+        提问 {{quslist_length}}
     </text>
     <text class="" >
-        读者 100
+        回答 {{commentList_length}}
     </text>
     <text class="" >
-        笔记 5
+        笔记 {{notelist_length}}
     </text>     
 </view>
 <view class="tab">

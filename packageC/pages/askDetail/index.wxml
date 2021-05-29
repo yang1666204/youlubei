@@ -9,7 +9,7 @@
         <view class="scroll_container">
             <!-- 模板开始 -->
             <template is="template_res"
-                data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,image}}" />
+                data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,image,is_myself}}" />
             <!-- 模板结束 -->
             <view class="line_gap"></view>
             <view class="content">

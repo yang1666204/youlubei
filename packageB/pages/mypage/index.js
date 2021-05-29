@@ -10,7 +10,12 @@ Page({
     notelist:[],
     commentList:[],
     user_name:'',
-  
+    quslist_length:'',
+    commentList_length:'',
+    notelist_length:'',
+    signature:'',
+    //个性签名
+    //用于初始页面渲染
   },
 
   /**
@@ -34,12 +39,14 @@ Page({
   onShow: function () {
     const that = this
     const app = getApp();
+
     wx.getStorage({
         key: 'openId',
         success (res) {   
         that.setData({
           openid:res.data,
           avatar:app.globalData.studentinfo.avatar,
+          signature:app.globalData.studentinfo.signature,
           user_name:app.globalData.studentinfo.user_name
         })
           app.get('https://zzc0309.top/api/v1/user_post',{
@@ -48,32 +55,33 @@ Page({
       }).then(res=>{
                         console.log('qus',res.lists)
                          that.setData({
-                          quslist: res.lists 
+                          quslist: res.lists,
+                          quslist_length : res.lists.length
                         })
                      
                     }).catch(err=>{
                    
-                    }
-                    )     
+                    })     
         app.get('https://zzc0309.top/api/v1/user_note',{
           openid:res.data,
           userId:app.globalData.userId
       }).then(res=>{
                          that.setData({
-                          notelist: res.lists 
+                          notelist: res.lists,
+                          notelist_length: res.lists.length
                         })
                      
                     }).catch(err=>{
                   
-                    }
-                    )  
+                    })  
         app.get('https://zzc0309.top/api/v1/user_comment',{
           openid:res.data,
           userId:app.globalData.userId
       }).then(res=>{
                      console.log('commentList',res.lists)
                          that.setData({
-                          commentList: res.lists 
+                          commentList: res.lists,
+                          commentList_length: res.lists.length
                         })
                      
                     }).catch(err=>{

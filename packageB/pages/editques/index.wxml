@@ -1,4 +1,5 @@
 <van-toast id="van-toast" />
+<form bindsubmit="submit">
 <view class="Container">
     <view class="topContainer"></view>
     <van-button bind:tap="handleBack" round class="backbtn" size="mini">返回</van-button>
@@ -22,7 +23,17 @@
    
     <view class="content">
         <scroll-view scroll-y="{{true}}" style="height:60vh">
-            <text class="fontContent">{{content}}</text>
+             <view class="pic_container">
+
+            </view> 
+             <textarea name="content" value="{{content}}"
+                          placeholder="写下你的笔记" style="font-size:25rpx; " 
+                          placeholder-style="font-size:20rpx;color:#B1C1CE" 
+                          maxlength="500"
+                          class="text"
+                          style="height:25vh"
+                          >           
+            </textarea>    
             <view class="commentContainer">
                 <text decode="{{true}}">评论&nbsp;{{comment_num}}</text>
                 <view wx:for="{{commentList}}"  wx:key="created_on">
@@ -49,17 +60,26 @@
         <view class="Line"></view>
     </view>
     <a class="a" bind:tap="del" href="#">
-    <view >删除</view>    
+      <view >删除</view>    
     </a>
     <view>
         <view class="divLine"></view>
     </view>
-    <a class="b" bind:tap="handleres" href="#">回答</a>
+        <button class="c" form-type="submit" disabled="{{isdisabled}}" >
+           保存编辑
+        </button>
+    <view>
+        <view class="divLine_2"></view>
+    </view>
+    <a class="b" bind:tap="handleres" href="#">
+       回答
+    </a>
     <!-- </view> -->
     <!-- 遮罩层 -->
     <view class="mask" wx:if="{{isShow}}" bind:tap="handleClose"></view>
     <!-- 弹窗 -->
 </view>
+</form> 
 <view class="popContent" wx:if="{{isShow}}">
     <textarea class="resContent" bindinput="getValue" placeholder="想说点什么呢"></textarea>
     
@@ -80,9 +100,9 @@
        
     <view class="footbtn">
         <view class="tagContainer">
-            <van-button bind:tap="addTag" round color="#CADAFC" size="small">
+            <!-- <van-button bind:tap="addTag" round color="#CADAFC" size="small">
                 <text style="color:#FFFFFF"> +点击添加标签</text>
-            </van-button>
+            </van-button> -->
             <van-tag color="#FDDA83" class="{{radio ? 'tagShow' : 'taghidden'}}" type="primary" size="large">
                 {{radio}}
             </van-tag>

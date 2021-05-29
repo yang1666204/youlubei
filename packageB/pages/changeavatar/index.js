@@ -64,7 +64,7 @@ Page({
       success(res) {
         console.log(res.data)
         wx.uploadFile({
-          url: 'https://zzc0309.top/api/v1/upload?openid='+res.data, //仅为示例，非真实的接口地址
+          url: 'https://zzc0309.top/api/v1/upload?openid='+res.data+'&isAvatar=1', //仅为示例，非真实的接口地址
           filePath: that.data.imgs[0],
           name: 'image',
           // formData: {

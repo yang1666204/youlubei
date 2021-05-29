@@ -19,10 +19,14 @@
                 </view>
             </view>
         </navigator>
-        <button class="attention_btn" bindtap="handlegz">
+        <button class="attention_btn" bindtap="handlegz" wx:if="{{is_myself}}" >
             <text class="attention_font" wx:if="{{is_attention_user == true}}">已订阅</text>
             <text class="attention_font" wx:else>订阅</text>
         </button>
+         </button>
+              <button wx:else class="attention_btn2">
+                      
+              </button>
         <!-- <view class="rightContent">
              <text class="jfFont">{{score}}积分</text>
              <text class="jdFont">待解答</text>

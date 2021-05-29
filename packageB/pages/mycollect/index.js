@@ -10,7 +10,9 @@ Page({
     user_name:'',
     signature:'',
     lists:[],
-    user_attention_num:''
+    user_attention_num:'',
+    is_myself:false,
+    userId:'',
   },
 
   /**
@@ -22,7 +24,8 @@ Page({
     this.setData({
       user_avatar:user.avatar,
       signature:user.signature,
-      user_name:user.user_name
+      user_name:user.user_name,
+      userId:app.globalData.userId
     })
   },
 
