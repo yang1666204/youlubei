@@ -12,7 +12,8 @@ Page({
     user_id:'',//被访问的用户
     user_name:'',
     is_attention_user:false,
-    is_myself:true
+    is_myself:true,
+    image:''
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
   onLoad: function (options) {
     console.log(options);
     this.setData({
-      ...options
+      ...options,
+      image:options.imageUrl
     })
   },
 

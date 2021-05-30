@@ -11,7 +11,7 @@
              <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>
               <view >
                 <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-                <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:10rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{info.avatar}}" />
+                <image style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:60rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{info.avatar}}" />
              </view>
         <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
  </view>
@@ -23,15 +23,16 @@
  <view  class="form">
       <form bindsubmit="submit">
          <van-cell-group>
-            <view  style="border: 1 solid black">
+            <view style="padding-bottom:15rpx">
               <input 
                 name="title"
                 model:value="{{ title }}"
-                placeholder="请再次输入题目"
+                placeholder="请在此输入题目"
                 placeholder-style="color:#B1C1CE;font-size:30rpx;"
                 style="color:#B1C1CE ;padding:0 4vw" 
               />
             </view>
+            <view class="gap_line" ></view>
             <view class="{{index == 0 ? 'picker': 'picker2'}}"> 
                <!-- <van-field
                 name="tag"
@@ -46,10 +47,11 @@
                 </view>
                </picker>
             </view>            
+            <view class="gap_line" ></view>
          </van-cell-group>
                <view class="row" >
                    <textarea name="content" value="{{content}}"
-                          placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw ;color:#B1C1CE " 
+                          placeholder="想记点什么呢~" style="width:65vw; font-size:25rpx; padding:2vw 5vw ;color:#B1C1CE " 
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
                           maxlength="2000"
                           class="text"

@@ -79,7 +79,7 @@ Page({
         userId: userId,
         parentId: post_id,
         content: inputValue,
-        image:this.data.image
+        image:this.data.imageUrl
       },
       header: { "content-type": "application/json" },
       method: "POST",
@@ -256,14 +256,14 @@ Page({
   //预览图片
   handle_preview:function(){
     wx.previewImage({
-      urls: [this.data.image],
+      urls: [this.data.imageUrl],
     })
 },
-     preview:function(){
-  wx.previewImage({
-    urls: [this.data.image],
-  })
-},
+//      preview:function(){
+//   wx.previewImage({
+//     urls: [this.data.imageUrl],
+//   })
+// },
   //上传图片
   handlePhoto:function(){
     console.log("点击上传图片");
@@ -301,7 +301,7 @@ Page({
           var _imageUrl = JSON.parse(result.data)
           console.log("imageUrl",_imageUrl.data.image_url);
           ctx.setData({
-            image:_imageUrl.data.image_url
+            imageUrl:_imageUrl.data.image_url
           })
         }catch(e){
           console.log(result);
@@ -353,6 +353,7 @@ Page({
         this.setData({
           openid: result.data,
         });
+        //获取具体帖子 这里获取的image是这个具体帖子的图片
         appInst
           .get("https://zzc0309.top/api/v1/post", {
             openid: result.data,

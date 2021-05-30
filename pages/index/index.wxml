@@ -30,7 +30,6 @@
             <van-tab title="历史学"></van-tab>
             <van-tab title="理学"></van-tab>
             <van-tab title="艺术学"></van-tab>
-            <van-tab title="工学"></van-tab>
         </van-tabs>
     </view>
     <button hover-class="click" bind:tap="handleClick" class="floatBtn">

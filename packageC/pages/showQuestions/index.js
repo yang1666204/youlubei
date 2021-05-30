@@ -23,8 +23,7 @@ Page({
       '文学',
       '历史学',
       '理学',
-      '艺术学',
-      '工学'
+      '艺术学'
     ],
     index:0,
     _xkContainer:'_xkContainer'

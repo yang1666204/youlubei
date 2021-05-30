@@ -121,7 +121,7 @@
   height: 70px;
   position: relative;
   width: 70%;
-  margin: 30rpx auto 0 auto;
+  margin: 30rpx auto 30rpx auto;
   color: #A6B2C1;
 }
 ._xkContainer2 {

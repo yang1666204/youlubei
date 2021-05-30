@@ -2,25 +2,10 @@
     <view class="title">{{title}}</view>
 
     <view class="infoContainer">
-         <wxs module="component">
-                  var geturl = function(user_id,avatar,user_name,is_myself) {
-                      var url = ''
-                      if(is_myself!==true){
-                          url =  '../../../pages/otherspage/index?user_id='+user_id+'&avatar='+avatar+'&user_name='+user_name
-                      }
-                      else{
-                          url = "../../../packageB/pages/mypage/index"
-                      }
-                         return  url
-                       }
-            
-
-                module.exports.geturl = geturl;
-            </wxs>
         <navigator open-type="navigate"
-            url="{{component.geturl(user_id,avatar,user_name,is_myself)}}">
+            url="../../../pages/otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
             <view class="leftContent">
-                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"  mode="aspectFill"
+                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"
                     alt="" />
                 <view class="infoContent">
                     <view>
@@ -46,26 +31,20 @@
              <text class="jdFont">待解答</text>
          </view> -->
     </view>
-    <image wx:if="{{image}}" src="{{image}}" bind:tap="preview" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" mode="aspectFit"  ></image>
+    <image wx:if="{{image}}" src="{{image}}" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center"></image>
     <view class="fontContent"> <text class="font_content">{{content}}</text></view>
 </template>
 
 <template name="template_top">
     <view class="topContainer"></view>
 </template>
-<template name="back">
-     <view class="head">
-             <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback"  /></view>          
-        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->    
-   </view>
-</template>
 
 <template name="template_photo">
-    <view class="{{_xkContainer}}">
+    <view class="_xkContainer">
         <view bindtap="handlePhoto" class="photo_container">
             <van-icon custom-style=" display: flex; justify-content: center; position: relative;top: 17px;" size="30px"
                 color="#CADAFC" name="photograph" />
         </view>
-        <image mode="heightFix" bindtap="handle_preview" style="height:66px; max-width: 100px;float:right" src="{{image}}" />
+        <image mode="heightFix" bindtap="handle_preview" style="height:66px; max-width: 100px;float:right" src="{{imageUrl}}" />
     </view>
 </template>

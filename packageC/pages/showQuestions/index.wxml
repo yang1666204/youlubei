@@ -46,17 +46,7 @@
             <view>
                 <view class="adriver"></view>
             </view>
-            <!-- <view class="footer">
-                <view class="footerContent">
-                    <view>
-                        <text class="xsContent">积分悬赏</text>
-                    </view>
-                    <view>
-                        <van-stepper plus="color:white" max="{{20}}" min="{{0}}" custom-class="stepContent" plus-class="step"  minus-class="step" step="5" value="{{ jifen }}" bind:change="onChange" />
-                    </view>
-                </view>
-                <text class="yqContent">邀请回答</text>
-            </view> -->
+      
             <button class="aabtn" formType="submit">
                 <text decode="true">提&nbsp;&nbsp;交</text>
             </button>

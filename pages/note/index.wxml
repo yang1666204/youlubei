@@ -5,14 +5,14 @@
         <view class="flageone"><text class="font">问答</text></view>
              <view >
                 <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-                <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:10rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
+                <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:60rpx;rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
              </view>
         <view class="flagetwo"><text class="fontleft">笔记</text></view>
      </view>
 
  <view class="maincontainer">
     <view class="mid">          
-        <view >
+        <view class="search_container">
              <van-search
                shape="round"
                background="#f6f6f6"
