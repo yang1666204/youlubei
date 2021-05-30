@@ -16,7 +16,7 @@
             </wxs>
                  
                      <view class="listitem1" catch:tap="toshownote" data-noteid="{{item.note_id}}"> 
-                          <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:10rpx" />
+                          <image src="{{item.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:10rpx"  mode="aspectFill" />
                             <view style="width:180rpx;display:flex;flex-direction:column;justify-content: space-between;" >
                                  <text  style="font-size:35rpx;font-weight: 600;height:35rpx;line-height:35rpx">{{item.user_name}}</text>
                                  <text  style="font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{component1.change(item.created_on)}}</text>

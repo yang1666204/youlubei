@@ -42,7 +42,13 @@ Page({
     isShow_foot:true,
     _image:'',
     image:'',
+<<<<<<< HEAD
     is_myself:false
+=======
+    imageUrl:'',
+    is_myself:false,
+    _xkContainer:'_xkContainer'
+>>>>>>> origin/new_hei
   },
 
   /**
@@ -256,6 +262,11 @@ Page({
     wx.previewImage({
       urls: [this.data.image],
     })
+},
+     preview:function(){
+  wx.previewImage({
+    urls: [this.data.image],
+  })
 },
   //上传图片
   handlePhoto:function(){

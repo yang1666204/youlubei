@@ -23,11 +23,10 @@
    
     <view class="content">
         <scroll-view scroll-y="{{true}}" style="height:60vh">
-             <view class="pic_container">
-
-            </view> 
+              <image wx:if="{{image}}" src="{{image}}" bind:tap="handle_preview" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" mode="aspectFit" ></image>
+           
              <textarea name="content" value="{{content}}"
-                          placeholder="写下你的笔记" style="font-size:25rpx; " 
+                          placeholder="写下你的问题" style="font-size:25rpx; " 
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
                           maxlength="500"
                           class="text"

@@ -8,7 +8,8 @@ Component({
     commentList:{
       type:Array,
       value:[]
-    }
+    },
+    
   },
 
   /**

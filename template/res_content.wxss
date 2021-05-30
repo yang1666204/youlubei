@@ -124,6 +124,13 @@
   margin: 30rpx auto 0 auto;
   color: #A6B2C1;
 }
+._xkContainer2 {
+  height: 70px;
+  position: relative;
+  width: 100%;
+  margin: 30rpx auto 0 auto;
+  color: #A6B2C1;
+}
 .photo_container {
   width: 68px;
   height: 66px;
@@ -133,4 +140,17 @@
   position: absolute;
   bottom: 0;
 }
-
+.flageone{
+  height: 140rpx;
+  width: 140rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+}
+.head{
+  position: relative;
+  height: 20vh;
+}

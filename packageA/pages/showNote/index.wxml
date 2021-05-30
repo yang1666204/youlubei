@@ -39,7 +39,7 @@
                 
                                 module.exports.change = change;
                         </wxs> 
-                         <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" />
+                         <image src="{{detail.avatar}}" style="width:60rpx;height:60rpx;border-radius:50%; margin-top:20rpx" mode="aspectFill"/>
                            <view style="width:180rpx;display:flex;flex-direction:column;justify-content: center;" >
                                  <text  style="font-size:40rpx;font-weight: 600;height:40rpx;line-height:40rpx">{{detail.user_name}}</text>
                                  <text  style=" margin-top:10rpx;font-size:25rpx;height:25rpx;line-height:25rpx;color:#A6B2C1">{{shownote.change(detail.created_on)}}</text>
@@ -63,6 +63,7 @@
      </view>
      <view class="content" >
       <scroll-view scroll-y="true" style="height:57vh;" >
+        <image wx:if="{{detail.image}}" src="{{detail.image}}" bind:tap="handle_preview" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" mode="aspectFit" ></image>
         <text class="" selectable="false" space="false" decode="false" style="font-family:SimSun">
             {{detail.content}}
         </text> 

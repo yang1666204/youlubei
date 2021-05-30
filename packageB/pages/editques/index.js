@@ -36,7 +36,8 @@ Page({
     post_id: "",
     parentId: "",
     comment_num:0,
-    isdisabled:false
+    isdisabled:false,
+    Image:'',
   },
 
   /**

@@ -66,6 +66,7 @@ Page({
           openid:res.data,
           userId:app.globalData.userId
       }).then(res=>{
+                         console.log('note',res.lists)
                          that.setData({
                           notelist: res.lists,
                           notelist_length: res.lists.length

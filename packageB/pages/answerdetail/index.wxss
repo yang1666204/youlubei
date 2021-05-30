@@ -1,0 +1,32 @@
+/* packageB/pages/answerdetail/index.wxss */
+@import "../../../template/res_content.wxss";
+.hf_container{
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+}
+.topContainer{
+  width: 1200rpx;
+  height: 387rpx;
+  border-radius: 50%;
+  margin: -250rpx 0rpx 60rpx -230rpx;
+  /* margin-top: -250rpx;
+  margin-left: -230rpx; */
+  display: block;
+  background-color: #CADAFC;
+  /* z-index: 1; */
+  position: absolute;
+}
+.head{
+  position: relative;
+  height: 15vh;
+}
+.flageone{
+  height: 140rpx;
+  width: 140rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 20rpx;
+  left: 0;
+}
