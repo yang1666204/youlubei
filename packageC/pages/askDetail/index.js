@@ -42,7 +42,8 @@ Page({
     isShow_foot:true,
     image:'',
     imageUrl:'',
-    is_myself:false
+    is_myself:false,
+    _xkContainer:'_xkContainer'
   },
 
   /**
@@ -254,6 +255,11 @@ Page({
     wx.previewImage({
       urls: [this.data.imageUrl],
     })
+},
+     preview:function(){
+  wx.previewImage({
+    urls: [this.data.image],
+  })
 },
   //上传图片
   handlePhoto:function(){

@@ -53,7 +53,7 @@ Page({
           openid:res3.data,
           noteId:data.noteId,
       }).then(res=>{
-                
+                   console.log(res.lists)
                         that.setData({
                           detail: res.lists, 
                           

@@ -2,10 +2,25 @@
     <view class="title">{{title}}</view>
 
     <view class="infoContainer">
+         <wxs module="component">
+                  var geturl = function(user_id,avatar,user_name,is_myself) {
+                      var url = ''
+                      if(is_myself!==true){
+                          url =  '../../../pages/otherspage/index?user_id='+user_id+'&avatar='+avatar+'&user_name='+user_name
+                      }
+                      else{
+                          url = "../../../packageB/pages/mypage/index"
+                      }
+                         return  url
+                       }
+            
+
+                module.exports.geturl = geturl;
+            </wxs>
         <navigator open-type="navigate"
-            url="../../../pages/otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
+            url="{{component.geturl(user_id,avatar,user_name,is_myself)}}">
             <view class="leftContent">
-                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"
+                <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"  mode="aspectFill"
                     alt="" />
                 <view class="infoContent">
                     <view>
@@ -19,11 +34,10 @@
                 </view>
             </view>
         </navigator>
-        <button class="attention_btn" bindtap="handlegz" wx:if="{{is_myself}}" >
+        <button class="attention_btn" bindtap="handlegz" wx:if="{{!is_myself}}" >
             <text class="attention_font" wx:if="{{is_attention_user == true}}">已订阅</text>
             <text class="attention_font" wx:else>订阅</text>
         </button>
-         </button>
               <button wx:else class="attention_btn2">
                       
               </button>
@@ -32,16 +46,22 @@
              <text class="jdFont">待解答</text>
          </view> -->
     </view>
-    <image wx:if="{{image}}" src="{{image}}" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center"></image>
+    <image wx:if="{{image}}" src="{{image}}" bind:tap="preview" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" mode="aspectFit"  ></image>
     <view class="fontContent"> <text class="font_content">{{content}}</text></view>
 </template>
 
 <template name="template_top">
     <view class="topContainer"></view>
 </template>
+<template name="back">
+     <view class="head">
+             <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback"  /></view>          
+        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->    
+   </view>
+</template>
 
 <template name="template_photo">
-    <view class="_xkContainer">
+    <view class="{{_xkContainer}}">
         <view bindtap="handlePhoto" class="photo_container">
             <van-icon custom-style=" display: flex; justify-content: center; position: relative;top: 17px;" size="30px"
                 color="#CADAFC" name="photograph" />

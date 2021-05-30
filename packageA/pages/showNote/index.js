@@ -115,6 +115,12 @@ Page({
   onShareAppMessage: function () {
 
   },
+  //预览图片
+  handle_preview:function(){
+    wx.previewImage({
+      urls: [this.data.detail.image],
+    })
+},
   goback(){
     wx.navigateBack({
       delta: 1

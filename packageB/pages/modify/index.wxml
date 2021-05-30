@@ -45,19 +45,19 @@
                           
           </view>    
      </view>
-     <view   style="margin:0 5vw" >
+     <view   style="margin:0 5vw ;height:57vh" >
       <!-- <scroll-view scroll-y="true" style="height:57vh;" >
         <text class="" selectable="false" space="false" decode="false" style="font-family:SimSun">
             {{detail.content}}
         </text> 
        </scroll-view>  -->
-                
+                     <image wx:if="{{detail.image}}" src="{{detail.image}}" bind:tap="handle_preview" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" mode="aspectFit" ></image>
                    <textarea name="content" value="{{detail.content}}"
                           placeholder="写下你的笔记" style="width:30vw; font-size:25rpx; " 
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
                           maxlength="500"
                           class="text"
-                          style="height:57vh"
+                         
                           >           
                    </textarea>    
                    

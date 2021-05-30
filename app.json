@@ -36,6 +36,7 @@
         "pages/mycollect/index",
         "pages/myattention/index",
         "pages/modify/index",
+        "pages/answerdetail/index",
         "pages/edit/index",
         "pages/editques/index"
       ]

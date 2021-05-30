@@ -1,4 +1,5 @@
 /* pages/showNote/index.wxss */
+@import "../../../template/res_content.wxss";
 .topContainer{
     width: 1200rpx;
     height: 387rpx;
@@ -26,15 +27,23 @@
     left:calc(50% - 50rpx)
   }
   .mid{
-    height: 15vh;
+    height: 20vh;
+  }
+  .background_icon{
+    height: 18vh;
+    width: 26vw;
+    margin: 1vh 37vw;
+    background: #cadafc;
+    border-radius: 10rpx;
+    position: relative;
   }
   .form{
     margin: 0 15vw;
-    height: 65vh;
+    height: 64vh;
   }
   .row{
     margin-top: 10rpx;
-    height: 40vh;
+    height: 20vh;
   }
   .text{
     height: 100%;
@@ -57,7 +66,7 @@
     border-radius: 50rpx;
     color: #fff;
     margin: 0 10vw;
-    margin-top: 3vh;
+    margin-top: 0vh;
   }
   .flageone{
     position: absolute;
@@ -110,5 +119,12 @@
     display: flex;
     justify-content:space-between;
     color:#B1C1CE ;
+  }
+  .plus{
+    width: 110rpx;
+    height: 110rpx;
+    top: 50%;
+    margin-top: -55rpx;
+    margin-left: calc(50% - 55rpx);
   }
  

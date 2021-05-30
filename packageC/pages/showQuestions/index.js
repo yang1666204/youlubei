@@ -27,6 +27,7 @@ Page({
       '工学'
     ],
     index:0,
+    _xkContainer:'_xkContainer'
   },
 
   /**
@@ -191,7 +192,7 @@ Page({
       },
       content: {
         required: true,
-        maxlength: 100,
+        maxlength: 2000,
       },
       tag:{
         required:true
@@ -208,7 +209,7 @@ Page({
       },
       content: {
         required: "请写下你的提问",
-        maxlength: "不可以超过100个字",
+        maxlength: "不可以超过2000个字",
       },
     };
     //实例化当前的验证规则和提示消息

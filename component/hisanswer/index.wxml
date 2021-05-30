@@ -11,9 +11,11 @@
 
                 module.exports.change = change;
             </wxs>
- <view wx:for="{{commentList}}" wx:key="created_on">
+         <view wx:for="{{commentList}}" wx:key="created_on">
+                <navigator
+                url="../../../packageB/pages/answerdetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}&imageUrl={{item.image}}">
                     <view class="commentContent">
-                        <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}' />
+                        <image style="margin-right:30rpx;min-width:80rpx;max-width:80rpx;height:80rpx; border-radius: 50%;" src='{{item.avatar}}'  mode="aspectFill" />
                         <view class="rightComment">
                             <view class="commentName">
                                 {{item.user_name}}
@@ -26,5 +28,6 @@
                             </view>
                         </view>
                     </view>
-             </view>
+                </navigator>
+        </view>
  </scroll-view>

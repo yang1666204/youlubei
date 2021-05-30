@@ -21,7 +21,7 @@
                         <navigator
                             url="../resDetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}&imageUrl={{item.image}}">
                             <view class="hd_top">
-                                <image src="{{item.avatar}}"
+                                <image src="{{item.avatar}}"  mode="aspectFill"
                                     style="margin-right:30rpx;min-width:60rpx;max-width:60rpx;opacity: 1; height:60rpx; border-radius: 50%;">
                                 </image>
                                 <view class="hd_name">{{item.user_name}}</view>

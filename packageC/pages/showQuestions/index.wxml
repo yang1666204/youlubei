@@ -39,10 +39,10 @@
             <view>
                 <view class="adriver"></view>
             </view>
-            <textarea name="content" placeholder="想问什么呢~" value="{{content}}" class="textareaContent"></textarea>
+            <textarea name="content" placeholder="想问什么呢~" value="{{content}}" maxlength="2000" class="textareaContent"></textarea>
            
   
-            <template is="template_photo" data="{{imageUrl}}" ></template>
+            <template is="template_photo" data="{{imageUrl,_xkContainer}}" ></template>
             <view>
                 <view class="adriver"></view>
             </view>

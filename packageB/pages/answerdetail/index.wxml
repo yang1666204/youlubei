@@ -1,0 +1,17 @@
+<!--packageB/pages/answerdetail/index.wxml-->
+<import src="../../../template/res_content.wxml" />
+<view class="topContainer"></view>
+ <view class="head">
+             <view class="flageone"><van-icon name="arrow-left" color="#fff" size="60rpx" bind:click="goback" /></view>          
+        <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
+        <view style="margin:0 5vw; position: absolute;top:160rpx;left:0"   >
+            <text style="font-size:36rpx;font-weight:600;line-height:36rpx;height:40rpx;">   
+               {{detail.title}}
+            </text>
+        </view>        
+ </view>
+<!-- 模板开始 -->
+<view class="hf_container" >
+<template is="template_res" data="{{title,user_id,avatar,user_name,tag,created_on,is_myself,is_attention_user,content,imageUrl}}" />
+</view>
+

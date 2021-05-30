@@ -14,7 +14,9 @@ Page({
     isdisabled:false,
     array: ['哲学', '经济学', '法学', '文学','历史学','理学','艺术学'],
     index:0,
-    info:''
+    info:'',
+    imageUrl:'',
+    _xkContainer:'_xkContainer2'
   },
 
   /**
@@ -104,7 +106,7 @@ Page({
       },
       content: {
         required: true,
-        maxlength: 100
+        maxlength: 500
       }, 
     }
 
@@ -118,7 +120,7 @@ Page({
       },
       content: {
         required: "请输入笔记",
-        maxlength:"不可以超过100个字"
+        maxlength:"不可以超过2000个字"
       }  
     }
     //实例化当前的验证规则和提示消息
@@ -152,6 +154,87 @@ Page({
       delta: 1
     })
   },
+  //预览图片
+  handle_preview:function(){
+    wx.previewImage({
+      urls: [this.data.imageUrl],
+    })
+},
+//上传图片
+handlePhoto:function(){
+  console.log("点击上传图片");
+  var that = this,temp_url
+  wx.chooseImage({
+    count: 1,
+    sizeType: ['original', 'compressed'],
+    sourceType: ['album', 'camera'],
+    success: (res) => {
+      var tempFilePaths = res.tempFilePaths;
+      this.upload(that,tempFilePaths)
+    },
+    fail: () => {},
+    complete: () => {}
+  });
+    
+},
+
+
+upload:function(ctx,url){
+  var openId = wx.getStorageSync('openId');
+  console.log(openId);
+  wx.showToast({
+    title: '正在上传',
+    icon: 'loading'
+  });
+  console.log(openId,url[0]);
+  wx.uploadFile({
+    url: 'https://zzc0309.top/api/v1/upload?openid='+openId+'&isAvatar=0',
+    filePath: url[0],
+    name: 'image',
+    success: (result)=>{
+      //JSON.parse 字符串转JSON
+      console.log(typeof result.data,result.data)
+      try{
+        var _imageUrl = JSON.parse(result.data)
+        // console.log("imageUrl",_imageUrl.data.image_url);
+        ctx.setData({
+          imageUrl:_imageUrl.data.image_url
+        })
+      }catch(e){
+        console.log(result.statusCode)
+        if(result.statusCode===413){
+          wx.showModal({
+            title: '提示',
+            content: '图片太大',
+            showCancel: false
+          })
+        }
+        else{
+          wx.showModal({
+            title: '提示',
+            content: '上传失败',
+            showCancel: false
+          })
+        }
+        
+      }
+      
+      
+     
+    },
+    fail: ()=>{
+      wx.showModal({
+        title: '提示',
+        content: '上传失败',
+        showCancel: false
+      })
+    },
+    complete: ()=>{
+      wx.hideToast();
+    }
+  });
+},
+
   submit(e){
     if(this.formSubmit(e)){
       this.setData({
@@ -165,7 +248,8 @@ Page({
       success (res) {
     const data2= {
         ...data,
-        userId:that.data.userId
+        userId:that.data.userId,
+        image:that.data.imageUrl,
       }
       app.post('https://zzc0309.top/api/v2/notes?openid='+res.data,
        data2       

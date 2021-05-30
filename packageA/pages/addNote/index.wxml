@@ -1,3 +1,4 @@
+<import src="../../../template/res_content.wxml" />
 <view class="shade" bind:tap="handleClose" wx:if="{{isShow===true}}"></view>
     <!-- 弹出面板 -->
     <view class="cont" wx:if="{{isShow===true}}">
@@ -15,7 +16,9 @@
         <!-- <view class="flagetwo"><text class="fontleft">笔记</text></view> -->
  </view>
  <view class="mid">
-
+       <view class="background_icon">
+         <van-icon name="plus"  color="#fff" size="110rpx" custom-class="plus"/>
+       </view>
  </view>
  <view  class="form">
       <form bindsubmit="submit">
@@ -48,12 +51,12 @@
                    <textarea name="content" value="{{content}}"
                           placeholder="写下你的笔记" style="width:60vw; font-size:25rpx; padding:0 5vw ;color:#B1C1CE " 
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
-                          maxlength="500"
+                          maxlength="2000"
                           class="text"
                           >           
                    </textarea>
                </view>
-         
+   <template is="template_photo" data="{{imageUrl,_xkContainer}}"></template>
          <button form-type="submit"  hover-class="hoverbutton" class="button" disabled="{{isdisabled}}" >保存</button>
 
       </form>
