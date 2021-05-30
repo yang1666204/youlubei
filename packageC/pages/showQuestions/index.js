@@ -105,11 +105,28 @@ Page({
       name: 'image',
       success: (result)=>{
         //JSON.parse 字符串转JSON
-        var _imageUrl = JSON.parse(result.data)
-        console.log("imageUrl",_imageUrl.data.image_url);
-        ctx.setData({
-          imageUrl:_imageUrl.data.image_url
-        })
+        try{
+          var _imageUrl = JSON.parse(result.data)
+          console.log("imageUrl",_imageUrl.data.image_url);
+          ctx.setData({
+            imageUrl:_imageUrl.data.image_url
+          })
+        }catch(e){
+          console.log(result);
+          if(result.statusCode === 413){
+            wx.showModal({
+              title: '提示',
+              content: '图片太大',
+              showCancel: false
+            })
+          }else{
+            wx.showModal({
+              title: '提示',
+              content: '上传失败',
+              showCancel: false
+            })
+          }
+        }
       },
       fail: ()=>{
         wx.showModal({

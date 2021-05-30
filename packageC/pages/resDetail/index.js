@@ -11,6 +11,7 @@ Page({
     title:"",
     user_id:'',//被访问的用户
     user_name:'',
+    image:'',
     is_attention_user:false
   },
 

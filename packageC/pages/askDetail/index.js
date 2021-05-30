@@ -40,8 +40,8 @@ Page({
     is_attention_user:false,
     comment_num:0,
     isShow_foot:true,
+    _image:'',
     image:'',
-    imageUrl:'',
     is_myself:false
   },
 
@@ -77,6 +77,7 @@ Page({
         userId: userId,
         parentId: post_id,
         content: inputValue,
+        image:this.data.image
       },
       header: { "content-type": "application/json" },
       method: "POST",
@@ -104,6 +105,7 @@ Page({
     });
   },
   getValue: function (e) {
+    console.log(e.detail.value);
     this.setData({
       inputValue: e.detail.value,
     });
@@ -252,7 +254,7 @@ Page({
   //预览图片
   handle_preview:function(){
     wx.previewImage({
-      urls: [this.data.imageUrl],
+      urls: [this.data.image],
     })
 },
   //上传图片
@@ -288,11 +290,29 @@ Page({
       name: 'image',
       success: (result)=>{
         //JSON.parse 字符串转JSON
-        var _imageUrl = JSON.parse(result.data)
-        console.log("imageUrl",_imageUrl.data.image_url);
-        ctx.setData({
-          imageUrl:_imageUrl.data.image_url
-        })
+        try{
+          var _imageUrl = JSON.parse(result.data)
+          console.log("imageUrl",_imageUrl.data.image_url);
+          ctx.setData({
+            image:_imageUrl.data.image_url
+          })
+        }catch(e){
+          console.log(result);
+          if(result.statusCode === 413){
+            wx.showModal({
+              title: '提示',
+              content: '图片太大',
+              showCancel: false
+            })
+          }else{
+            wx.showModal({
+              title: '提示',
+              content: '上传失败',
+              showCancel: false
+            })
+          }
+        }
+      
       },
       fail: ()=>{
         wx.showModal({

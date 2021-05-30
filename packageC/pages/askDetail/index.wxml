@@ -19,7 +19,7 @@
 
                     <view class="comment_container" wx:for="{{commentList}}" wx:key="index">
                         <navigator
-                            url="../resDetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}&imageUrl={{item.image}}">
+                            url="../resDetail/index?avatar={{item.avatar}}&user_name={{item.user_name}}&content={{item.comment}}&created_on={{item.created_on}}&title={{title}}&user_id={{item.user_id}}&image={{item.image}}">
                             <view class="hd_top">
                                 <image src="{{item.avatar}}"
                                     style="margin-right:30rpx;min-width:60rpx;max-width:60rpx;opacity: 1; height:60rpx; border-radius: 50%;">
@@ -57,9 +57,9 @@
     <!-- 弹窗 -->
 </view>
 <view class="popContent" wx:if="{{isShow}}">
-    <textarea class="resContent" bindinput="getValue" placeholder="想说点什么呢"></textarea>
+    <textarea maxlength="2000" class="resContent" bindinput="getValue" placeholder="想说点什么呢"></textarea>
 
-    <template is="template_photo" data="{{imageUrl}}"></template>
+    <template is="template_photo" data="{{image}}"></template>
     <view>
         <view class="line"></view>
     </view>

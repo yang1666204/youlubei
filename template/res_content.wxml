@@ -19,11 +19,10 @@
                 </view>
             </view>
         </navigator>
-        <button class="attention_btn" bindtap="handlegz" wx:if="{{is_myself}}" >
+        <button class="attention_btn" bindtap="handlegz" wx:if="{{!is_myself}}" >
             <text class="attention_font" wx:if="{{is_attention_user == true}}">已订阅</text>
             <text class="attention_font" wx:else>订阅</text>
         </button>
-         </button>
               <button wx:else class="attention_btn2">
                       
               </button>
@@ -46,6 +45,6 @@
             <van-icon custom-style=" display: flex; justify-content: center; position: relative;top: 17px;" size="30px"
                 color="#CADAFC" name="photograph" />
         </view>
-        <image mode="heightFix" bindtap="handle_preview" style="height:66px; max-width: 100px;float:right" src="{{imageUrl}}" />
+        <image mode="heightFix" bindtap="handle_preview" style="height:66px; max-width: 100px;float:right" src="{{image}}" />
     </view>
 </template>
