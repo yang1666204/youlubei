@@ -11,8 +11,9 @@ Page({
     title:"",
     user_id:'',//被访问的用户
     user_name:'',
-    imageUrl:'',
-    is_attention_user:false
+    imageUrl:'',//不使用了 
+    is_attention_user:false,
+    image:''
   },
 
   /**
@@ -21,7 +22,8 @@ Page({
   onLoad: function (options) {
     console.log(options);
     this.setData({
-      ...options
+      ...options,
+      image:options.imageUrl
     })
   },
 
@@ -38,7 +40,7 @@ Page({
         if(this.data.is_attention_user== true){
           //点击取消关注
           wx.request({
-            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+openId+'&userId='+data+'&userId02='+this.data.user_id,
+            url: 'https://zzc0309.top/api/v1/attention_user?openid='+openId+'&userId='+data+'&userId02='+this.data.user_id,
             data: {},
             header: {'content-type':'application/json'},
             method: 'DELETE',
@@ -62,7 +64,7 @@ Page({
         }else{
           //点击关注
          wx.request({
-           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+openId+'&userId='+data+'&userId02='+this.data.user_id,
+           url: 'https://zzc0309.top/api/v1/attention_user?openid='+openId+'&userId='+data+'&userId02='+this.data.user_id,
            data: {},
            header: {'content-type':'application/json'},
            method: 'POST',
@@ -138,5 +140,10 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+  handle_preview:function(){
+    wx.previewImage({
+      urls: [this.data.image],
+    })
+},
 })

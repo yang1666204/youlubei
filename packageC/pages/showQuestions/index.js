@@ -154,7 +154,7 @@ Page({
       let { value } = e.detail;
       console.log("value",value);
       wx.request({
-        url: "http://zzc0309.top:8000/api/v2/posts?openid="+this.data.openid,
+        url: "https://zzc0309.top/api/v2/posts?openid="+this.data.openid,
         data: {
           ...value,
           image:this.data.imageUrl,

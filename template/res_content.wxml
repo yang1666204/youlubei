@@ -6,7 +6,7 @@
             url="../../../pages/otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
             <view class="leftContent">
                 <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"
-                    alt="" />
+                    alt="" mode="aspectFill"/>
                 <view class="infoContent">
                     <view>
                         <text class="name">{{user_name}}</text>
@@ -31,7 +31,7 @@
              <text class="jdFont">待解答</text>
          </view> -->
     </view>
-    <image wx:if="{{image}}" src="{{image}}" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center"></image>
+    <image wx:if="{{image}}" src="{{image}}" style=" margin-top: 30rpx; margin-bottom: 20rpx;text-align:center" bindtap="handle_preview" mode="aspectFit"></image>
     <view class="fontContent"> <text class="font_content">{{content}}</text></view>
 </template>
 

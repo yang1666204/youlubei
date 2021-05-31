@@ -134,7 +134,7 @@ Page({
         if(this.data.is_attention_user== true){
           //点击取消关注
           wx.request({
-            url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
+            url: 'https://zzc0309.top/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
             data: {},
             header: {'content-type':'application/json'},
             method: 'DELETE',
@@ -159,7 +159,7 @@ Page({
         }else{
           //点击关注
          wx.request({
-           url: 'http://zzc0309.top:8000/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
+           url: 'https://zzc0309.top/api/v1/attention_user?openid='+this.data.openid+'&userId='+data+'&userId02='+this.data.user_id,
            data: {},
            header: {'content-type':'application/json'},
            method: 'POST',
@@ -196,7 +196,7 @@ Page({
       console.log("aa");
       wx.request({
         // url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
-        url: "http://zzc0309.top:8000/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
+        url: "https://zzc0309.top/api/v1/attention?openid="+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
         header: { "content-type": "application/json" },
         method: "POST",
         dataType: "json",
@@ -222,7 +222,7 @@ Page({
     }else{
       console.log("b");
       wx.request({
-        url: 'http://zzc0309.top:8000/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
+        url: 'https://zzc0309.top/api/v1/attention?openid='+this.data.openid+"&userId="+this.data.userId+"&postId="+this.data.post_id,
         data: {},
         header: {'content-type':'application/json'},
         method: 'DELETE',
@@ -256,7 +256,7 @@ Page({
   //预览图片
   handle_preview:function(){
     wx.previewImage({
-      urls: [this.data.imageUrl],
+      urls: [this.data.image],
     })
 },
 //      preview:function(){

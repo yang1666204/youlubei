@@ -135,7 +135,7 @@ Page({
       
       wx.request({
         // url:"http://zzc0309.top:8000/api/v1/attention?openid=ohOHM5Q_IzgSs7Hdz0iXZ5LEZb9M&userId=1&postId=14",
-        url: "http://zzc0309.top:8000/api/v1/attention_note?openid="+appInst.openId+"&userId="+appInst.userId+"&noteId="+this.data.noteId,
+        url: "https://zzc0309.top/api/v1/attention_note?openid="+appInst.openId+"&userId="+appInst.userId+"&noteId="+this.data.noteId,
         header: { "content-type": "application/json" },
         method: "POST",
         dataType: "json",
@@ -162,7 +162,7 @@ Page({
     }else{
       console.log("b");
       wx.request({
-        url: 'http://zzc0309.top:8000/api/v1/attention_note?openid='+appInst.openId+"&userId="+appInst.userId+"&noteId="+this.data.noteId,
+        url: 'https://zzc0309.top/api/v1/attention_note?openid='+appInst.openId+"&userId="+appInst.userId+"&noteId="+this.data.noteId,
         data: {},
         header: {'content-type':'application/json'},
         method: 'DELETE',

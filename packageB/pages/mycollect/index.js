@@ -43,7 +43,7 @@ Page({
     var openId = wx.getStorageSync('openId')
     var userId = wx.getStorageSync('userId')
     wx.request({
-      url: 'http://zzc0309.top:8000/api/v1/attention_post?'+'openid='+openId+'&userId='+userId+'&userId02='+userId,
+      url: 'https://zzc0309.top/api/v1/attention_post?'+'openid='+openId+'&userId='+userId+'&userId02='+userId,
       method:"GET",
       success:(res)=>{
         console.log(res);
