@@ -30,7 +30,7 @@
                           placeholder-style="font-size:20rpx;color:#B1C1CE" 
                           maxlength="500"
                           class="text"
-                          style="height:25vh"
+                          style="height:25vh;width:100%"
                           >           
             </textarea>    
             <view class="commentContainer">

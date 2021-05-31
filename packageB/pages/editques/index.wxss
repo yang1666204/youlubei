@@ -89,11 +89,12 @@
 .c{
   background-color:#fff;
   color: #6EA3E9; 
-  height: 8vh;
+  height: 5vh;
   width: 33vw;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 21rpx;
 
 }
 .c::after {
