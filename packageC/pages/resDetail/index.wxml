@@ -3,6 +3,6 @@
 
 <!-- 模板开始 -->
 <view class="hf_container" >
-<template is="template_res" data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,image}}" />
+<template is="template_res" data="{{title,user_id,avatar,user_name,tag,created_on,is_attention_user,content,image,is_myself}}" />
 </view>
 <!-- 模板结束 -->

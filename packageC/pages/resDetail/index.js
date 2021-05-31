@@ -1,4 +1,5 @@
 // pages/resDetail/index.js
+var app = getApp()
 Page({
 
   /**
@@ -13,7 +14,8 @@ Page({
     user_name:'',
     imageUrl:'',//不使用了 
     is_attention_user:false,
-    image:''
+    image:'',
+    is_myself:false
   },
 
   /**
@@ -36,7 +38,6 @@ Page({
       success:(res)=>{
         data = res.data
         var openId = wx.getStorageSync('openId')
-        console.log(openId);
         if(this.data.is_attention_user== true){
           //点击取消关注
           wx.request({
@@ -47,7 +48,6 @@ Page({
             dataType: 'json',
             responseType: 'text',
             success: (result) => {
-              console.log(result);
               if(result.data.code === 200){
                 wx.showToast({
                   title: '已取消',
@@ -71,7 +71,6 @@ Page({
            dataType: 'json',
            responseType: 'text',
            success: (result) => {
-             console.log(result);
              if(result.data.code === 200){
                wx.showToast({
                  title: '已关注！',
@@ -93,54 +92,32 @@ Page({
   
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
+    var openid = wx.getStorageSync('openId')
+    var myuser_id = wx.getStorageSync('userId')
+    app.get("https://zzc0309.top/api/v1/attention_user",{
+      openid,
+      userId:myuser_id,
+      userId02:this.data.user_id
+    }).then((res)=>{
+      if(myuser_id == this.data.user_id){
+        //不能自己关注自己
+        this.setData({
+          is_myself:true
+        })
+      }
+      for(let i = 0;i<res.total;i++){
+        if(this.data.user_id == res.lists[i].user_id){
+          //关注用户中存在这个人
+          this.setData({
+            is_attention_user:true
+          })
+          return
+        }
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   handle_preview:function(){
     wx.previewImage({
       urls: [this.data.image],

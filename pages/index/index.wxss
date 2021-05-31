@@ -191,7 +191,7 @@ swiper {
 }
 .floatBtn {
   position: absolute;
-  bottom: 16vh;
+  bottom: 13vh;
   left: 27.5vw;
   justify-content: center;
   z-index: 2;

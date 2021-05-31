@@ -1,16 +1,16 @@
 <view class="Container">
     <!-- 顶部头像 -->
     <view class="topContainer">
-        <view class="flageone">
+        <!-- <view class="flageone">
             <text class="fontAsk">问答</text>
-        </view>
+        </view> -->
         <view >
             <!-- <open-data type="userAvatarUrl"></open-data> -->
             <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
         </view>
-        <view class="flagetwo">
+        <!-- <view class="flagetwo">
             <text class="font">笔记</text>
-        </view>
+        </view> -->
     </view>
     <!-- 轮播图 -->
     <swiper next-margin="60px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
