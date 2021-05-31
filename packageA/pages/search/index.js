@@ -91,7 +91,24 @@ Page({
     }
     
   },
-  
+  toshownote(e){
+   
+    wx.navigateTo({
+      url: '../../../packageA/pages/showNote/index',
+      events: { 
+        acceptDataFromOpenedPage: function(data) {
+        
+        },
+        
+      },
+      success: function(res) {       
+        res.eventChannel.emit('acceptDataFromOpenerPage', { 
+          noteId:e.currentTarget.dataset.noteid,
+         
+        })
+      }
+    })
+  },
   onClick(){ 
     const that = this;
     const app = getApp()

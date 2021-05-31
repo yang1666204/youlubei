@@ -72,6 +72,7 @@ Page({
         userId: userId,
         parentId: post_id,
         content: inputValue,
+        image:''
       },
       header: { "content-type": "application/json" },
       method: "POST",

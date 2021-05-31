@@ -255,7 +255,9 @@ upload:function(ctx,url){
        data2       
       )
       that.setData({
-        isShow:true
+        isShow:true,
+        title:'',
+        content:'',
       })
       setTimeout(()=> that.setData({
         isShow:false
