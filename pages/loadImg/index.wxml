@@ -1,6 +1,11 @@
 <view class="Container">
-    <view class="loading">
-        <van-loading type="spinner" color="#1989fa" size="24px">加载中...</van-loading>
+    
+    <image  mode="scaleToFill" class="loadImg" src="https://zzc0309.top/upload/images/d4dd82134bad4332e14ea3e66d10678a.png" />
+    <view class="button1" bind:tap="jumppage" >   
+         
+             立即体验
+        
     </view>
-    <image mode="scaleToFill" class="loadImg" src="http://icknsd.cn/%E5%B0%81%E9%9D%A21-01.jpg" />
+   
+    <!-- <van-button round type="info" class="button1" >圆形按钮</van-button> -->
 </view>

@@ -19,6 +19,8 @@ App({
     if(!_openid && !_userid){
       console.log("新用户");
       this.globalData.isNew_user = true
+    }else{
+      this.globalData.isNew_user = false
     }
 
     // 展示本地存储能力

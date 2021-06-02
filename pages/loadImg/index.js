@@ -19,11 +19,11 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    setTimeout(()=>{
-      wx.switchTab({
-        url: '../index/index'
-      })
-    },1000)
+    // setTimeout(()=>{
+    //   wx.switchTab({
+    //     url: '../index/index'
+    //   })
+    // },1000)
   },
 
   /**
@@ -66,5 +66,19 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  jumppage(){
+    var isNew_user = getApp().globalData.isNew_user;
+    if (isNew_user){
+        wx.navigateTo({
+          url: '../login/index',
+         
+        });
+    }else{
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }
+   
   }
 })
