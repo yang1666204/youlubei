@@ -58,6 +58,37 @@ Page({
   },
   _handleSubmit:function(e){
     var value = e.detail.value
+    console.log(value);
+    if(!value.name || !value.stu_id || !value.picker){
+      wx.showToast({
+        title: '请填写完整',
+        icon:'error'
+      })
+      return
+    }
+    if(value.picker == '请选择'){
+      wx.showToast({
+        title: '未选择身份信息',
+        icon:'error'
+      })
+      return
+    }
+    if( typeof(value.name) != 'string'){
+      wx.showToast({
+        title: '姓名填写错误',
+        icon:'error'
+      })
+      return
+    }
+    
+    if(value.stu_id.length != 10){
+      wx.showToast({
+        title: '学号填写错误',
+        icon:'error'
+      })
+      return
+    }
+    
     var userInfo = {
       name:value.name,
       stuNumber:value.stu_id,
