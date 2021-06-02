@@ -27,9 +27,7 @@ Page({
     avatar:'',
     user_name:'',
     user_id:0,
-    isShow:true,
-    arr_identify:["待选择","学生","执教","老师"],
-    index:0
+   
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   // 事件处理函数
@@ -38,17 +36,8 @@ Page({
       url: "../logs/logs",
     });
   },
-  bindPickerChange: function(e) {
-    this.setData({
-      index: e.detail.value
-    })
-  },
-  _handleSubmit:function(e){
-    this.setData({
-      isShow:false
-    })
-    console.log(e.detail.value);
-  },
+
+ 
   onLoad() {
     if (wx.getUserProfile) {
       this.setData({

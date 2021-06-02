@@ -1,2 +1,28 @@
-<!--pages/login/index.wxml-->
-<text>pages/login/index.wxml</text>
+<view wx:if="{{isShow}}" class="back_container">
+  <view class="rz_container">
+    <view style="padding-top: 20rpx;"><text class="title">身份认证</text></view>
+    <view class="form_container">
+      <form catchsubmit="_handleSubmit">
+        <view class="section">
+          <picker name="picker" bindchange="bindPickerChange" value="{{arr_identify[index]}}" range="{{arr_identify}}">
+            <view class="picker">
+              <text decode="true">身份&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text> 
+              <text decode="true" style="color:#919191" >{{arr_identify[index]}}</text>
+            </view>
+          </picker>
+        </view>
+        <view class="_nameContainer"><text decode="true" class="_font">姓名&nbsp;</text><input class="_input" placeholder="请输入"
+            name="name" /></view>
+        <view class="_stuContainer"><text decode="true"  class="_font">学号&nbsp;</text><input class="_input" placeholder="请输入"
+            name="stu_id" /></view>
+        <button hover-class="click" form-type="submit" class="floatBtn">
+          <text decode="{{true}}">确&nbsp;&nbsp;认</text>
+        </button>
+      </form>
+    </view>
+  </view>
+
+</view>
+<view wx:else class="back_container">
+  <view class="fontContent" ><text >没有权限进入小程序</text></view>
+</view>

@@ -1,20 +1,82 @@
 // pages/login/index.js
+
+var app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    index:0,
+    arr_identify:["请选择","学生","执教","老师"],
+    isShow:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.login({
+      success: res => {
+        var code = res.code// 登录凭证
+        wx.request({
+          url: 'https://zzc0309.top/wxAuth',
+          data: {
+            code:code
+          },
+          header: {'content-type':'application/json'},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result) => {
+            //获取openId,useid全部存缓存中 
+            console.log("result",result);  
+            //是否允许进入小程序
+            if(result.data.data.authority === 0){
+              console.log("a");
+              app.globalData.isAuthority = true
+            }
+            wx.setStorage({
+              key:"openId",
+              data:result.data.data.openid
+            })
+            app.globalData.openId = result.data.data.openid;
+            app.globalData.userId = result.data.data.userId;
+            wx.setStorage({
+              key:"userId",
+              data:result.data.data.userId
+            })
+          },
+          fail: (err) => {
+          },
+          complete: () => {}
+        });
+          
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      }
+    })
+  },
+  _handleSubmit:function(e){
+    var value = e.detail.value
+    var userInfo = {
+      name:value.name,
+      stuNumber:value.stu_id,
+      identify:value.picker
+    }
+    wx.switchTab({
+      url: '../index/index',
+      success:()=>{
+        wx.setStorageSync('userInfo', userInfo)
+      }
+    })
+    console.log(e.detail.value);
   },
 
+  bindPickerChange: function(e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

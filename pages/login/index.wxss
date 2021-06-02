@@ -1,1 +1,79 @@
-/* pages/login/index.wxss */
+.back_container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(0deg, #FFFFFF 0%, #B3C7ED 99%);
+
+}
+
+.rz_container {
+  border-radius: 30rpx;
+  width: 241px;
+  height: 305px;
+  background-color: #CADAFC;
+  position: absolute;
+  margin: auto;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.title {
+  font-size: 19px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 27px;
+  padding: 50rpx;
+}
+
+.form_container {
+  width: 222px;
+  height: 231px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #FFFFFF;
+}
+
+.section {
+  margin: 20rpx 40rpx 0 40rpx;
+  padding-top: 40rpx;
+  font-size: 17px;
+}
+
+._nameContainer,
+._stuContainer {
+  display: flex;
+  margin: 40rpx 40rpx 0 40rpx;
+}
+
+
+._font {
+
+  width: 63px;
+  height: 16px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #000000;
+  line-height: 27px;
+}
+
+._input {
+  width: 50%;
+}
+
+.floatBtn {
+  margin-top: 50rpx;
+  justify-content: center;
+  z-index: 2;
+  width: 45vw;
+  border-radius: 30rpx;
+  background-color: #65e3cd;
+  color: #ffffff;
+}
+
+.fontContent{
+  padding-top: 50vh;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 600;
+}

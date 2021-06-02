@@ -8,7 +8,8 @@ App({
     openId:'',
 
     userId:'',
-    isNew_user:false
+    isNew_user:false,
+    isAuthority:false
   },
   onLaunch() {
 
@@ -35,40 +36,7 @@ App({
     // })
       
     // 登录
-    wx.login({
-      success: res => {
-        var code = res.code// 登录凭证
-        wx.request({
-          url: 'https://zzc0309.top/wxAuth',
-          data: {
-            code:code
-          },
-          header: {'content-type':'application/json'},
-          method: 'GET',
-          dataType: 'json',
-          responseType: 'text',
-          success: (result) => {
-            //获取openId,useid全部存缓存中 
-            console.log("result",result);  
-            wx.setStorage({
-              key:"openId",
-              data:result.data.data.openid
-            })
-            this.globalData.openId = result.data.data.openid;
-            this.globalData.userId = result.data.data.userId;
-            wx.setStorage({
-              key:"userId",
-              data:result.data.data.userId
-            })
-          },
-          fail: (err) => {
-          },
-          complete: () => {}
-        });
-          
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
+  
   },
  
   get(url,data){

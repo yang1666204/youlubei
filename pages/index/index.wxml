@@ -41,20 +41,7 @@
     </button>
     <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
     <!-- 提问内容 -->
-    <view wx:if="{{isShow}}" class="identify_container">
-        <form catchsubmit="_handleSubmit" >
-            <view class="section">
-                <picker name="picker" bindchange="bindPickerChange" value="{{arr_identify[index]}}" range="{{arr_identify}}">
-                    <view class="picker">
-                        身份：{{arr_identify[index]}}
-                    </view>
-                </picker>
-            </view>
-            <view class="_nameContainer" ><text class="_font">姓名:</text><input class="_input" placeholder="请输入"  name="name" /></view>
-            <view class="_stuContainer" ><text class="_font">学号:</text><input class="_input" placeholder="请输入"  name="stu_id" /></view>
-            <button class="_submitbtn"  form-type="submit" >确认</button>
-        </form>
-    </view>
+  
     <scroll-view bindscrolltolower="loadmore" refresher-enabled="{{true}}" refresher-triggered="{{isRefresh}}"
         bindrefresherrefresh="handlerefresh" paging-enabled="{{true}}" scroll-with-animation="{{true}}" scroll-y="true"
         style="height: 65vh;">
