@@ -8,9 +8,18 @@ App({
     openId:'',
 
     userId:'',
-
+    isNew_user:false
   },
   onLaunch() {
+
+    //判断是否是新用户
+    var _openid = wx.getStorageSync('openId');
+    var _userid = wx.getStorageSync('userId');
+    if(!_openid && !_userid){
+      console.log("新用户");
+      this.globalData.isNew_user = true
+    }
+
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -39,7 +48,8 @@ App({
           dataType: 'json',
           responseType: 'text',
           success: (result) => {
-            //获取openId,useid全部存缓存中   
+            //获取openId,useid全部存缓存中 
+            console.log("result",result);  
             wx.setStorage({
               key:"openId",
               data:result.data.data.openid

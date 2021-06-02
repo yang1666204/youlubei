@@ -221,4 +221,42 @@ swiper {
   color: #535353;
 }
 
+.identify_container{
+  z-index: 100;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 70vw;
+  height: 40vh;
+  background-color: #6ea3e9;
+}
 
+._nameContainer,._stuContainer{
+  display: flex;
+  font-size: x-large;
+  margin: 50rpx;
+  
+}
+
+._input{
+  width: 60vw;
+ 
+  height: 100%;
+}
+
+.section{
+  margin-top: 150rpx;
+  font-size: x-large;
+  margin-left: 50rpx;
+}
+
+._font{
+  width: 150rpx;
+}
+
+._submitbtn{
+  width: 40vw;
+}

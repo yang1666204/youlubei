@@ -1,4 +1,5 @@
 import { formatDate } from "../../utils/util";
+var app = getApp();
 Page({
   // data: {
 
@@ -26,6 +27,9 @@ Page({
     avatar:'',
     user_name:'',
     user_id:0,
+    isShow:true,
+    arr_identify:["待选择","学生","执教","老师"],
+    index:0
     // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
   },
   // 事件处理函数
@@ -33,6 +37,17 @@ Page({
     wx.navigateTo({
       url: "../logs/logs",
     });
+  },
+  bindPickerChange: function(e) {
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  _handleSubmit:function(e){
+    this.setData({
+      isShow:false
+    })
+    console.log(e.detail.value);
   },
   onLoad() {
     if (wx.getUserProfile) {
@@ -42,8 +57,13 @@ Page({
     }
     this.getTabBar().init();
     const that = this;
-    const app = getApp();
-    
+    //新用户
+    if(app.globalData.isNew_user){
+      this.setData({
+        isShow:true
+      })
+    }
+
     wx.getStorage({
       key: "openId",
       success(res1) {

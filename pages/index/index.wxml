@@ -4,17 +4,20 @@
         <!-- <view class="flageone">
             <text class="fontAsk">问答</text>
         </view> -->
-        <view >
+        <view>
             <!-- <open-data type="userAvatarUrl"></open-data> -->
-            <image bind:tap="showpic" style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);" mode="aspectFill" src="{{avatar}}" />
+            <image bind:tap="showpic"
+                style="width:100rpx;height:100rpx;border-radius:50%;position:absolute;bottom:-50rpx;left:calc(50% - 50rpx);"
+                mode="aspectFill" src="{{avatar}}" />
         </view>
         <!-- <view class="flagetwo">
             <text class="font">笔记</text>
         </view> -->
     </view>
     <!-- 轮播图 -->
-    <swiper next-margin="60px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}" interval="{{5000}}" duration="{{500}}">
-        <block wx:for="{{imgUrls}}" wx:key="index" >
+    <swiper next-margin="60px" previous-margin="150rpx" circular="true" indicator-dots="{{false}}" autoplay="{{true}}"
+        interval="{{5000}}" duration="{{500}}">
+        <block wx:for="{{imgUrls}}" wx:key="index">
             <swiper-item class="lbt">
                 <image class="swiper-image" src="{{item}}" />
             </swiper-item>
@@ -22,7 +25,8 @@
     </swiper>
     <!-- 学科 -->
     <view>
-        <van-tabs color="#5593E5" title-active-color="#5593E5" title-inactive-color="#B1C1CE" active="{{ active }}" bind:change="onTabchange" sticky tab-class="tab" custom-class="custom">
+        <van-tabs color="#5593E5" title-active-color="#5593E5" title-inactive-color="#B1C1CE" active="{{ active }}"
+            bind:change="onTabchange" sticky tab-class="tab" custom-class="custom">
             <van-tab title="哲学"></van-tab>
             <van-tab title="经济学"></van-tab>
             <van-tab title="法学"></van-tab>
@@ -37,23 +41,34 @@
     </button>
     <!-- <van-button round class="floatBtn" bind:click="handleClick">我要提问</van-button> -->
     <!-- 提问内容 -->
-    <scroll-view 
-        bindscrolltolower="loadmore" 
-        refresher-enabled="{{true}}" 
-        refresher-triggered="{{isRefresh}}" 
-        bindrefresherrefresh="handlerefresh" 
-        paging-enabled="{{true}}" 
-        scroll-with-animation="{{true}}" 
-        scroll-y="true" 
-        style="height: 65vh;" >
-        <view wx:for="{{list}}" wx:key="index" >
+    <view wx:if="{{isShow}}" class="identify_container">
+        <form catchsubmit="_handleSubmit" >
+            <view class="section">
+                <picker name="picker" bindchange="bindPickerChange" value="{{arr_identify[index]}}" range="{{arr_identify}}">
+                    <view class="picker">
+                        身份：{{arr_identify[index]}}
+                    </view>
+                </picker>
+            </view>
+            <view class="_nameContainer" ><text class="_font">姓名:</text><input class="_input" placeholder="请输入"  name="name" /></view>
+            <view class="_stuContainer" ><text class="_font">学号:</text><input class="_input" placeholder="请输入"  name="stu_id" /></view>
+            <button class="_submitbtn"  form-type="submit" >确认</button>
+        </form>
+    </view>
+    <scroll-view bindscrolltolower="loadmore" refresher-enabled="{{true}}" refresher-triggered="{{isRefresh}}"
+        bindrefresherrefresh="handlerefresh" paging-enabled="{{true}}" scroll-with-animation="{{true}}" scroll-y="true"
+        style="height: 65vh;">
+        <view wx:for="{{list}}" wx:key="index">
             <view class="mainContent">
-                <navigator class="" target="" url="../../packageC/pages/askDetail/index?post_id={{item.post_id}}" hover-class="navigator-hover" open-type="navigate">
+                <navigator class="" target="" url="../../packageC/pages/askDetail/index?post_id={{item.post_id}}"
+                    hover-class="navigator-hover" open-type="navigate">
                     <!-- 头像、积分、日期、名字 -->
                     <view class="topContent">
                         <view class="leftContent">
                             <!-- src="https://img.alicdn.com/bao/uploaded/i2/48317215/O1CN01q4UfUP23AWDj4CZio_!!0-item_pic.jpg_100x100q90.jpg_.webp" alt="" -->
-                            <image mode="aspectFill" style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{item.avatar}}" />
+                            <image mode="aspectFill"
+                                style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;"
+                                src="{{item.avatar}}" />
                             <view class="infoContent">
                                 <text class="name">{{item.user_name}}</text>
                                 <text class="date">{{item.created_on}}</text>
@@ -86,5 +101,5 @@
             </view>
         </view>
     </scroll-view>
-  
+
 </view>

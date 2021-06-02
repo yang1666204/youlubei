@@ -59,6 +59,11 @@
           "pathName": "pages/myattention/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/login/index",
+          "pathName": "pages/login/index",
+          "scene": null
         }
       ]
     }
