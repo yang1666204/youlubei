@@ -7,7 +7,7 @@
       </view>
       <view class="userinfo_container">
             <!-- <open-data type="userAvatarUrl" ></open-data>  -->
-            <image style="width:60px;height:60px;border-radius:50%;position:absolute;bottom:130rpx;rpx;left:calc(50% - 50rpx);"
+            <image style="width:60px;height:60px;border-radius:50%;position:absolute;bottom:190rpx;rpx;left:calc(50% - 30px);"
                   mode="aspectFill" src="{{user_avatar}}" />
             <view class="userinfo_attention">
                   <text class="user_attention">我的收藏</text>
@@ -16,7 +16,7 @@
 
       </view>
 </view>
-<scroll-view scroll-y="true" style="height:70vh">
+<scroll-view scroll-y="true" style="height:64vh">
       <view class="scroll_container" wx:for="{{lists}}" wx:key="item.user_id">
              <!-- <wxs module="component">
                   var geturl = function(user_id,avatar,user_name,userId) {

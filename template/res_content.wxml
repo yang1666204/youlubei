@@ -2,8 +2,23 @@
     <view class="title">{{title}}</view>
 
     <view class="infoContainer">
+     <wxs module="component">
+                  var geturl = function(user_id,avatar,user_name,is_myself) {
+                      var url = ''
+                      if(is_myself!==true){
+                          url =  '../../../pages/otherspage/index?user_id='+user_id+'&avatar='+avatar+'&user_name='+user_name
+                      }
+                      else{
+                          url = "../../../packageB/pages/mypage/index"
+                      }
+                         return  url
+                       }
+            
+
+                module.exports.geturl = geturl;
+            </wxs>
         <navigator open-type="navigate"
-            url="../../../pages/otherspage/index?user_id={{user_id}}&avatar={{avatar}}&user_name={{user_name}}">
+            url="{{component.geturl(user_id,avatar,user_name,is_myself)}}">
             <view class="leftContent">
                 <image style="margin-right:20rpx; width:80rpx;height:80rpx; border-radius: 50%;" src="{{avatar}}"
                     alt="" mode="aspectFill"/>

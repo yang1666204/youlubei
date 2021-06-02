@@ -43,9 +43,17 @@ Page({
    */
   onShow: function () {
     const app = getApp();
+    
     this.setData({
-      info:app.globalData.studentinfo
+      info:app.globalData.studentinfo,
+      id:app.globalData.studentinfo.role,
+      name:app.globalData.studentinfo.user_name,
+      school:app.globalData.studentinfo.school,
+      grade:app.globalData.studentinfo.grade,
+      xueyuan:app.globalData.studentinfo.college,
+      studentid:'',
     })
+    
   },
 
   /**

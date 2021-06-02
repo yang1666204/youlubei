@@ -22,13 +22,13 @@
     position: relative;
     height: 15vh;
   }
-  .flageone,.flagetwo{
+  /* .flageone,.flagetwo{
     width: 66rpx;
     height: 66rpx;
     position: absolute;
     border-radius: 50%;
     /* margin-left: -230rpx; */
-    bottom: 100rpx;
+    /* bottom: 100rpx;
     background-color: #fff;
     font-size: small;
     z-index: 2;
@@ -38,7 +38,7 @@
   }
   .flagetwo{
     left: 570rpx;
-  }
+  } */ 
   .font{
     display: flex;
     justify-content: center;

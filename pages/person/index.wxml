@@ -46,7 +46,7 @@
              </text>
          </navigator>
          <navigator open-type="navigate" url="../../packageB/pages/myattention/index" class="funitem">
-             <text  selectable="false" space="false" decode="false">
+             <text  selectable="false" space="false" decode="false" >
                   我的关注
              </text>
          </navigator>                 
@@ -55,6 +55,7 @@
               </text>
             
       </view>
-      <button form-type="submit" hover-class="hoverbutton" class="button" bind:tap="toedit">编辑信息</button>
+          <button  hover-class="hoverbutton" class="button" bind:tap="tochangeavatar">修改头像</button>
+      
 </view>
 

@@ -90,15 +90,16 @@
     margin: 3vh 10vw;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
 
 }
 .funitem{
-    text-align: center;
     height:  80rpx;
-    width: 40vw;
+    width: calc(100% - 120rpx);
+    line-height: 80rpx;
     font-size: 30rpx;
     line-height: 25rpx;
+    margin-left: 60rpx;
 }
 .button{
     background-color: #cadafc;

@@ -103,9 +103,18 @@ Page({
   onShareAppMessage: function () {
 
   },
-  toedit(){
+  // toedit(){
+  //   wx.navigateTo({
+  //     url: '../../packageB/pages/edit/index',
+  //     events: {  
+  //     },
+  //     success: function(res) {       
+  //     }
+  //   })
+  // },
+  tochangeavatar(){
     wx.navigateTo({
-      url: '../../packageB/pages/edit/index',
+      url: '../../packageB/pages/changeavatar/index',
       events: {  
       },
       success: function(res) {       

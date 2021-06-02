@@ -42,8 +42,8 @@
               /> -->
                <picker name="tag" bindchange="bindPickerChange" value="{{array[index]}}" range="{{array}}">
                    <view class="xkContainer">
-                    <text >请选择学科：</text> 
-                    <text >{{array[index]}}</text>
+                    <text  style="font-size:30rpx;" >请选择学科：</text> 
+                    <text  style="font-size:30rpx;" >{{array[index]}}</text>
                 </view>
                </picker>
             </view>            

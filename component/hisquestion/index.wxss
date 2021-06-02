@@ -1,7 +1,7 @@
 /* component/hisquestion/index.wxss */
 .mainContent {
     background-color: #fff;
-    padding: 30rpx;
+   
     margin-bottom: 20rpx;
     margin-top: 20rpx;
     height: 300rpx;
